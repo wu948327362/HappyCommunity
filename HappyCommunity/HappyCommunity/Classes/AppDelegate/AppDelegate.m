@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "HappyTabController.h"
+#import "LoginController.h"
+#import "EMSDK.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +23,17 @@
 	self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	[self.window makeKeyAndVisible];
 	
-	HappyTabController *tab = [[HappyTabController alloc] init];
-	self.window.rootViewController = tab;
+	//登陆界面
+	LoginController *loc = [[LoginController alloc] init];
+	
+	//设置环信相关参数
+	//AppKey:注册的appKey，详细见下面注释。
+	//apnsCertName:推送证书名(不需要加后缀)，详细见下面注释。
+	EMOptions *options = [EMOptions optionsWithAppkey:@"wu-948327362#happycommunity"];
+	options.apnsCertName = @"happycommunity";
+	[[EMClient sharedClient] initializeSDKWithOptions:options];
+	
+	self.window.rootViewController = loc;
 	
 	
 	
