@@ -51,14 +51,14 @@
     
 }
 
-//- (CGFloat)heightForCell:(NewsModel *)model
-//{
-//    CGSize size = CGSizeMake(CGRectGetWidth(_titleLabel.frame), 20000);
-//    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:15]};
-//    CGRect rect = [model.itemTitle boundingRectWithSize:size options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
-//    return rect.size.height + 100;
-//
-//}
+- (CGFloat)heightForCell:(NewsModel *)model
+{
+    CGSize size = CGSizeMake(CGRectGetWidth(_titleLabel.frame), 20000);
+    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:15]};
+    CGRect rect = [model.itemTitle boundingRectWithSize:size options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+    return rect.size.height + 100;
+
+}
 - (void)awakeFromNib {
     // Initialization code
 }

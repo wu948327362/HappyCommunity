@@ -13,6 +13,7 @@
 #import "NewTableViewCell.h"
 #import "NewsModel.h"
 
+
 @interface NewsController ()
 @property(nonatomic, strong)NSMutableArray *data;
 @end
@@ -22,12 +23,16 @@ static NSString *newsCell = @"mycell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+        
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:newsCell];
     [self loadData];
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     self.data = [NSMutableArray array];
     
+
+    
 }
+
 
 - (void)loadData
 {
