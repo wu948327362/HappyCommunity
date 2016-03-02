@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 @interface NewTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 @implementation NewTableViewCell
@@ -26,11 +27,11 @@
 
 - (void)setupView
 {
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.photoView.frame) + 20, 20, CGRectGetWidth([UIScreen mainScreen].bounds) - 60 - CGRectGetWidth(self.photoView.frame) , CGRectGetHeight(self.photoView.frame))];
+    
     self.titleLabel.font = [UIFont systemFontOfSize:15];
     self.titleLabel.backgroundColor = [UIColor redColor];
     self.titleLabel.numberOfLines = 0;
-    [self.contentView addSubview:self.titleLabel];
+    
     
 }
 - (void)setModel:(NewsModel *)Model

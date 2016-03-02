@@ -65,6 +65,12 @@
 		C2A9BF2B1C857AB0005E19B2 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF2A1C857AB0005E19B2 /* NewsModel.m */; };
 		C2A9BF2E1C857ABB005E19B2 /* LaughManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF2D1C857ABB005E19B2 /* LaughManager.m */; };
 		C2A9BF311C857AD5005E19B2 /* LaughModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF301C857AD5005E19B2 /* LaughModel.m */; };
+		C2A9BF591C85CB4C005E19B2 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF571C85CB4C005E19B2 /* LoginController.m */; };
+		C2A9BF5A1C85CB4C005E19B2 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF581C85CB4C005E19B2 /* LoginController.xib */; };
+		C2A9BF601C85CBC4005E19B2 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5C1C85CBC4005E19B2 /* account.png */; };
+		C2A9BF611C85CBC4005E19B2 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */; };
+		C2A9BF621C85CBC4005E19B2 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5E1C85CBC4005E19B2 /* password.png */; };
+		C2A9BF631C85CBC4005E19B2 /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */; };
 		D7FA6E81B528446836F24365 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CC1CDFFDD9AF9FA2B9DBAE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -197,6 +203,13 @@
 		C2A9BF2D1C857ABB005E19B2 /* LaughManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaughManager.m; sourceTree = "<group>"; };
 		C2A9BF2F1C857AD5005E19B2 /* LaughModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaughModel.h; sourceTree = "<group>"; };
 		C2A9BF301C857AD5005E19B2 /* LaughModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaughModel.m; sourceTree = "<group>"; };
+		C2A9BF561C85CB4C005E19B2 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		C2A9BF571C85CB4C005E19B2 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		C2A9BF581C85CB4C005E19B2 /* LoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
+		C2A9BF5C1C85CBC4005E19B2 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
+		C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account@2x.png"; sourceTree = "<group>"; };
+		C2A9BF5E1C85CBC4005E19B2 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
+		C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@2x.png"; sourceTree = "<group>"; };
 		E4CF84918BED27637B1902E7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -312,6 +325,7 @@
 		C2A9BE681C852D00005E19B2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C2A9BF551C85CB4C005E19B2 /* LoginController */,
 				C2A9BEE71C85670A005E19B2 /* NewsAndLauth */,
 				C2A9BE691C852D00005E19B2 /* CommunityController */,
 				C2A9BE6A1C852D00005E19B2 /* LaughController */,
@@ -403,6 +417,7 @@
 		C2A9BE711C852D00005E19B2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2A9BF5B1C85CBC4005E19B2 /* Login */,
 				C2A9BECE1C85368A005E19B2 /* Tabbar */,
 			);
 			path = Resources;
@@ -608,6 +623,27 @@
 			path = HuanXinLibs;
 			sourceTree = "<group>";
 		};
+		C2A9BF551C85CB4C005E19B2 /* LoginController */ = {
+			isa = PBXGroup;
+			children = (
+				C2A9BF561C85CB4C005E19B2 /* LoginController.h */,
+				C2A9BF571C85CB4C005E19B2 /* LoginController.m */,
+				C2A9BF581C85CB4C005E19B2 /* LoginController.xib */,
+			);
+			path = LoginController;
+			sourceTree = "<group>";
+		};
+		C2A9BF5B1C85CBC4005E19B2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C2A9BF5C1C85CBC4005E19B2 /* account.png */,
+				C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */,
+				C2A9BF5E1C85CBC4005E19B2 /* password.png */,
+				C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -669,9 +705,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2A9BED81C85368A005E19B2 /* tabbar_Conversation_HL@2x.png in Resources */,
+				C2A9BF601C85CBC4005E19B2 /* account.png in Resources */,
 				C29CCD641C852A4800AB68E6 /* LaunchScreen.storyboard in Resources */,
 				C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */,
 				C2A9BED71C85368A005E19B2 /* tabbar_Conversation@2x.png in Resources */,
+				C2A9BF611C85CBC4005E19B2 /* account@2x.png in Resources */,
+				C2A9BF5A1C85CB4C005E19B2 /* LoginController.xib in Resources */,
+				C2A9BF621C85CBC4005E19B2 /* password.png in Resources */,
+				C2A9BF631C85CBC4005E19B2 /* password@2x.png in Resources */,
 				C2A9BED91C85368A005E19B2 /* tabbar_setting@2x.png in Resources */,
 				C2A9BEDA1C85368A005E19B2 /* tabbar_setting_HL@2x.png in Resources */,
 				C2A9BED61C85368A005E19B2 /* tabbar_contact_HL@2x.png in Resources */,
@@ -753,6 +794,7 @@
 				C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */,
 				C29CCD5F1C852A4800AB68E6 /* HappyCommunity.xcdatamodeld in Sources */,
 				C2A9BEAF1C8533DD005E19B2 /* CommunityController.m in Sources */,
+				C2A9BF591C85CB4C005E19B2 /* LoginController.m in Sources */,
 				C2A9BEA31C852DB2005E19B2 /* UIImage+WebP.m in Sources */,
 				C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */,
 				C2A9BEA51C852DB2005E19B2 /* UIImageView+WebCache.m in Sources */,
