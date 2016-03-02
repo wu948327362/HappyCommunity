@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class NewsModel;
 @interface NewsController : UITableViewController
 
+@property(nonatomic, strong)NewsModel *model;
 @end

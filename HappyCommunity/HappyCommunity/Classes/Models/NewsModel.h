@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NewsModel : NSObject
-
+@property(nonatomic, strong)NSString *itemTitle;
+@property(nonatomic, strong)NSString *imgUrl1;
 @end
