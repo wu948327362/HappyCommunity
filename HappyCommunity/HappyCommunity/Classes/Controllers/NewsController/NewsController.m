@@ -8,19 +8,34 @@
 
 #import "NewsController.h"
 #import "LaughController.h"
+#import "AFNetworking.h"
+#import "NewsManager.h"
+#import "NewTableViewCell.h"
+#import "NewsModel.h"
 
 @interface NewsController ()
-
+@property(nonatomic, strong)NSMutableArray *data;
 @end
 
-static NSString *newsCell = @"news_cell";
+static NSString *newsCell = @"mycell";
 @implementation NewsController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:newsCell];
+    [self loadData];
+    [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
+    self.data = [NSMutableArray array];
+    
 }
 
+- (void)loadData
+{
+   self.data = [[NewsManager shareInstance] requestWithUrl:NewsUrl finish:^{
+       [self.tableView reloadData];
+   }];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -29,13 +44,14 @@ static NSString *newsCell = @"news_cell";
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    NSLog(@"%ld",[[NewsManager shareInstance] countOfArray]);
+    return [[NewsManager shareInstance] countOfArray];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:newsCell forIndexPath:indexPath];
+    NewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:newsCell forIndexPath:indexPath];
+    cell.Model = [[NewsManager shareInstance] getModelWithIndex:indexPath.row];
     
-    cell.textLabel.text = @"news";
     
     return cell;
 }
@@ -44,6 +60,13 @@ static NSString *newsCell = @"news_cell";
 	NSLog(@"fdsfsdfsdfs");
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    NewTableViewCell *cell = [[NewTableViewCell alloc] init];
+//    cell.Model = [[NewsManager shareInstance] getModelWithIndex:indexPath.row];
+//    return [cell heightForCell:cell.Model];
+    return 120;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
