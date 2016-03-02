@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Thb-6V-Vpf">
-                        <rect key="frame" x="20" y="20" width="153" height="153"/>
+                        <rect key="frame" x="20" y="10" width="173" height="173"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="8cZ-DI-D0r"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="158" id="OWg-Ff-36m"/>
@@ -36,7 +36,7 @@
                         </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRy-wh-7xF">
-                        <rect key="frame" x="183" y="20" width="166" height="153"/>
+                        <rect key="frame" x="203" y="10" width="146" height="173"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -45,12 +45,12 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="iRy-wh-7xF" secondAttribute="trailing" constant="10" id="0zc-7B-oVn"/>
                     <constraint firstItem="iRy-wh-7xF" firstAttribute="leading" secondItem="Thb-6V-Vpf" secondAttribute="trailing" constant="10" id="71t-ga-Ok0"/>
+                    <constraint firstAttribute="bottom" secondItem="Thb-6V-Vpf" secondAttribute="bottom" constant="10" id="Ao3-Ev-kFs"/>
                     <constraint firstItem="iRy-wh-7xF" firstAttribute="centerY" secondItem="Thb-6V-Vpf" secondAttribute="centerY" id="C3Z-iI-a40"/>
                     <constraint firstItem="Thb-6V-Vpf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ES6-0d-Twg"/>
                     <constraint firstItem="Thb-6V-Vpf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="33" id="Ft9-7S-ofM"/>
-                    <constraint firstItem="Thb-6V-Vpf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="TgF-H2-S8I"/>
-                    <constraint firstAttribute="bottom" secondItem="Thb-6V-Vpf" secondAttribute="bottom" constant="20" id="hNT-oA-Hh7"/>
                     <constraint firstItem="iRy-wh-7xF" firstAttribute="height" secondItem="Thb-6V-Vpf" secondAttribute="height" id="jiD-hN-ddd"/>
+                    <constraint firstItem="Thb-6V-Vpf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="tyy-CM-KA5"/>
                     <constraint firstItem="iRy-wh-7xF" firstAttribute="width" secondItem="Thb-6V-Vpf" secondAttribute="width" id="wVW-t4-ZSH"/>
                 </constraints>
                 <variation key="default">
