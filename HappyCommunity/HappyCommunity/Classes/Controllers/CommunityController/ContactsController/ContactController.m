@@ -1,41 +1,48 @@
 //
-//  NewsController.m
+//  ContactController.m
 //  HappyCommunity
 //
-//  Created by lanou3g on 16/3/1.
+//  Created by lanou3g on 16/3/2.
 //  Copyright © 2016年 吴文涛. All rights reserved.
 //
 
-#import "NewsController.h"
-#import "LaughController.h"
-#import "AFNetworking.h"
-#import "NewsManager.h"
-#import "NewTableViewCell.h"
-#import "NewsModel.h"
+#import "ContactController.h"
+#import "ContactManager.h"
+#import "ChatController.h"
 
-@interface NewsController ()
-@property(nonatomic, strong)NSMutableArray *data;
+@interface ContactController ()
+
+@property(nonatomic,strong)NSMutableArray *data;
+
+@property(nonatomic,strong)ChatController *chatController;
+
 @end
 
-static NSString *newsCell = @"mycell";
-@implementation NewsController
+static NSString *conCell = @"contact_cell";
+@implementation ContactController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:newsCell];
-    [self loadData];
-    [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
-    self.data = [NSMutableArray array];
-    
+	
+	//注册cell
+	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:conCell];
+	
+	//初始化聊天界面
+	self.chatController = [[ChatController alloc] init];
+	
 }
 
-- (void)loadData
-{
-   self.data = [[NewsManager shareInstance] requestWithUrl:NewsUrl finish:^{
-       [self.tableView reloadData];
-   }];
-    
+- (void)viewWillAppear:(BOOL)animated{
+	//根据flag加载数据
+	[self loadData];
 }
+
+- (void)loadData{
+	self.data = [[ContactManager shareInstance] dataForFlag:self.flag];
+	[self.tableView reloadData];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -44,29 +51,23 @@ static NSString *newsCell = @"mycell";
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //NSLog(@"%ld",[[NewsManager shareInstance] countOfArray]);
-    return [[NewsManager shareInstance] countOfArray];
+	
+    return self.data.count;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:newsCell forIndexPath:indexPath];
-    cell.Model = [[NewsManager shareInstance] getModelWithIndex:indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:conCell forIndexPath:indexPath];
     
+	cell.textLabel.text = self.data[indexPath.row];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	NSLog(@"fdsfsdfsdfs");
+	[self.navigationController pushViewController:self.chatController animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    NewTableViewCell *cell = [[NewTableViewCell alloc] init];
-//    cell.Model = [[NewsManager shareInstance] getModelWithIndex:indexPath.row];
-//    return [cell heightForCell:cell.Model];
-    return 120;
-}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

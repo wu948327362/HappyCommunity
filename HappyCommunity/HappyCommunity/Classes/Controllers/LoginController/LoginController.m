@@ -10,6 +10,7 @@
 #import "EMError.h"
 #import "EMSDK.h"
 #import "HappyTabController.h"
+#import "DataBaseTools.h"
 
 @interface LoginController ()
 
@@ -98,6 +99,8 @@
 				
 				HappyTabController *tab = [[HappyTabController alloc] init];
 				[self presentViewController:tab animated:YES completion:nil];
+				//打开数据库
+				[[DataBaseTools SharedInstance] openDataBase];
 				
 			}else{
 				switch (error.code) {
