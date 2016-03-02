@@ -10,6 +10,6 @@
 @class NewsModel;
 @interface NewTableViewCell : UITableViewCell
 @property(nonatomic, strong)NewsModel *Model;
-@property (nonatomic, strong)UILabel *titleLabel;
+
 - (CGFloat)heightForCell:(NewsModel *)model;
 @end
