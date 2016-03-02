@@ -10,14 +10,14 @@
 #import "EMError.h"
 #import "EMSDK.h"
 #import "HappyTabController.h"
-<<<<<<< HEAD
+
 #import "DataBaseTools.h"
-=======
+
 #import "AppDelegate.h"
 #import "RESideMenu.h"
 #import "LeftViewController.h"
 #import "MyViewController.h"
->>>>>>> 658d315e0a02bdcb25b6d55bcef60dbb2347c3c1
+#import "AppDelegate.h"
 
 @interface LoginController ()<RESideMenuDelegate>
 
@@ -105,11 +105,15 @@
 			if (!error) {
 				
 				HappyTabController *tab = [[HappyTabController alloc] init];
-<<<<<<< HEAD
-				[self presentViewController:tab animated:YES completion:nil];
+				
+//				AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//				app.window.rootViewController = tab;
+				
+
+//				[self presentViewController:tab animated:YES completion:nil];
 				//打开数据库
 				[[DataBaseTools SharedInstance] openDataBase];
-=======
+
                 
                 LeftViewController *lvc = [[LeftViewController alloc] init];
                 
@@ -125,7 +129,6 @@
                 sideMenuViewController.scaleBackgroundImageView = NO;
                 
 				[self presentViewController:sideMenuViewController animated:YES completion:nil];
->>>>>>> 658d315e0a02bdcb25b6d55bcef60dbb2347c3c1
 				
 			}else{
 				switch (error.code) {
