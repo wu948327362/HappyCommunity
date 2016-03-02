@@ -22,6 +22,7 @@ static NSString *newsCell = @"mycell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+        
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:newsCell];
     [self loadData];
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
