@@ -10,8 +10,12 @@
 #import "EMError.h"
 #import "EMSDK.h"
 #import "HappyTabController.h"
+#import "AppDelegate.h"
+#import "RESideMenu.h"
+#import "LeftViewController.h"
+#import "MyViewController.h"
 
-@interface LoginController ()
+@interface LoginController ()<RESideMenuDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userField;
 @property (weak, nonatomic) IBOutlet UITextField *passWordField;
@@ -97,7 +101,21 @@
 			if (!error) {
 				
 				HappyTabController *tab = [[HappyTabController alloc] init];
-				[self presentViewController:tab animated:YES completion:nil];
+                
+                LeftViewController *lvc = [[LeftViewController alloc] init];
+                
+                RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:tab leftMenuViewController:lvc rightMenuViewController:nil];
+                sideMenuViewController.mainController = tab;
+                sideMenuViewController.menuPreferredStatusBarStyle = 1;
+                sideMenuViewController.delegate = self;
+                sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+                sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+                sideMenuViewController.contentViewShadowOpacity = 0.6;
+                sideMenuViewController.contentViewShadowRadius = 6;
+                sideMenuViewController.contentViewShadowEnabled = YES;
+                sideMenuViewController.scaleBackgroundImageView = NO;
+                
+				[self presentViewController:sideMenuViewController animated:YES completion:nil];
 				
 			}else{
 				switch (error.code) {
