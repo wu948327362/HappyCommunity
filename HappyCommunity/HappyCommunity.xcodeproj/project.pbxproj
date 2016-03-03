@@ -31,7 +31,6 @@
 		C21A1B0F1C86E66600CDAC7D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C21A1B0E1C86E66600CDAC7D /* libsqlite3.0.tbd */; };
 		C21A1B121C86E68F00CDAC7D /* DataBaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C21A1B111C86E68F00CDAC7D /* DataBaseTools.m */; };
 		C21A1B151C86E6BC00CDAC7D /* FriendsInvitation.m in Sources */ = {isa = PBXBuildFile; fileRef = C21A1B141C86E6BC00CDAC7D /* FriendsInvitation.m */; };
-		C21A1B161C86EE8C00CDAC7D /* EMContactManagerDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BEF41C8574C5005E19B2 /* EMContactManagerDelegate.h */; };
 		C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21A1B291C87281700CDAC7D /* ChatController.m */; };
 		C21A1B2C1C87281700CDAC7D /* ChatController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21A1B2A1C87281700CDAC7D /* ChatController.xib */; };
 		C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25731781C85B5F000982579 /* NewTableViewCell.m */; };
@@ -89,7 +88,6 @@
 		C2A9BF201C85756A005E19B2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A9BF1F1C85756A005E19B2 /* libz.tbd */; };
 		C2A9BF221C85757C005E19B2 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A9BF211C85757C005E19B2 /* libstdc++.6.0.9.tbd */; };
 		C2A9BF241C857586005E19B2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A9BF231C857586005E19B2 /* libsqlite3.tbd */; };
-		C2A9BF281C857AA1005E19B2 /* NewsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF271C857AA1005E19B2 /* NewsManager.m */; };
 		C2A9BF2B1C857AB0005E19B2 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF2A1C857AB0005E19B2 /* NewsModel.m */; };
 		C2A9BF2E1C857ABB005E19B2 /* LaughManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF2D1C857ABB005E19B2 /* LaughManager.m */; };
 		C2A9BF311C857AD5005E19B2 /* LaughModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF301C857AD5005E19B2 /* LaughModel.m */; };
@@ -99,6 +97,7 @@
 		C2A9BF611C85CBC4005E19B2 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */; };
 		C2A9BF621C85CBC4005E19B2 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5E1C85CBC4005E19B2 /* password.png */; };
 		C2A9BF631C85CBC4005E19B2 /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */; };
+		C2DB9D821C8836CC00FA0EA9 /* NewsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF271C857AA1005E19B2 /* NewsManager.m */; };
 		C2EA5B761C8703290072A24B /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B711C8703290072A24B /* RECommonFunctions.m */; };
 		C2EA5B771C8703290072A24B /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B731C8703290072A24B /* RESideMenu.m */; };
 		C2EA5B781C8703290072A24B /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B751C8703290072A24B /* UIViewController+RESideMenu.m */; };
@@ -983,8 +982,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C21A1B161C86EE8C00CDAC7D /* EMContactManagerDelegate.h in Sources */,
-				C2A9BF281C857AA1005E19B2 /* NewsManager.m in Sources */,
+				C2DB9D821C8836CC00FA0EA9 /* NewsManager.m in Sources */,
 				C2A9BEBE1C85343C005E19B2 /* CommunityView.m in Sources */,
 				C2A9BF311C857AD5005E19B2 /* LaughModel.m in Sources */,
 				C2EA5B7B1C87037B0072A24B /* YCServiceViewController.m in Sources */,
@@ -1009,18 +1007,12 @@
 				C2A9BEA31C852DB2005E19B2 /* UIImage+WebP.m in Sources */,
 				C2EA5B911C87179B0072A24B /* ServiceViewController.m in Sources */,
 				C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */,
-<<<<<<< HEAD
-
-				C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */,
-
-				C21A1B0C1C86D18300CDAC7D /* AddFriendController.m in Sources */,
-				C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */,
-
-=======
 				C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */,
 				C21A1B0C1C86D18300CDAC7D /* AddFriendController.m in Sources */,
 				C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */,
->>>>>>> 48439c84365823657382494da3cbfae0afc1851c
+				C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */,
+				C21A1B0C1C86D18300CDAC7D /* AddFriendController.m in Sources */,
+				C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */,
 				C2A9BEA51C852DB2005E19B2 /* UIImageView+WebCache.m in Sources */,
 				C2A9BECD1C8535F5005E19B2 /* HappyTabController.m in Sources */,
 				C2A9BE9C1C852DB2005E19B2 /* SDWebImageDownloader.m in Sources */,

@@ -44,10 +44,7 @@
 //    NSLog(@"%@",Model);
 
     //NSLog(@"%@",Model);
-<<<<<<< HEAD
 
-=======
->>>>>>> 48439c84365823657382494da3cbfae0afc1851c
     self.titleLabel.text = Model.itemTitle;
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:Model.imgUrl1]];
     NSString *temp = Model.itemTitle;

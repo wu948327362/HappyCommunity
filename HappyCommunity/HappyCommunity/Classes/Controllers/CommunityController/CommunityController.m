@@ -16,12 +16,13 @@
 #import "EMError.h"
 #import "FriendsInvitation.h"
 
-<<<<<<< HEAD
+
 
 @interface CommunityController ()<EMContactManagerDelegate>
-=======
+
+@end
 @interface CommunityController ()
->>>>>>> 48439c84365823657382494da3cbfae0afc1851c
+
 @property(nonatomic,strong)NSMutableArray *data;
 @property(nonatomic,strong)NSMutableArray *images;
 @property(nonatomic,strong)ContactController *comController;
@@ -49,7 +50,7 @@ static NSString *communityCell = @"community_cell";
 	
 	self.friendController = [[AddFriendController alloc] initWithNibName:@"AddFriendController" bundle:nil];
 	
-<<<<<<< HEAD
+
 	//设置接收到好友请求代理
 	[[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
 	
@@ -68,8 +69,7 @@ static NSString *communityCell = @"community_cell";
 {
     return UIStatusBarStyleLightContent;
 
-=======
->>>>>>> 48439c84365823657382494da3cbfae0afc1851c
+
 }
 
 //添加好友方法

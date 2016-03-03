@@ -13,17 +13,14 @@
 #import "NewTableViewCell.h"
 #import "NewsModel.h"
 #import "WebViewViewController.h"
-<<<<<<< HEAD
 
 #import <MJRefresh.h>
 
 
-=======
+
 #import <MJRefresh.h>
 
 
-
->>>>>>> 48439c84365823657382494da3cbfae0afc1851c
 @interface NewsController ()
 /**
  *  创建可变数组来接受管理类请求的数据
@@ -55,12 +52,7 @@ static NSString *newsCell = @"mycell";
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     //初始化数组
     self.data = [NSMutableArray array];
-<<<<<<< HEAD
-    
 
-=======
-	
->>>>>>> 48439c84365823657382494da3cbfae0afc1851c
     self.number = 1;
     //下拉刷新方法
     [self setupDownRefresh];
@@ -104,11 +96,7 @@ static NSString *newsCell = @"mycell";
     }];
 }
 #pragma mark 加载数据方法
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 48439c84365823657382494da3cbfae0afc1851c
 
 - (void)loadData
 {
