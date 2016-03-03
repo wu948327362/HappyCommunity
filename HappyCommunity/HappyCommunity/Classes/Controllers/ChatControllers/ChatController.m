@@ -7,13 +7,18 @@
 //
 
 #import "ChatController.h"
+#import "EMSDK.h"
+#import "EMError.h"
+#import "ChatMessageModel.h"
 
-@interface ChatController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface ChatController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,EMChatManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *messageField;
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
 
+//暂存发送和接受的消息
+@property(nonatomic,strong)NSMutableArray *messages;
 
 @end
 
@@ -24,7 +29,7 @@ static NSString *chatCell = @"chat_cell";
     [super viewDidLoad];
 	
     //设置tableView的frame;
-	[self loadTableView];
+	[self loadMyView];
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
 	self.messageField.delegate = self;
@@ -32,25 +37,50 @@ static NSString *chatCell = @"chat_cell";
 	//注册cell
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:chatCell];
 	
+	//设置接收消息代理,并设置接受消息代理方法.
+	[[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+	
 }
 //设置tableView的frame;
-- (void)loadTableView{
+- (void)loadMyView{
 	//设置tableView的frame;
 	CGRect frame = self.tableView.frame;
 	frame.origin.y = CGRectGetMaxY(self.navigationController.navigationBar.frame);
 	frame.size.height = frame.size.height - CGRectGetMidY(self.tabBarController.tabBar.frame);
 	self.tableView.frame = frame;
+	
+	//设置按钮圆角
+	self.sendBtn.layer.masksToBounds = YES;
+	self.sendBtn.layer.cornerRadius = 4;
+	
+	//初始化数组,信息
+	self.messages = [NSMutableArray array];
+	
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+	[self.view endEditing:YES];
 }
 
 #pragma mark - tableView的代理方法
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	return 10;
+	return self.messages.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:chatCell forIndexPath:indexPath];
 	
+	//判断是否是本人发出的消息
+	ChatMessageModel *message = self.messages[indexPath.row];
 	
+	cell.textLabel.text = message.text;
+	//等于0说明是本人发出的.
+	if (message.direction==0) {
+		cell.textLabel.textAlignment = UITextAlignmentRight;
+	}else{
+		cell.textLabel.backgroundColor = [UIColor lightGrayColor];
+	}
 	
 	return cell;
 }
@@ -60,10 +90,15 @@ static NSString *chatCell = @"chat_cell";
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
 	CGRect rect = self.view.frame;
 	
+	
 	rect.size.height = rect.size.height-210;
 	self.view.frame = rect;
 	
 	return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+	[self updateMessages];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -85,7 +120,95 @@ static NSString *chatCell = @"chat_cell";
     // Dispose of any resources that can be recreated.
 }
 
+//点击按钮发送消息
 - (IBAction)sendMessage:(UIButton *)sender {
+	//发送消息为空则返回.
+	if (self.messageField.text.length==0) {
+		return;
+	}
+	EMTextMessageBody *body = [[EMTextMessageBody alloc] initWithText:self.messageField.text];
+	NSString *sendUser = [[EMClient sharedClient] currentUsername];
+	__weak typeof(self) weakself = self;
+	
+	if (self.flag==0) {
+		EMMessage *message  = [[EMMessage alloc] initWithConversationID:self.receiverId from:sendUser to:self.receiverId body:body ext:nil];
+		message.chatType = EMChatTypeChat;
+		
+		[[EMClient sharedClient].chatManager asyncSendMessage:message progress:^(int progress) {
+			
+		} completion:^(EMMessage *message, EMError *error) {
+			if (!error) {
+				ChatMessageModel *model = [[ChatMessageModel alloc] init];
+				model.text = ((EMTextMessageBody *)message.body).text;
+				model.direction = message.direction;
+				[weakself.messages addObject:model];
+				weakself.messageField.text = @"";
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[weakself updateMessages];
+				});
+			}
+		}];
+		
+	}else if (self.flag==1||self.flag==2){
+		//获取所要发送的群组的ID
+		 NSArray *arr = [self.receiverId componentsSeparatedByString:@":"];
+		
+		EMMessage *message = [[EMMessage alloc] initWithConversationID:[arr firstObject] from:sendUser to:[arr firstObject] body:body ext:nil];
+		message.chatType = EMChatTypeGroupChat;
+		
+		[[EMClient sharedClient].chatManager asyncSendMessage:message progress:^(int progress) {
+			
+		} completion:^(EMMessage *message, EMError *error) {
+			if (!error) {
+				ChatMessageModel *model = [[ChatMessageModel alloc] init];
+				model.text = ((EMTextMessageBody *)message.body).text;
+				model.direction = message.direction;
+				[weakself.messages addObject:model];
+				weakself.messageField.text = @"";
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[weakself updateMessages];
+				});
+			}
+		}];
+		
+	}
+	
+}
+
+//更新消息界面
+- (void)updateMessages{
+	[self.tableView reloadData];
+	
+	if (self.messages.count>0) {
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messages.count-1 inSection:0];
+		
+		[self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+	}
+	
+}
+
+#pragma mark - 接收到消息函数回调
+- (void)didReceiveMessages:(NSArray *)aMessages{
+	
+	[self.messages addObjectsFromArray:aMessages];
+	for (EMMessage *message in aMessages) {
+		EMMessageBody *msgBody = message.body;
+		switch (msgBody.type) {
+			case EMMessageBodyTypeText:
+			{
+				EMTextMessageBody *textBody = (EMTextMessageBody *)msgBody;
+				NSString *text = textBody.text;
+				[self updateMessages];
+				
+				NSLog(@"接收到的消息是:%@",text);
+				
+			}
+			break;
+				
+			default:
+			break;
+		}
+	}
 }
 
 

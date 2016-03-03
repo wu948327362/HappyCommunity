@@ -37,6 +37,7 @@
 		C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25731781C85B5F000982579 /* NewTableViewCell.m */; };
 		C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25731791C85B5F000982579 /* NewTableViewCell.xib */; };
 		C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28792A41C86E3D2009C9336 /* WebViewViewController.m */; };
+		C28931CA1C882BD0000F5771 /* ChatMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C28931C91C882BD0000F5771 /* ChatMessageModel.m */; };
 		C29CCD531C852A4800AB68E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD521C852A4800AB68E6 /* main.m */; };
 		C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD581C852A4800AB68E6 /* ViewController.m */; };
 		C29CCD5C1C852A4800AB68E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29CCD5A1C852A4800AB68E6 /* Main.storyboard */; };
@@ -151,6 +152,8 @@
 		C25731791C85B5F000982579 /* NewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTableViewCell.xib; sourceTree = "<group>"; };
 		C28792A31C86E3D2009C9336 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		C28792A41C86E3D2009C9336 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
+		C28931C81C882BD0000F5771 /* ChatMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageModel.h; sourceTree = "<group>"; };
+		C28931C91C882BD0000F5771 /* ChatMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageModel.m; sourceTree = "<group>"; };
 		C29CCD4E1C852A4800AB68E6 /* HappyCommunity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCommunity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29CCD521C852A4800AB68E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C29CCD571C852A4800AB68E6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -465,11 +468,8 @@
 		C2A9BE681C852D00005E19B2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-
 				C21A1B1C1C8721AE00CDAC7D /* ChatControllers */,
-
 				C2EA5B7F1C8705060072A24B /* LeftController */,
-
 				C2A9BF551C85CB4C005E19B2 /* LoginController */,
 				C2A9BEE71C85670A005E19B2 /* NewsAndLauth */,
 				C2A9BE691C852D00005E19B2 /* CommunityController */,
@@ -564,6 +564,8 @@
 				C2A9BF301C857AD5005E19B2 /* LaughModel.m */,
 				C21A1B131C86E6BC00CDAC7D /* FriendsInvitation.h */,
 				C21A1B141C86E6BC00CDAC7D /* FriendsInvitation.m */,
+				C28931C81C882BD0000F5771 /* ChatMessageModel.h */,
+				C28931C91C882BD0000F5771 /* ChatMessageModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1002,21 +1004,23 @@
 				C2A9BEE01C854478005E19B2 /* NewsController.m in Sources */,
 				C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */,
 				C29CCD5F1C852A4800AB68E6 /* HappyCommunity.xcdatamodeld in Sources */,
-
-
 				C2EA5B781C8703290072A24B /* UIViewController+RESideMenu.m in Sources */,
-				C2A9BEAF1C8533DD005E19B2 /* CommunityController.m in Sources */,
-
 				C2A9BF591C85CB4C005E19B2 /* LoginController.m in Sources */,
 				C2A9BEA31C852DB2005E19B2 /* UIImage+WebP.m in Sources */,
 				C2EA5B911C87179B0072A24B /* ServiceViewController.m in Sources */,
 				C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */,
+<<<<<<< HEAD
 
 				C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */,
 
 				C21A1B0C1C86D18300CDAC7D /* AddFriendController.m in Sources */,
 				C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */,
 
+=======
+				C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */,
+				C21A1B0C1C86D18300CDAC7D /* AddFriendController.m in Sources */,
+				C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */,
+>>>>>>> 48439c84365823657382494da3cbfae0afc1851c
 				C2A9BEA51C852DB2005E19B2 /* UIImageView+WebCache.m in Sources */,
 				C2A9BECD1C8535F5005E19B2 /* HappyTabController.m in Sources */,
 				C2A9BE9C1C852DB2005E19B2 /* SDWebImageDownloader.m in Sources */,
@@ -1024,11 +1028,8 @@
 				C21A1ADF1C868C7000CDAC7D /* CommunityController.m in Sources */,
 				C2A9BEA61C852DB2005E19B2 /* UIView+WebCacheOperation.m in Sources */,
 				C2A9BEA01C852DB2005E19B2 /* UIButton+WebCache.m in Sources */,
-
 				C21A1B121C86E68F00CDAC7D /* DataBaseTools.m in Sources */,
-
 				C2EA5B8E1C87178D0072A24B /* AboutViewController.m in Sources */,
-
 				C2A9BF2E1C857ABB005E19B2 /* LaughManager.m in Sources */,
 				C2EA5B941C8717A70072A24B /* SettingViewController.m in Sources */,
 				C2A9BE971C852DB2005E19B2 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1044,6 +1045,7 @@
 				C2EA5B7E1C8704FF0072A24B /* LeftViewController.m in Sources */,
 				C2A9BECA1C853467005E19B2 /* SettingsView.m in Sources */,
 				C2A9BEE31C8544E6005E19B2 /* SettingsController.m in Sources */,
+				C28931CA1C882BD0000F5771 /* ChatMessageModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,8 +16,12 @@
 #import "EMError.h"
 #import "FriendsInvitation.h"
 
+<<<<<<< HEAD
 
 @interface CommunityController ()<EMContactManagerDelegate>
+=======
+@interface CommunityController ()
+>>>>>>> 48439c84365823657382494da3cbfae0afc1851c
 @property(nonatomic,strong)NSMutableArray *data;
 @property(nonatomic,strong)NSMutableArray *images;
 @property(nonatomic,strong)ContactController *comController;
@@ -45,6 +49,7 @@ static NSString *communityCell = @"community_cell";
 	
 	self.friendController = [[AddFriendController alloc] initWithNibName:@"AddFriendController" bundle:nil];
 	
+<<<<<<< HEAD
 	//设置接收到好友请求代理
 	[[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
 	
@@ -63,6 +68,8 @@ static NSString *communityCell = @"community_cell";
 {
     return UIStatusBarStyleLightContent;
 
+=======
+>>>>>>> 48439c84365823657382494da3cbfae0afc1851c
 }
 
 //添加好友方法
@@ -81,15 +88,6 @@ static NSString *communityCell = @"community_cell";
 	
 	[self.tableView reloadData];
 	
-}
-
-- (void)didReceiveFriendInvitationFromUsername:(NSString *)aUsername message:(NSString *)aMessage{
-	
-	FriendsInvitation *friend = [[FriendsInvitation alloc] init];
-	friend.userName = aUsername;
-	friend.message = aMessage;
-	[[DataBaseTools SharedInstance] addPerson:friend];
-	//数据库在注销的时候关闭.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,7 +125,7 @@ static NSString *communityCell = @"community_cell";
 		
 	}else{
 		self.comController.flag = indexPath.row;
-		
+		self.comController.leftImage = self.images[indexPath.row];
 		[self.navigationController pushViewController:self.comController animated:YES];
 	}
 	

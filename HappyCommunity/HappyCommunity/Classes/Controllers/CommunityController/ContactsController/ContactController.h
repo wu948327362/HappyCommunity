@@ -10,4 +10,5 @@
 
 @interface ContactController : UITableViewController
 @property(nonatomic,assign)NSInteger flag;
+@property(nonatomic,copy)NSString *leftImage;
 @end
