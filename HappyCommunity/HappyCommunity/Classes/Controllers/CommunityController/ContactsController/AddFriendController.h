@@ -1,5 +1,5 @@
 //
-//  CommunityController.h
+//  AddFriendController.h
 //  HappyCommunity
 //
 //  Created by lanou3g on 16/3/2.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CommunityController : UITableViewController
-
+@interface AddFriendController : UIViewController
+@property(nonatomic,assign)NSInteger flag;
 @end

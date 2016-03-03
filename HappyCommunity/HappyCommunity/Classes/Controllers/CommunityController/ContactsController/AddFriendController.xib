@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddFriendController">
+            <connections>
+                <outlet property="addBtn" destination="IBu-ed-Kar" id="TEN-gc-K9t"/>
+                <outlet property="cancelBtn" destination="w8M-jm-X9o" id="btq-1a-oK1"/>
+                <outlet property="messageField" destination="CeC-vh-5fJ" id="7Ku-fN-PhM"/>
+                <outlet property="nameField" destination="IOi-cr-PvV" id="G9e-vq-1fK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ue6-8A-Ivx">
+                    <rect key="frame" x="0.0" y="100" width="414" height="70"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_contact_HL@2x" translatesAutoresizingMaskIntoConstraints="NO" id="nII-T1-sGk">
+                            <rect key="frame" x="30" y="15" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="K6h-5Y-bHp"/>
+                                <constraint firstAttribute="height" constant="40" id="elV-tV-lzb"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="好友名字/创建群组" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IOi-cr-PvV">
+                            <rect key="frame" x="80" y="15" width="334" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NS-Ye-Sey">
+                            <rect key="frame" x="20" y="57" width="384" height="2"/>
+                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="2dD-3V-ogb"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="IOi-cr-PvV" firstAttribute="leading" secondItem="nII-T1-sGk" secondAttribute="trailing" constant="10" id="0hk-JR-egv"/>
+                        <constraint firstAttribute="height" constant="70" id="9Dd-UR-gYE"/>
+                        <constraint firstItem="IOi-cr-PvV" firstAttribute="height" secondItem="nII-T1-sGk" secondAttribute="height" id="9ES-9y-By9"/>
+                        <constraint firstAttribute="trailing" secondItem="IOi-cr-PvV" secondAttribute="trailing" id="Cdq-cN-PeE"/>
+                        <constraint firstItem="nII-T1-sGk" firstAttribute="top" secondItem="Ue6-8A-Ivx" secondAttribute="top" constant="15" id="ECt-YG-Tvl"/>
+                        <constraint firstItem="1NS-Ye-Sey" firstAttribute="leading" secondItem="Ue6-8A-Ivx" secondAttribute="leading" constant="20" id="GJH-kz-tmE"/>
+                        <constraint firstItem="nII-T1-sGk" firstAttribute="leading" secondItem="Ue6-8A-Ivx" secondAttribute="leading" constant="30" id="XMU-ON-aB2"/>
+                        <constraint firstItem="1NS-Ye-Sey" firstAttribute="top" secondItem="IOi-cr-PvV" secondAttribute="bottom" constant="2" id="squ-XK-Ohv"/>
+                        <constraint firstItem="IOi-cr-PvV" firstAttribute="centerY" secondItem="nII-T1-sGk" secondAttribute="centerY" id="yy9-mf-9HV"/>
+                        <constraint firstAttribute="trailing" secondItem="1NS-Ye-Sey" secondAttribute="trailing" constant="10" id="zOX-Gg-tsR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJi-pa-q6W">
+                    <rect key="frame" x="0.0" y="195" width="414" height="70"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_Conversation_HL@2x" translatesAutoresizingMaskIntoConstraints="NO" id="DAe-5v-zAb">
+                            <rect key="frame" x="30" y="15" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="Vae-mb-bdZ"/>
+                                <constraint firstAttribute="height" constant="40" id="jfV-oF-GVv"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="打个招呼/群描述" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CeC-vh-5fJ">
+                            <rect key="frame" x="80" y="15" width="334" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvk-mO-mAu">
+                            <rect key="frame" x="20" y="57" width="384" height="2"/>
+                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="4hO-fp-kLr"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="2" id="dx7-pn-dD5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="rvk-mO-mAu" firstAttribute="top" secondItem="CeC-vh-5fJ" secondAttribute="bottom" constant="2" id="0SL-k3-XFQ"/>
+                        <constraint firstItem="DAe-5v-zAb" firstAttribute="top" secondItem="eJi-pa-q6W" secondAttribute="top" constant="15" id="5gU-ec-Vf9"/>
+                        <constraint firstAttribute="trailing" secondItem="CeC-vh-5fJ" secondAttribute="trailing" id="AV2-HE-tjv"/>
+                        <constraint firstItem="DAe-5v-zAb" firstAttribute="leading" secondItem="eJi-pa-q6W" secondAttribute="leading" constant="30" id="GM7-Gy-NCM"/>
+                        <constraint firstAttribute="trailing" secondItem="rvk-mO-mAu" secondAttribute="trailing" constant="10" id="Ruq-1a-1K3"/>
+                        <constraint firstItem="CeC-vh-5fJ" firstAttribute="centerY" secondItem="DAe-5v-zAb" secondAttribute="centerY" id="W5B-kM-AhI"/>
+                        <constraint firstItem="CeC-vh-5fJ" firstAttribute="height" secondItem="DAe-5v-zAb" secondAttribute="height" id="bdz-Rj-jhs"/>
+                        <constraint firstItem="rvk-mO-mAu" firstAttribute="leading" secondItem="eJi-pa-q6W" secondAttribute="leading" constant="20" id="dmY-zI-onD"/>
+                        <constraint firstAttribute="height" constant="70" id="lgf-Lp-1xW"/>
+                        <constraint firstItem="CeC-vh-5fJ" firstAttribute="leading" secondItem="DAe-5v-zAb" secondAttribute="trailing" constant="10" id="xwc-Xe-3Sm"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBu-ed-Kar">
+                    <rect key="frame" x="15" y="305" width="384" height="30"/>
+                    <color key="backgroundColor" red="0.37161690980000001" green="0.72655851390000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="7DZ-Od-FaT"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="加为好友/创建群组"/>
+                    <connections>
+                        <action selector="addAction:" destination="-1" eventType="touchUpInside" id="TuD-tX-8c1"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8M-jm-X9o">
+                    <rect key="frame" x="15" y="365" width="384" height="30"/>
+                    <color key="backgroundColor" red="0.37161690980000001" green="0.72655851390000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="reR-M4-6Xl"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="取消"/>
+                    <connections>
+                        <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="ojT-Fo-6s1"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="w8M-jm-X9o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="1Co-qf-DTI"/>
+                <constraint firstItem="Ue6-8A-Ivx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="9LJ-Qh-A9s"/>
+                <constraint firstItem="w8M-jm-X9o" firstAttribute="top" secondItem="IBu-ed-Kar" secondAttribute="bottom" constant="30" id="JHv-sh-ZLD"/>
+                <constraint firstItem="Ue6-8A-Ivx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KkH-gD-eAb"/>
+                <constraint firstAttribute="trailing" secondItem="Ue6-8A-Ivx" secondAttribute="trailing" id="PYr-jF-dGb"/>
+                <constraint firstAttribute="trailing" secondItem="eJi-pa-q6W" secondAttribute="trailing" id="Pje-g1-B1d"/>
+                <constraint firstItem="IBu-ed-Kar" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="SVj-0p-Byq"/>
+                <constraint firstAttribute="trailing" secondItem="w8M-jm-X9o" secondAttribute="trailing" constant="15" id="cwd-sF-qi8"/>
+                <constraint firstAttribute="trailing" secondItem="IBu-ed-Kar" secondAttribute="trailing" constant="15" id="d6b-1K-OKs"/>
+                <constraint firstItem="eJi-pa-q6W" firstAttribute="top" secondItem="Ue6-8A-Ivx" secondAttribute="bottom" constant="25" id="lLu-Qz-vO3"/>
+                <constraint firstItem="eJi-pa-q6W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uqJ-0C-Pcm"/>
+                <constraint firstItem="IBu-ed-Kar" firstAttribute="top" secondItem="eJi-pa-q6W" secondAttribute="bottom" constant="40" id="zHx-Qi-YW5"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+            <point key="canvasLocation" x="288" y="321"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tabbar_Conversation_HL@2x" width="16" height="16"/>
+        <image name="tabbar_contact_HL@2x" width="16" height="16"/>
+    </resources>
+</document>

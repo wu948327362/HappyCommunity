@@ -14,7 +14,11 @@
 #import "NewsModel.h"
 #import "WebViewViewController.h"
 
+<<<<<<< HEAD
 #import <MJRefresh.h>
+=======
+
+>>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
 @interface NewsController ()
 /**
  *  创建可变数组来接受管理类请求的数据
@@ -32,16 +36,22 @@ static NSString *newsCell = @"mycell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+<<<<<<< HEAD
     //设置导航栏状态不透明
     self.navigationController.navigationBar.translucent = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     //进入页面加载数据
+=======
+        
+	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:newsCell];
+>>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
     [self loadData];
     //注册XIB拖得cell
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     //初始化数组
     self.data = [NSMutableArray array];
     
+<<<<<<< HEAD
     self.number = 1;
     //下拉刷新方法
     [self setupDownRefresh];
@@ -85,6 +95,13 @@ static NSString *newsCell = @"mycell";
     }];
 }
 #pragma mark 加载数据方法
+=======
+
+    
+}
+
+
+>>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
 - (void)loadData
 {
     NSString *urlString = [NSString stringWithFormat:newsRefresh,1];
@@ -102,7 +119,7 @@ static NSString *newsCell = @"mycell";
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%ld",[[NewsManager shareInstance] countOfArray]);
+    //NSLog(@"%ld",[[NewsManager shareInstance] countOfArray]);
     return [[NewsManager shareInstance] countOfArray];
 }
 #pragma mark 设置cell的属性

@@ -9,6 +9,8 @@
 #import "MyViewController.h"
 #import "NewsController.h"
 #import "LaughController.h"
+#import "RESideMenu.h"
+#import "LeftViewController.h"
 
 @interface MyViewController ()
 @property(nonatomic,strong)NewsController *nec;
@@ -33,6 +35,23 @@
     [self.view addSubview:self.nec.tableView];
 	
 	[self setSegmentWithNavigation];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
+}
+
+//- (void)action {
+//    LeftViewController *lvc = [[LeftViewController alloc] init];
+//    [self.navigationController pushViewController:lvc animated:YES];
+//}
+
+#pragma mark - Configuring the view’s layout behavior
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 //解决导航栏挡住tableView内容的问题

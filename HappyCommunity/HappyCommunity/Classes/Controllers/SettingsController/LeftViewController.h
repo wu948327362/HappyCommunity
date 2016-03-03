@@ -1,5 +1,5 @@
 //
-//  CommunityController.h
+//  LeftViewController.h
 //  HappyCommunity
 //
 //  Created by lanou3g on 16/3/2.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CommunityController : UITableViewController
+@interface LeftViewController : UIViewController
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end

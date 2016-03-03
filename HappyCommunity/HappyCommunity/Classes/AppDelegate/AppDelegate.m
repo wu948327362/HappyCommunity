@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "LoginController.h"
 #import "EMSDK.h"
+#import "RESideMenu.h"
+#import "LeftViewController.h"
+#import "MyViewController.h"
 
 @interface AppDelegate ()
 
@@ -34,9 +37,15 @@
 	[[EMClient sharedClient] initializeSDKWithOptions:options];
 	
 	self.window.rootViewController = loc;
+<<<<<<< HEAD
 	
     UINavigationBar *bar = [UINavigationBar appearance];
     bar.barTintColor = [UIColor colorWithRed:0.2713 green:0.4287 blue:1.0 alpha:1.0];
+=======
+    
+    UINavigationBar *bar = [UINavigationBar appearance];
+    bar.barTintColor = [UIColor cyanColor];
+>>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
 	
 	return YES;
 }

@@ -40,7 +40,11 @@
 - (void)setModel:(NewsModel *)Model
 {
     _Model = Model;
+<<<<<<< HEAD
 //    NSLog(@"%@",Model);
+=======
+    //NSLog(@"%@",Model);
+>>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
     self.titleLabel.text = Model.itemTitle;
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:Model.imgUrl1]];
     NSString *temp = Model.itemTitle;
