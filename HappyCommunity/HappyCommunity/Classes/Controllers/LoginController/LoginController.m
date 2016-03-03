@@ -10,10 +10,14 @@
 #import "EMError.h"
 #import "EMSDK.h"
 #import "HappyTabController.h"
+
+#import "DataBaseTools.h"
+
 #import "AppDelegate.h"
 #import "RESideMenu.h"
 #import "LeftViewController.h"
 #import "MyViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginController ()<RESideMenuDelegate>
 
@@ -101,6 +105,15 @@
 			if (!error) {
 				
 				HappyTabController *tab = [[HappyTabController alloc] init];
+				
+//				AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//				app.window.rootViewController = tab;
+				
+
+//				[self presentViewController:tab animated:YES completion:nil];
+				//打开数据库
+				[[DataBaseTools SharedInstance] openDataBase];
+
                 
                 LeftViewController *lvc = [[LeftViewController alloc] init];
                 

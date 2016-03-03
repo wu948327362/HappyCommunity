@@ -52,16 +52,25 @@ static NewsManager *manager = nil;
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * responseObject) {
         NSLog(@"请求成功");
-        NSArray *arr = responseObject[@"data"][@"itemList"];
+        NSArray *arr = responseObject[@"itemList"];
         for (NSDictionary *d in arr) {
             NewsModel *model = [[NewsModel alloc] init];
             NSDictionary *dic = d[@"itemImage"];
             model.imgUrl1 = dic[@"imgUrl1"];
             model.itemTitle = d[@"itemTitle"];
+            model.detailUrl = d[@"detailUrl"];
+            model.itemType = d[@"itemType"];
             [self.data addObject:model];
+            if ([model.itemType isEqualToString:@"classtopic_flag"]) {
+            [self.data removeObject:model];
+            }
+            
+            if ([model.itemTitle isEqualToString:@"如您看到此提示，请升级客户端到最新版本"]) {
+                [self.data removeObject:model];
+            }
         }
         
-//        NSLog(@"%@", self.data);
+        //        NSLog(@"%@", self.data);
         
         finish();
         

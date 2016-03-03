@@ -11,4 +11,6 @@
 @interface NewsModel : NSObject
 @property(nonatomic, strong)NSString *itemTitle;
 @property(nonatomic, strong)NSString *imgUrl1;
+@property(nonatomic, strong)NSString *detailUrl;
+@property(nonatomic, strong)NSString *itemType;
 @end
