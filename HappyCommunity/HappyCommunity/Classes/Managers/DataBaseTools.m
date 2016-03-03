@@ -85,6 +85,19 @@ static sqlite3 *dataBase;
     }
     
 }
+
+- (void)delPersonByName:(NSString *)name{
+	NSString *sql = [NSString stringWithFormat:@"delete from FreindsInvitation where userName = '%@' ",name];
+	
+	int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
+	if (result==SQLITE_OK) {
+		NSLog(@"delete成功");
+	}else{
+		NSLog(@"delete失败%d",result);
+	}
+	
+}
+
 - (void)updatePerson:(NSString *)name byPid:(NSInteger)pid{
     NSString *sql = [NSString stringWithFormat:@"update FreindsInvitation set userName='%@' where pid=%ld",name,pid];
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
@@ -176,6 +189,20 @@ static sqlite3 *dataBase;
 //        NSLog(@"sql is wrong");
 //    }
 //    sqlite3_finalize(stmt);
+}
+
+//是否存在用户名为那么的用户
+- (BOOL)isExitsUserWithName:(NSString *)name{
+	
+	BOOL flag = NO;
+	NSArray *arr = [self showAllPerson];
+	
+	for (FriendsInvitation *friends in arr) {
+		if ([friends.userName isEqualToString:name]) {
+			flag = YES;
+		}
+	}
+	return flag;
 }
 
 

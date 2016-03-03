@@ -14,14 +14,36 @@
 //单例
 + (instancetype)SharedInstance;
 
+//打开数据库
 - (void)openDataBase;
+//关闭数据库
 - (void)closeDataBase;
+//创建表,只执行一次
 - (void)createTable;
+//根据FriendsInvitation添加
 - (void)addPerson:(FriendsInvitation *)person;
+//根据pid删除
 - (void)delPersonByPid:(NSInteger)pid;
+//根据name删除
+- (void)delPersonByName:(NSString *)name;
+//根据pid更新name
 - (void)updatePerson:(NSString *)name byPid:(NSInteger)pid;
+//返回所有好友请求
 - (NSArray<FriendsInvitation *>*)showAllPerson;
 //- (FriendsInvitation *)findPersonBypid:(NSInteger)pid;
 - (void)bindPerson:(FriendsInvitation *)person;
 
+//查找用户名是否存在
+- (BOOL)isExitsUserWithName:(NSString *)name;
+
 @end
+
+
+
+
+
+
+
+
+
+

@@ -19,16 +19,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sIa-ZY-4Iw">
-                    <rect key="frame" x="10" y="65" width="394" height="531"/>
+                    <rect key="frame" x="10" y="0.0" width="394" height="616"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OIn-15-G8b">
-                    <rect key="frame" x="10" y="621" width="334" height="30"/>
+                    <rect key="frame" x="10" y="641" width="334" height="30"/>
+                    <color key="backgroundColor" red="0.37161690980000001" green="0.72655851390000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNU-1A-jXZ">
-                    <rect key="frame" x="354" y="621" width="50" height="30"/>
+                    <rect key="frame" x="354" y="641" width="50" height="30"/>
                     <color key="backgroundColor" red="0.15265205679999999" green="0.82679892210000006" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="发送"/>
@@ -40,7 +41,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="OIn-15-G8b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="0SS-UY-O68"/>
-                <constraint firstAttribute="bottom" secondItem="sIa-ZY-4Iw" secondAttribute="bottom" constant="140" id="AfL-uM-aQn"/>
+                <constraint firstAttribute="bottom" secondItem="sIa-ZY-4Iw" secondAttribute="bottom" constant="120" id="AfL-uM-aQn"/>
                 <constraint firstItem="DNU-1A-jXZ" firstAttribute="centerY" secondItem="OIn-15-G8b" secondAttribute="centerY" id="DET-uX-LXz"/>
                 <constraint firstAttribute="trailing" secondItem="sIa-ZY-4Iw" secondAttribute="trailing" constant="10" id="SGY-5u-hBv"/>
                 <constraint firstItem="DNU-1A-jXZ" firstAttribute="leading" secondItem="OIn-15-G8b" secondAttribute="trailing" constant="10" id="Wpa-zB-7Hr"/>
@@ -48,7 +49,7 @@
                 <constraint firstItem="OIn-15-G8b" firstAttribute="top" secondItem="sIa-ZY-4Iw" secondAttribute="bottom" constant="25" id="c0O-5A-FrV"/>
                 <constraint firstAttribute="trailing" secondItem="DNU-1A-jXZ" secondAttribute="trailing" constant="10" id="fKP-YS-8rl"/>
                 <constraint firstItem="sIa-ZY-4Iw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="fNp-22-X8m"/>
-                <constraint firstItem="sIa-ZY-4Iw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="mVS-sw-pqk"/>
+                <constraint firstItem="sIa-ZY-4Iw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mVS-sw-pqk"/>
                 <constraint firstAttribute="trailing" secondItem="OIn-15-G8b" secondAttribute="trailing" constant="70" id="zI4-GP-7Ni"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>

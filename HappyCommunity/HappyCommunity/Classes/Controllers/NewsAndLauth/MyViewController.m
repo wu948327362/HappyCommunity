@@ -26,10 +26,13 @@
 	
 	self.nec = [[NewsController alloc] init];
 	self.lac = [[LaughController alloc] init];
-	
+    [self addChildViewController:self.nec];
+    [self addChildViewController:self.lac];
+    
 	[self setRect];
 	
-	[self.view addSubview:self.nec.tableView];
+    [self.view addSubview:self.lac.tableView];
+    [self.view addSubview:self.nec.tableView];
 	
 	[self setSegmentWithNavigation];
     
@@ -54,9 +57,12 @@
 //解决导航栏挡住tableView内容的问题
 - (void)setRect{
 	CGRect rect = self.view.frame;
-	rect.origin.y = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+//	rect.origin.y = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 49, 0);
 	self.nec.tableView.frame = rect;
 	self.lac.tableView.frame = rect;
+    self.nec.tableView.contentInset = inset;
+    self.lac.tableView.contentInset = inset;
 	self.view.frame = rect;
 }
 
@@ -81,13 +87,11 @@
 	
 	if (segment.selectedSegmentIndex==0) {
 		
-		[self.lac.tableView removeFromSuperview];
-		[self.view addSubview:self.nec.tableView];
+        [self.view bringSubviewToFront:self.nec.tableView];
 		
 	}else if(segment.selectedSegmentIndex==1){
 		
-		[self.nec.tableView removeFromSuperview];
-		[self.view addSubview:self.lac.tableView];
+        [self.view bringSubviewToFront:self.lac.tableView];
 	}
 	
 }

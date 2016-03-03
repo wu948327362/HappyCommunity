@@ -16,6 +16,7 @@
 @end
 @implementation NewTableViewCell
 
+#pragma mark xib下初始化方法使用方法
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -24,7 +25,7 @@
     return self;
 }
 
-
+//布局
 - (void)setupView
 {
     
@@ -34,9 +35,14 @@
     
     
 }
+
+//重写model的set方法
 - (void)setModel:(NewsModel *)Model
 {
     _Model = Model;
+
+//    NSLog(@"%@",Model);
+
     //NSLog(@"%@",Model);
     self.titleLabel.text = Model.itemTitle;
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:Model.imgUrl1]];
@@ -51,13 +57,14 @@
     
 }
 
+//设置cell行高
 - (CGFloat)heightForCell:(NewsModel *)model
 {
     CGSize size = CGSizeMake(CGRectGetWidth(_titleLabel.frame), 20000);
     NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:15]};
     CGRect rect = [model.itemTitle boundingRectWithSize:size options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
     return rect.size.height + 100;
-
+    
 }
 - (void)awakeFromNib {
     // Initialization code

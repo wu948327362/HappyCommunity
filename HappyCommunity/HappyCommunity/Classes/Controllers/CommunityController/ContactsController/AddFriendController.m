@@ -64,7 +64,7 @@
 				EMGroupOptions *options = [[EMGroupOptions alloc] init];
 				options.maxUsersCount = 100;
 				options.style = EMGroupStylePublicOpenJoin;
-				[[EMClient sharedClient].groupManager createGroupWithSubject:self.nameField.text description:@"恭喜发财,大吉大利" invitees:@[@"we",@"pp"] message:self.messageField.text setting:options error:&error];
+				[[EMClient sharedClient].groupManager createGroupWithSubject:self.nameField.text description:self.messageField.text invitees:@[@"we",@"pp"] message:self.messageField.text setting:options error:&error];
 				
 				dispatch_async(dispatch_get_main_queue(), ^{
 					if (!error) {

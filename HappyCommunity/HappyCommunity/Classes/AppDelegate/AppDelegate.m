@@ -37,9 +37,11 @@
 	[[EMClient sharedClient] initializeSDKWithOptions:options];
 	
 	self.window.rootViewController = loc;
+
     
     UINavigationBar *bar = [UINavigationBar appearance];
     bar.barTintColor = [UIColor cyanColor];
+
 	
 	return YES;
 }
