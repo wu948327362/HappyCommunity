@@ -7,6 +7,7 @@
 //
 
 #import "SettingsController.h"
+#import "RESideMenu.h"
 
 static NSString *settingCell = @"setting_cell";
 @interface SettingsController ()
@@ -19,6 +20,18 @@ static NSString *settingCell = @"setting_cell";
     [super viewDidLoad];
     
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:settingCell];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
+}
+
+#pragma mark - Configuring the view’s layout behavior
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,7 @@
 
 #import "CommunityController.h"
 #import "CommunityView.h"
+#import "RESideMenu.h"
 
 @interface CommunityController ()
 @property(nonatomic,strong)CommunityView *cv;
@@ -20,6 +21,20 @@
 	self.cv = [[CommunityView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	
 	self.view = self.cv;
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
+}
+
+#pragma mark - Configuring the view’s layout behavior
+
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewDidLoad {

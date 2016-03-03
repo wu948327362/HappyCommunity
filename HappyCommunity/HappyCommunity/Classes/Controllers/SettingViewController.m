@@ -9,7 +9,7 @@
 #import "SettingViewController.h"
 #import "RESideMenu.h"
 
-@interface SettingViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface SettingViewController ()
 
 @end
 
