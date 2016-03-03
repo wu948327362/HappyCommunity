@@ -1011,12 +1011,12 @@
 				C2A9BEA31C852DB2005E19B2 /* UIImage+WebP.m in Sources */,
 				C2EA5B911C87179B0072A24B /* ServiceViewController.m in Sources */,
 				C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */,
-<<<<<<< HEAD
+
 				C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */,
-=======
+
 				C21A1B0C1C86D18300CDAC7D /* AddFriendController.m in Sources */,
 				C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */,
->>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
+
 				C2A9BEA51C852DB2005E19B2 /* UIImageView+WebCache.m in Sources */,
 				C2A9BECD1C8535F5005E19B2 /* HappyTabController.m in Sources */,
 				C2A9BE9C1C852DB2005E19B2 /* SDWebImageDownloader.m in Sources */,

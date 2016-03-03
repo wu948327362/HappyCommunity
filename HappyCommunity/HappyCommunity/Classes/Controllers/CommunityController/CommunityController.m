@@ -7,17 +7,15 @@
 //
 
 #import "CommunityController.h"
-<<<<<<< HEAD
 #import "CommunityView.h"
 #import "RESideMenu.h"
-=======
 #import "ContactController.h"
 #import "AddFriendController.h"
 #import "DataBaseTools.h"
 #import "EMSDK.h"
 #import "EMError.h"
 #import "FriendsInvitation.h"
->>>>>>> 0954a624909025b3032616339932e20b5fe35cde
+
 
 @interface CommunityController ()<EMContactManagerDelegate>
 @property(nonatomic,strong)NSMutableArray *data;
@@ -50,8 +48,6 @@ static NSString *communityCell = @"community_cell";
 	//设置接收到好友请求代理
 	[[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
 	
-<<<<<<< HEAD
-	self.view = self.cv;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
 }
@@ -66,8 +62,7 @@ static NSString *communityCell = @"community_cell";
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
-=======
->>>>>>> 0954a624909025b3032616339932e20b5fe35cde
+
 }
 
 //添加好友方法

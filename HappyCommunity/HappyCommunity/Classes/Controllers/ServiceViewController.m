@@ -20,12 +20,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"abc";
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.title = @"关于app";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-    [btn  setTitle:@"这是abc页面" forState:UIControlStateNormal];
-    [self.view addSubview:btn];
+//    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+//    [btn  setTitle:@"这是abc页面" forState:UIControlStateNormal];
+//    [self.view addSubview:btn];
+    
+    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 300, 300)];
+    description.text = @"这是一款神奇的app,你可以在这里看到新闻,无聊的时候看一下笑话,定能让你身心放松,可以在社区中与人交流\n\n此版本为v1.0.0";
+    description.numberOfLines = 0;
+    description.font = [UIFont systemFontOfSize:20 weight:0.5];
+    [self.view addSubview:description];
     
     // Do any additional setup after loading the view.
 }

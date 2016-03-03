@@ -19,7 +19,7 @@ static NSString *settingCell = @"setting_cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:settingCell];
+	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:settingCell];  
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
 }
