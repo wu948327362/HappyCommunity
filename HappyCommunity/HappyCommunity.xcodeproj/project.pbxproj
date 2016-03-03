@@ -38,6 +38,8 @@
 		C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25731791C85B5F000982579 /* NewTableViewCell.xib */; };
 		C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28792A41C86E3D2009C9336 /* WebViewViewController.m */; };
 		C28931CA1C882BD0000F5771 /* ChatMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C28931C91C882BD0000F5771 /* ChatMessageModel.m */; };
+		C28931CF1C885DCA000F5771 /* MessageModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C28931CC1C885DCA000F5771 /* MessageModel+CoreDataProperties.m */; };
+		C28931D01C885DCA000F5771 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C28931CE1C885DCA000F5771 /* MessageModel.m */; };
 		C29CCD531C852A4800AB68E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD521C852A4800AB68E6 /* main.m */; };
 		C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD581C852A4800AB68E6 /* ViewController.m */; };
 		C29CCD5C1C852A4800AB68E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29CCD5A1C852A4800AB68E6 /* Main.storyboard */; };
@@ -154,6 +156,10 @@
 		C28792A41C86E3D2009C9336 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
 		C28931C81C882BD0000F5771 /* ChatMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageModel.h; sourceTree = "<group>"; };
 		C28931C91C882BD0000F5771 /* ChatMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageModel.m; sourceTree = "<group>"; };
+		C28931CB1C885DCA000F5771 /* MessageModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		C28931CC1C885DCA000F5771 /* MessageModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessageModel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		C28931CD1C885DCA000F5771 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		C28931CE1C885DCA000F5771 /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
 		C29CCD4E1C852A4800AB68E6 /* HappyCommunity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCommunity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29CCD521C852A4800AB68E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C29CCD571C852A4800AB68E6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -426,6 +432,10 @@
 				C29CCD621C852A4800AB68E6 /* LaunchScreen.storyboard */,
 				C29CCD651C852A4800AB68E6 /* Info.plist */,
 				C29CCD5D1C852A4800AB68E6 /* HappyCommunity.xcdatamodeld */,
+				C28931CB1C885DCA000F5771 /* MessageModel+CoreDataProperties.h */,
+				C28931CC1C885DCA000F5771 /* MessageModel+CoreDataProperties.m */,
+				C28931CD1C885DCA000F5771 /* MessageModel.h */,
+				C28931CE1C885DCA000F5771 /* MessageModel.m */,
 				C29CCD511C852A4800AB68E6 /* Supporting Files */,
 			);
 			path = HappyCommunity;
@@ -989,6 +999,7 @@
 				C2A9BF311C857AD5005E19B2 /* LaughModel.m in Sources */,
 				C2EA5B7B1C87037B0072A24B /* YCServiceViewController.m in Sources */,
 				C2EA5B761C8703290072A24B /* RECommonFunctions.m in Sources */,
+				C28931CF1C885DCA000F5771 /* MessageModel+CoreDataProperties.m in Sources */,
 				C2A9BEA41C852DB2005E19B2 /* UIImageView+HighlightedWebCache.m in Sources */,
 				C2A9BEA21C852DB2005E19B2 /* UIImage+MultiFormat.m in Sources */,
 				C2A9BEEA1C85670A005E19B2 /* MyViewController.m in Sources */,
@@ -1037,6 +1048,7 @@
 				C2A9BECA1C853467005E19B2 /* SettingsView.m in Sources */,
 				C2A9BEE31C8544E6005E19B2 /* SettingsController.m in Sources */,
 				C28931CA1C882BD0000F5771 /* ChatMessageModel.m in Sources */,
+				C28931D01C885DCA000F5771 /* MessageModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
