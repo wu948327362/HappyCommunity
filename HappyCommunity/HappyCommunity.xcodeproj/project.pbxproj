@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25731781C85B5F000982579 /* NewTableViewCell.m */; };
 		C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25731791C85B5F000982579 /* NewTableViewCell.xib */; };
+		C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28792A41C86E3D2009C9336 /* WebViewViewController.m */; };
 		C29CCD531C852A4800AB68E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD521C852A4800AB68E6 /* main.m */; };
 		C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD581C852A4800AB68E6 /* ViewController.m */; };
 		C29CCD5C1C852A4800AB68E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29CCD5A1C852A4800AB68E6 /* Main.storyboard */; };
@@ -81,6 +82,8 @@
 		C25731771C85B5F000982579 /* NewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTableViewCell.h; sourceTree = "<group>"; };
 		C25731781C85B5F000982579 /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTableViewCell.m; sourceTree = "<group>"; };
 		C25731791C85B5F000982579 /* NewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTableViewCell.xib; sourceTree = "<group>"; };
+		C28792A31C86E3D2009C9336 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
+		C28792A41C86E3D2009C9336 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
 		C29CCD4E1C852A4800AB68E6 /* HappyCommunity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCommunity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29CCD521C852A4800AB68E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C29CCD571C852A4800AB68E6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 				C25731771C85B5F000982579 /* NewTableViewCell.h */,
 				C25731781C85B5F000982579 /* NewTableViewCell.m */,
 				C25731791C85B5F000982579 /* NewTableViewCell.xib */,
+				C28792A31C86E3D2009C9336 /* WebViewViewController.h */,
+				C28792A41C86E3D2009C9336 /* WebViewViewController.m */,
 			);
 			path = NewsController;
 			sourceTree = "<group>";
@@ -797,6 +802,7 @@
 				C2A9BF591C85CB4C005E19B2 /* LoginController.m in Sources */,
 				C2A9BEA31C852DB2005E19B2 /* UIImage+WebP.m in Sources */,
 				C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */,
+				C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */,
 				C2A9BEA51C852DB2005E19B2 /* UIImageView+WebCache.m in Sources */,
 				C2A9BECD1C8535F5005E19B2 /* HappyTabController.m in Sources */,
 				C2A9BE9C1C852DB2005E19B2 /* SDWebImageDownloader.m in Sources */,
