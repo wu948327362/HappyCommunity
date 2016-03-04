@@ -11,4 +11,5 @@
 @interface LaughController : UITableViewController
 
 @property(nonatomic, strong)LaughModel *lauModel;
+@property(nonatomic, strong)UILabel *label;
 @end

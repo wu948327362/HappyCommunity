@@ -39,8 +39,9 @@
 }
 - (void)setupView
 {
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, CGRectGetWidth(self.contentView.bounds) - 20, 30)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, CGRectGetWidth([UIScreen mainScreen].bounds) - 20, 40)];
     self.titleLabel.numberOfLines = 0;
+    self.titleLabel.font = [UIFont systemFontOfSize:15];
     [self.contentView addSubview:self.titleLabel];
     
     self.photoView = [[UIImageView alloc] init];

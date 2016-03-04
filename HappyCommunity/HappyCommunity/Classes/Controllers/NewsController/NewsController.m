@@ -13,7 +13,7 @@
 #import "NewTableViewCell.h"
 #import "NewsModel.h"
 #import "WebViewViewController.h"
-
+#import "LaughController.h"
 #import <MJRefresh.h>
 
 
@@ -27,6 +27,7 @@
  *  创建下拉刷新控件
  */
 @property(nonatomic, strong)UIRefreshControl *refresh;
+
 @property(nonatomic, assign)int number;
 @end
 
@@ -65,11 +66,21 @@ static NSString *newsCell = @"mycell";
     //上拉加载方法
     [self setupRefresh];
     
+    
+    
 }
+
+//- (void)viewWillAppear:(BOOL)animated
+//{
+
+//}
+
 ////上拉刷新
 - (void)setupRefresh
 {
     self.tableView.mj_footer = [MJRefreshBackFooter footerWithRefreshingTarget:self refreshingAction:@selector(unRefreshAction:)];
+    LaughController *lav = [[LaughController alloc] init];
+    lav.label.hidden = YES;
 }
 
 - (void)unRefreshAction:(UIRefreshControl *)refresh
@@ -79,7 +90,7 @@ static NSString *newsCell = @"mycell";
     
     __block NSMutableArray *array = [NSMutableArray array];
 //    self.data = [array addObjectsFromArray:<#(nonnull NSArray *)#>]
-    NSLog(@"!!!!!!!%@!!!!!!!!", [self.data1[0] itemTitle]);
+//    NSLog(@"!!!!!!!%@!!!!!!!!", [self.data1[0] itemTitle]);
     array = [[NewsManager shareInstance] requestWithUrl:urlString finish:^{
         
 //        array = [NewsManager shareInstance].data;
@@ -104,7 +115,7 @@ static NSString *newsCell = @"mycell";
     
     
 }
-#warning mark 修改这里
+
 //下拉刷新方法
 - (void)setupDownRefresh
 {
@@ -115,8 +126,10 @@ static NSString *newsCell = @"mycell";
 - (void)refreshAction:(UIRefreshControl *)controller
 {
     
-    
-    [self.data1 removeAllObjects];
+    if (self.data1) {
+        [self.data1 removeAllObjects];
+        
+    }
     NSString *urlString = [NSString stringWithFormat:newsRefresh,1];
 //    NSLog(@"irl:%@", urlString);
     self.data1 = [[NewsManager shareInstance] requestWithUrl:urlString finish:^{
