@@ -155,7 +155,7 @@ static NSString *chatCell = @"chat_cell";
 		
 	}else if (self.flag==1||self.flag==2){
 		//获取所要发送的群组的ID
-		 NSArray *arr = [self.receiverId componentsSeparatedByString:@":"];
+		NSArray *arr = [self.receiverId componentsSeparatedByString:@":"];
 		
 		EMMessage *message = [[EMMessage alloc] initWithConversationID:[arr firstObject] from:sendUser to:[arr firstObject] body:body ext:nil];
 		message.chatType = EMChatTypeGroupChat;
