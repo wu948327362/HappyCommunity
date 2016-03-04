@@ -41,7 +41,7 @@ static NSString *chatCell = @"chat_cell";
 	//设置接收消息代理,并设置接受消息代理方法.
 	[[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
 	
-	[self updateMessages];
+	[self updateMessages:self.flag];
 	
 }
 //设置tableView的frame;
@@ -58,7 +58,43 @@ static NSString *chatCell = @"chat_cell";
 	
 	//初始化数组,信息
 	self.messages = [NSMutableArray array];
+	
+	//判断如果是群组聊天导航栏添加添加按钮可以邀请好友进入聊天组
+	if (self.flag==1) {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加好友" style:UIBarButtonItemStyleDone target:self action:@selector(addFriend)];
+	}
+	
+}
 
+//添加好友的导航栏的方法
+- (void)addFriend{
+	
+	UIAlertController *control = [UIAlertController alertControllerWithTitle:@"添加好友进群" message:[NSString stringWithFormat:@"%@邀请你加入群聊",[[EMClient sharedClient] currentUsername]] preferredStyle:UIAlertControllerStyleAlert];
+	
+	__block NSString *name = nil;
+	[control addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+		textField.placeholder = @"请输入好友名字";
+		textField.adjustsFontSizeToFitWidth = YES;
+		name = textField.text;
+	}];
+	
+	//得到group
+	NSArray *arr = [self.receiverId componentsSeparatedByString:@":"];
+	
+	UIAlertAction *ok = [UIAlertAction actionWithTitle:@"添加" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[[EMClient sharedClient].groupManager addOccupants:@[name] toGroup:[arr firstObject] welcomeMessage:[NSString stringWithFormat:@"%@邀请你加入群聊",[[EMClient sharedClient] currentUsername]] error:nil];
+	}];
+	
+	UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		
+	}];
+	
+	[control addAction:ok];
+	[control addAction:cancel];
+	
+	[self presentViewController:control animated:YES completion:nil];
+	
+	
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -77,11 +113,12 @@ static NSString *chatCell = @"chat_cell";
 	//判断是否是本人发出的消息
 	MessageModel *message = self.messages[indexPath.row];
 	
-	cell.textLabel.text = message.text;
 	//等于0说明是本人发出的.
 	if ((message.direction).integerValue==0) {
+		cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@",message.text,message.from];
 		cell.textLabel.textAlignment = UITextAlignmentRight;
 	}else{
+		cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@",message.from,message.text];
 		cell.textLabel.textAlignment = UITextAlignmentLeft;
 	}
 	
@@ -93,7 +130,6 @@ static NSString *chatCell = @"chat_cell";
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
 	CGRect rect = self.view.frame;
 	
-	
 	rect.size.height = rect.size.height-210;
 	self.view.frame = rect;
 	
@@ -101,7 +137,7 @@ static NSString *chatCell = @"chat_cell";
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-	[self updateMessages];
+	[self updateMessages:self.flag];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -148,14 +184,14 @@ static NSString *chatCell = @"chat_cell";
 				self.messageField.text = @"";
 				
 				dispatch_async(dispatch_get_main_queue(), ^{
-					[weakself updateMessages];
+					[weakself updateMessages:self.flag];
 				});
 			}
 		}];
 		
 	}else if (self.flag==1||self.flag==2){
 		//获取所要发送的群组的ID
-		 NSArray *arr = [self.receiverId componentsSeparatedByString:@":"];
+		NSArray *arr = [self.receiverId componentsSeparatedByString:@":"];
 		
 		EMMessage *message = [[EMMessage alloc] initWithConversationID:[arr firstObject] from:sendUser to:[arr firstObject] body:body ext:nil];
 		message.chatType = EMChatTypeGroupChat;
@@ -169,7 +205,7 @@ static NSString *chatCell = @"chat_cell";
 				//将输入框置为空
 				self.messageField.text = @"";
 				dispatch_async(dispatch_get_main_queue(), ^{
-					[weakself updateMessages];
+					[weakself updateMessages:self.flag];
 				});
 			}
 		}];
@@ -179,10 +215,15 @@ static NSString *chatCell = @"chat_cell";
 }
 
 //更新消息界面
-- (void)updateMessages{
+- (void)updateMessages:(NSInteger)flag{
 	
 	[self.messages removeAllObjects];
-	self.messages = [[DataBaseTools SharedInstance] messagesWithReceiverId:self.receiverId from:[[EMClient sharedClient] currentUsername]];
+	if (flag==0) {
+		self.messages = [[DataBaseTools SharedInstance] messagesWithReceiverId:self.receiverId from:[[EMClient sharedClient] currentUsername] flag:flag];
+	}else if (flag==1||flag==2){
+		self.messages = [[DataBaseTools SharedInstance] messagesWithReceiverId:self.receiverId from:[[EMClient sharedClient] currentUsername] flag:flag];
+	}
+	
 	
 	[self.tableView reloadData];
 	
@@ -198,7 +239,7 @@ static NSString *chatCell = @"chat_cell";
 #pragma mark - 接收到消息函数回调
 - (void)didReceiveMessages:(NSArray *)aMessages{
 	
-	[self updateMessages];
+	[self updateMessages:self.flag];
 	
 }
 
