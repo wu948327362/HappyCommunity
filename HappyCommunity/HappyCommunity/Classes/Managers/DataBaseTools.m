@@ -14,7 +14,7 @@
 
 static DataBaseTools *handler;
 
-@interface DataBaseTools ()<EMChatManagerDelegate>
+@interface DataBaseTools ()<EMChatManagerDelegate,EMGroupManagerDelegate>
 //coreData
 @property(nonatomic,strong)NSManagedObjectContext *context;
 @end
@@ -38,8 +38,8 @@ static DataBaseTools *handler;
 }
 
 - (void)initProperties{
-	[handler openDataBase];
-	[handler createTable];
+	[self openDataBase];
+	[self createTable];
 	//设置接收消息代理,并设置接受消息代理方法.
 	[[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
 	AppDelegate *app = [UIApplication sharedApplication].delegate;
@@ -60,9 +60,7 @@ static sqlite3 *dataBase;
     }else{
         NSLog(@"open error");
     }
-    
-    
-    
+	
 }
 - (void)closeDataBase{
     
@@ -76,7 +74,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)createTable{
-    NSString *sql =@"CREATE  TABLE IF NOT EXISTS FreindsInvitation (pid INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , userName TEXT NOT NULL , message TEXT NOT NULL)";
+    NSString *sql =@"CREATE  TABLE IF NOT EXISTS FreindsAndGroup (pid INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , userName TEXT NOT NULL , message TEXT NOT NULL , friendOrGroup INTEGER NOT NULL)";
     
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     if (result==SQLITE_OK) {
@@ -89,7 +87,7 @@ static sqlite3 *dataBase;
     
 }
 - (void)addPerson:(FriendsInvitation *)person{
-    NSString *sql = [NSString stringWithFormat:@"insert into FreindsInvitation (userName,message) values('%@','%@')",person.userName,person.message];
+    NSString *sql = [NSString stringWithFormat:@"insert into FreindsAndGroup (userName,message,friendOrGroup) values('%@','%@',%d)",person.userName,person.message,0];
     
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     if (result==SQLITE_OK) {
@@ -97,11 +95,21 @@ static sqlite3 *dataBase;
     }else{
         NSLog(@"add失败%d",result);
     }
-    
-    
 }
+
+- (void)addGroup:(FriendsInvitation *)person{
+	NSString *sql = [NSString stringWithFormat:@"insert into FreindsAndGroup (userName,message,friendOrGroup) values('%@','%@',%d)",person.userName,person.message,1];
+	
+	int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
+	if (result==SQLITE_OK) {
+		NSLog(@"add成功");
+	}else{
+		NSLog(@"add失败%d",result);
+	}
+}
+
 - (void)delPersonByPid:(NSInteger)pid{
-    NSString *sql = [NSString stringWithFormat:@"delete from FreindsInvitation where pid = %ld ",pid];
+    NSString *sql = [NSString stringWithFormat:@"delete from FreindsAndGroup where pid = %ld ",pid];
     
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     if (result==SQLITE_OK) {
@@ -113,7 +121,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)delPersonByName:(NSString *)name{
-	NSString *sql = [NSString stringWithFormat:@"delete from FreindsInvitation where userName = '%@' ",name];
+	NSString *sql = [NSString stringWithFormat:@"delete from FreindsAndGroup where userName = '%@' ",name];
 	
 	int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
 	if (result==SQLITE_OK) {
@@ -125,7 +133,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)updatePerson:(NSString *)name byPid:(NSInteger)pid{
-    NSString *sql = [NSString stringWithFormat:@"update FreindsInvitation set userName='%@' where pid=%ld",name,pid];
+    NSString *sql = [NSString stringWithFormat:@"update FreindsAndGroup set userName='%@' where pid=%ld",name,pid];
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     
     if (result==SQLITE_OK) {
@@ -137,7 +145,7 @@ static sqlite3 *dataBase;
 }
 - (NSArray<FriendsInvitation *>*)showAllPerson{
     NSMutableArray *arr = [NSMutableArray array];
-    NSString *sql = @"select * from FreindsInvitation";
+    NSString *sql = @"select * from FreindsAndGroup";
     sqlite3_stmt *stmt = NULL;
     
     int result = sqlite3_prepare(dataBase, sql.UTF8String, -1, &stmt, NULL);
@@ -148,6 +156,7 @@ static sqlite3 *dataBase;
 //            p.pid = sqlite3_column_int(stmt, 0);
             p.userName = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(stmt, 1)];
             p.message = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt,2)];
+			p.friendOrGroup = sqlite3_column_int(stmt, 3);
             [arr addObject:p];
         }
     }
@@ -170,7 +179,7 @@ static sqlite3 *dataBase;
 //}
 
 - (void)bindPerson:(FriendsInvitation *)person{
-    NSString *sql = @"INSERT INTO FreindsInvitation (userName,message) VALUES (?,?)";
+    NSString *sql = @"INSERT INTO FreindsAndGroup (userName,message) VALUES (?,?)";
     
     sqlite3_stmt *stmt = NULL;
     
@@ -191,7 +200,7 @@ static sqlite3 *dataBase;
     sqlite3_finalize(stmt);
 }
 
-//是否存在用户名为那么的用户
+//是否存在用户名为name的用户
 - (BOOL)isExitsUserWithName:(NSString *)name{
 	
 	BOOL flag = NO;
@@ -237,7 +246,7 @@ static sqlite3 *dataBase;
 }
 
 //根据用户名返回查询数组结果
-- (NSMutableArray *)messagesWithReceiverId:(NSString *)receiverId from:(NSString *)currentUser{
+- (NSMutableArray *)messagesWithReceiverId:(NSString *)receiverId from:(NSString *)currentUser flag:(NSInteger)flag{
 	
 	NSMutableArray *data = [NSMutableArray array];
 	
@@ -245,8 +254,15 @@ static sqlite3 *dataBase;
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"MessageModel" inManagedObjectContext:handler.context];
 	[fetchRequest setEntity:entity];
 	// Specify criteria for filtering which objects to fetch
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(from==%@ AND to==%@) OR (from==%@ AND to==%@)",currentUser,receiverId,receiverId,currentUser];
-	[fetchRequest setPredicate:predicate];
+	if (flag==0) {
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(from==%@ AND to==%@) OR (from==%@ AND to==%@)",currentUser,receiverId,receiverId,currentUser];
+		[fetchRequest setPredicate:predicate];
+	}else if(flag==1||flag==2){
+		NSArray *arr = [receiverId componentsSeparatedByString:@":"];
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"to==%@",[arr firstObject]];
+		[fetchRequest setPredicate:predicate];
+	}
+	
 	// Specify how the fetched objects should be sorted
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
 	[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
@@ -265,6 +281,23 @@ static sqlite3 *dataBase;
 	
 }
 
+//收到某人的加群申请.如果是好友则默认可以进入该群在否则等待群主的验证.
+- (void)didReceiveJoinGroupApplication:(EMGroup *)aGroup applicant:(NSString *)aApplicant reason:(NSString *)aReason{
+	
+	//判断是否是好友.
+	BOOL isFriend = [handler isExitsUserWithName:aApplicant];
+	
+	if (isFriend) {
+		[[EMClient sharedClient].groupManager addOccupants:@[aApplicant] toGroup:aGroup.groupId welcomeMessage:nil error:nil];
+	}else{
+		FriendsInvitation *frienInvitation = [[FriendsInvitation alloc] init];
+		frienInvitation.userName = aApplicant;
+		frienInvitation.message = [NSString stringWithFormat:@"%@:%@",aReason,aGroup.groupId];
+		frienInvitation.friendOrGroup = 1;
+		[handler addGroup:frienInvitation];
+	}
+	
+}
 
 @end
 

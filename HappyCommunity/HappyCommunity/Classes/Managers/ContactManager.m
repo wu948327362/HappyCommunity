@@ -40,12 +40,12 @@ static ContactManager *manager;
 			[arr addObjectsFromArray:array];
 			break;
 		case 1:
-			array = [[EMClient sharedClient].groupManager getMyGroupsFromServerWithError:nil];
-			[arr addObjectsFromArray:[self getNameArray:array flag:1]];
+			//获取多有自己所在的群组.
+			[arr addObjectsFromArray:[self getGroupContainsMe]];
 			break;
 		case 2:
-			array = [[EMClient sharedClient].groupManager getAllGroups];
-			[arr addObjectsFromArray:[self getNameArray:array flag:2]];
+			//获取不包括自己的所有的组.
+			[arr addObjectsFromArray:[self getGroupWithoutMe]];
 			break;
 		case 3:
 			//按时没有用户请求需要自己去做.
@@ -67,7 +67,7 @@ static ContactManager *manager;
 		}
 	}else if (flag==3){
 		for (FriendsInvitation *friend in arr) {
-			[data addObject:[NSString stringWithFormat:@"%@:%@",friend.userName,friend.message]];
+			[data addObject:[NSString stringWithFormat:@"%@:%@:%ld",friend.userName,friend.message,friend.friendOrGroup]];
 		}
 	}
 	return data;
@@ -99,6 +99,50 @@ static ContactManager *manager;
 	}
 	
 	return YES;
+}
+
+//获取多有自己所在的群组.
+- (NSMutableArray *)getGroupContainsMe{
+	
+	NSMutableArray *data = [NSMutableArray array];
+	
+	NSArray *arr = [[EMClient sharedClient].groupManager getAllGroups];
+	
+	for (EMGroup *group in arr) {
+		for (NSString *name in group.occupants) {
+			
+			if ([name isEqualToString:[[EMClient sharedClient] currentUsername]]) {
+				[data addObject:[NSString stringWithFormat:@"%@:%@",group.groupId,group.description]];
+			}
+		}
+	}
+	return data;
+
+}
+
+//获取不包括自己所建群组的所有的组.
+- (NSMutableArray *)getGroupWithoutMe{
+	
+	NSMutableArray *data = [NSMutableArray array];
+	
+	EMCursorResult *result = [[EMClient sharedClient].groupManager getPublicGroupsFromServerWithCursor:nil pageSize:-1 error:nil];
+	
+	BOOL isContain = NO;
+	for (EMGroup *group in result.list) {
+		
+		for (NSString *name in group.occupants) {
+			NSLog(@"%@",name);
+			if ([name isEqualToString:[[EMClient sharedClient] currentUsername]]) {
+				isContain = YES;
+			}
+		}
+		if (!isContain) {
+			[data addObject:[NSString stringWithFormat:@"%@:%@",group.groupId,group.description]];
+		}
+		isContain = NO;
+	}
+	return data;
+	
 }
 
 @end

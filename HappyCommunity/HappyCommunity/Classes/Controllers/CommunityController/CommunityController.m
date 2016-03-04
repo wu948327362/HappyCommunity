@@ -55,8 +55,8 @@ static NSString *communityCell = @"community_cell";
 	self.data = [NSMutableArray array];
 	self.images = [NSMutableArray array];
 	
-	self.data = @[@"好友",@"群组",@"所有群组",@"好友请求",@"添加群组"].mutableCopy;
-	self.images = @[@"groupPublicHeader@2x",@"group_header@2x",@"group_joinpublicgroup@2x",@"newFriends@2x",@"group_participant_addHL@2x"].mutableCopy;
+	self.data = @[@"好友",@"群组",@"所有群组",@"系统消息",@"创建群组"].mutableCopy;
+	self.images = @[@"groupPublicHeader@2x",@"group_header@2x",@"group_creategroup@2x",@"group_joinpublicgroup@2x",@"group_participant_addHL@2x"].mutableCopy;
 	
 	[self.tableView reloadData];
 	
@@ -84,13 +84,13 @@ static NSString *communityCell = @"community_cell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 90;
+	return 80;
 }
 
 //点击cell跳转,传入参数indexPath.row,区分跳转cell的类型
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	if (indexPath.row>3) {
+	if (indexPath.row==4) {
 		//标志为1,表示是创建群组.
 		self.friendController.flag = 1;
 		[self.navigationController pushViewController:self.friendController animated:YES];
