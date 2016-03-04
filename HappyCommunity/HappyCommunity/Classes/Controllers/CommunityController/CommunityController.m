@@ -10,13 +10,12 @@
 #import "CommunityView.h"
 #import "RESideMenu.h"
 #import "ContactController.h"
-#import "AddFriendController.h"
 #import "DataBaseTools.h"
 #import "EMSDK.h"
 #import "EMError.h"
 #import "FriendsInvitation.h"
 
-
+#import "AddFriendController.h"
 
 @interface CommunityController ()<EMContactManagerDelegate>
 
