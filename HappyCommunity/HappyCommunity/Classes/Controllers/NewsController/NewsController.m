@@ -60,12 +60,10 @@ static NSString *newsCell = @"mycell";
     //注册XIB拖得cell
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     //初始化数组
-<<<<<<< HEAD
-    self.data = [NSMutableArray array];
-=======
+
     self.data1 = [NSMutableArray array];
 	
->>>>>>> b47650bdcede13247f592d902fdb1bb0d4c5da68
+
 
     self.number = 1;
     [self setupDownRefresh];
@@ -134,11 +132,10 @@ static NSString *newsCell = @"mycell";
     }];
 }
 #pragma mark 加载数据方法
-<<<<<<< HEAD
 
 
-=======
->>>>>>> b47650bdcede13247f592d902fdb1bb0d4c5da68
+
+
 - (void)loadData
 {
     NSString *urlString = [NSString stringWithFormat:newsRefresh,1];

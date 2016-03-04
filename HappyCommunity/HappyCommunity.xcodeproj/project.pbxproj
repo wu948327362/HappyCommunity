@@ -35,11 +35,6 @@
 		C21A1B2C1C87281700CDAC7D /* ChatController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21A1B2A1C87281700CDAC7D /* ChatController.xib */; };
 		C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25731781C85B5F000982579 /* NewTableViewCell.m */; };
 		C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25731791C85B5F000982579 /* NewTableViewCell.xib */; };
-<<<<<<< HEAD
-		C28931CA1C882BD0000F5771 /* ChatMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C28931C91C882BD0000F5771 /* ChatMessageModel.m */; };
-=======
-		C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28792A41C86E3D2009C9336 /* WebViewViewController.m */; };
->>>>>>> b47650bdcede13247f592d902fdb1bb0d4c5da68
 		C29CCD531C852A4800AB68E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD521C852A4800AB68E6 /* main.m */; };
 		C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD581C852A4800AB68E6 /* ViewController.m */; };
 		C29CCD5C1C852A4800AB68E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29CCD5A1C852A4800AB68E6 /* Main.storyboard */; };
@@ -1031,13 +1026,7 @@
 				C2A9BEA31C852DB2005E19B2 /* UIImage+WebP.m in Sources */,
 				C2EA5B911C87179B0072A24B /* ServiceViewController.m in Sources */,
 				C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */,
-<<<<<<< HEAD
-=======
-				C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */,
-				C21A1B0C1C86D18300CDAC7D /* AddFriendController.m in Sources */,
-				C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */,
 				C2FAE07B1C882498007A8FBF /* LaughTableViewCell.m in Sources */,
->>>>>>> b47650bdcede13247f592d902fdb1bb0d4c5da68
 				C2A9BEA51C852DB2005E19B2 /* UIImageView+WebCache.m in Sources */,
 				C200E17E1C891947009900CB /* MessageModel+CoreDataProperties.m in Sources */,
 				C2A9BECD1C8535F5005E19B2 /* HappyTabController.m in Sources */,
