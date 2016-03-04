@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EMSDK.h"
 
 @interface ChatMessageModel : NSObject
 
@@ -17,5 +18,11 @@
 @property (nonatomic, copy) NSString *from;
 @property (nonatomic, copy) NSString *to;
 @property (nonatomic) long long timestamp;
+@property (nonatomic) EMChatType chatType;
+@property (nonatomic) EMMessageStatus status;
+@property (nonatomic) BOOL isReadAcked;
+@property (nonatomic) BOOL isDeliverAcked;
+@property (nonatomic) BOOL isRead;
+@property (nonatomic, copy) NSDictionary *ext;
 
 @end

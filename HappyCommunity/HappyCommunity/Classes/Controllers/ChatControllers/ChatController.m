@@ -9,7 +9,8 @@
 #import "ChatController.h"
 #import "EMSDK.h"
 #import "EMError.h"
-#import "ChatMessageModel.h"
+#import "MessageModel.h"
+#import "DataBaseTools.h"
 
 @interface ChatController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,EMChatManagerDelegate>
 
@@ -40,6 +41,8 @@ static NSString *chatCell = @"chat_cell";
 	//设置接收消息代理,并设置接受消息代理方法.
 	[[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
 	
+	[self updateMessages];
+	
 }
 //设置tableView的frame;
 - (void)loadMyView{
@@ -55,7 +58,7 @@ static NSString *chatCell = @"chat_cell";
 	
 	//初始化数组,信息
 	self.messages = [NSMutableArray array];
-	
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -72,14 +75,14 @@ static NSString *chatCell = @"chat_cell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:chatCell forIndexPath:indexPath];
 	
 	//判断是否是本人发出的消息
-	ChatMessageModel *message = self.messages[indexPath.row];
+	MessageModel *message = self.messages[indexPath.row];
 	
 	cell.textLabel.text = message.text;
 	//等于0说明是本人发出的.
-	if (message.direction==0) {
+	if ((message.direction).integerValue==0) {
 		cell.textLabel.textAlignment = UITextAlignmentRight;
 	}else{
-		cell.textLabel.backgroundColor = [UIColor lightGrayColor];
+		cell.textLabel.textAlignment = UITextAlignmentLeft;
 	}
 	
 	return cell;
@@ -138,11 +141,12 @@ static NSString *chatCell = @"chat_cell";
 			
 		} completion:^(EMMessage *message, EMError *error) {
 			if (!error) {
-				ChatMessageModel *model = [[ChatMessageModel alloc] init];
-				model.text = ((EMTextMessageBody *)message.body).text;
-				model.direction = message.direction;
-				[weakself.messages addObject:model];
-				weakself.messageField.text = @"";
+				//保存聊天记录到coreData
+				[[DataBaseTools SharedInstance] saveMessageModelWith:message];
+				
+				//将输入框置为空
+				self.messageField.text = @"";
+				
 				dispatch_async(dispatch_get_main_queue(), ^{
 					[weakself updateMessages];
 				});
@@ -160,11 +164,10 @@ static NSString *chatCell = @"chat_cell";
 			
 		} completion:^(EMMessage *message, EMError *error) {
 			if (!error) {
-				ChatMessageModel *model = [[ChatMessageModel alloc] init];
-				model.text = ((EMTextMessageBody *)message.body).text;
-				model.direction = message.direction;
-				[weakself.messages addObject:model];
-				weakself.messageField.text = @"";
+				//保存聊天记录到coreData
+				[[DataBaseTools SharedInstance] saveMessageModelWith:message];
+				//将输入框置为空
+				self.messageField.text = @"";
 				dispatch_async(dispatch_get_main_queue(), ^{
 					[weakself updateMessages];
 				});
@@ -177,9 +180,14 @@ static NSString *chatCell = @"chat_cell";
 
 //更新消息界面
 - (void)updateMessages{
+	
+	[self.messages removeAllObjects];
+	self.messages = [[DataBaseTools SharedInstance] messagesWithReceiverId:self.receiverId from:[[EMClient sharedClient] currentUsername]];
+	
 	[self.tableView reloadData];
 	
 	if (self.messages.count>0) {
+		
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messages.count-1 inSection:0];
 		
 		[self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
@@ -190,27 +198,9 @@ static NSString *chatCell = @"chat_cell";
 #pragma mark - 接收到消息函数回调
 - (void)didReceiveMessages:(NSArray *)aMessages{
 	
-	[self.messages addObjectsFromArray:aMessages];
-	for (EMMessage *message in aMessages) {
-		EMMessageBody *msgBody = message.body;
-		switch (msgBody.type) {
-			case EMMessageBodyTypeText:
-			{
-				EMTextMessageBody *textBody = (EMTextMessageBody *)msgBody;
-				NSString *text = textBody.text;
-				[self updateMessages];
-				
-				NSLog(@"接收到的消息是:%@",text);
-				
-			}
-			break;
-				
-			default:
-			break;
-		}
-	}
+	[self updateMessages];
+	
 }
-
 
 /*
 #pragma mark - Navigation

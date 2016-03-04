@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class LaughModel;
 @interface LaughController : UITableViewController
 
+@property(nonatomic, strong)LaughModel *lauModel;
 @end
