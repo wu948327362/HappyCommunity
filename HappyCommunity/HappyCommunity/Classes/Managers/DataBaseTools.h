@@ -23,6 +23,8 @@
 - (void)createTable;
 //根据FriendsInvitation添加
 - (void)addPerson:(FriendsInvitation *)person;
+//根据FriendsInvitation添加
+- (void)addGroup:(FriendsInvitation *)person;
 //根据pid删除
 - (void)delPersonByPid:(NSInteger)pid;
 //根据name删除
@@ -38,7 +40,7 @@
 - (BOOL)isExitsUserWithName:(NSString *)name;
 
 //根据两个聊天的用户的名字返回他们聊天记录的models
-- (NSMutableArray *)messagesWithReceiverId:(NSString *)receiverId from:(NSString *)currentUser;
+- (NSMutableArray *)messagesWithReceiverId:(NSString *)receiverId from:(NSString *)currentUser flag:(NSInteger)flag;
 
 //保存两个人的;聊天记录
 - (void)saveMessageModelWith:(EMMessage *)message;

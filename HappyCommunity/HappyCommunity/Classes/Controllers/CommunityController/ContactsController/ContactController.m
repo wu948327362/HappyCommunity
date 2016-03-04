@@ -77,11 +77,13 @@ static NSString *conCell = @"contact_cell";
 		
 		[self showAlert:@"是否接受好友请求" title:@"好友请求" index:indexPath.row];
 		
-	}else{
+	}else if(self.flag==0||self.flag==1){
 		ChatController *chat = [[ChatController alloc] init];
 		chat.receiverId = self.data[indexPath.row];
 		chat.flag = self.flag;
 		[self.navigationController pushViewController:chat animated:YES];
+	}else if (self.flag==2){
+		[self showAlert:@"是否申请加入群聊" title:@"加群申请" index:indexPath.row];
 	}
 	
 }
@@ -91,26 +93,50 @@ static NSString *conCell = @"contact_cell";
 	UIAlertController *control = [UIAlertController alertControllerWithTitle:title message:string preferredStyle:UIAlertControllerStyleAlert];
 	//保存用户的姓名和message
 	NSArray *arr = [self.data[index] componentsSeparatedByString:@":"];
+	NSInteger friendOrGroup = [[arr lastObject] integerValue];
 	
 	UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-			EMError *error = [[EMClient sharedClient].contactManager acceptInvitationForUsername:[arr firstObject]];
-			
-			dispatch_async(dispatch_get_main_queue(), ^{
-				if (!error) {
-					//数据库移除好友请求,重新加载.
-					[[DataBaseTools SharedInstance] delPersonByName:[arr firstObject]];
-					[self loadData];
+			if (self.flag==3) {
+				EMError *error = nil;
+				if (friendOrGroup==0) {
+					error = [[EMClient sharedClient].contactManager acceptInvitationForUsername:[arr firstObject]];
+				}else if (friendOrGroup==1){
+					[[EMClient sharedClient].groupManager addOccupants:@[[arr firstObject]] toGroup:arr[2] welcomeMessage:nil error:&error];
 				}
-			});
+				
+				dispatch_async(dispatch_get_main_queue(), ^{
+					if (!error) {
+						//数据库移除好友请求,重新加载.
+						[[DataBaseTools SharedInstance] delPersonByName:[arr firstObject]];
+						[self loadData];
+					}
+				});
+			}else if (self.flag==2){
+				[[EMClient sharedClient].groupManager applyJoinPublicGroup:[arr firstObject] message:[NSString stringWithFormat:@"%@申请加入群聊",[[EMClient sharedClient] currentUsername]] error:nil];
+			}
 			
 		});
 		
 	}];
 	UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-			
-			[[EMClient sharedClient].contactManager declineInvitationForUsername:[arr firstObject]];
+			if (self.flag==3) {
+				EMError *error = nil;
+				if (friendOrGroup==0) {
+					[[EMClient sharedClient].contactManager declineInvitationForUsername:[arr firstObject]];
+				}else if (friendOrGroup==1){
+					[[EMClient sharedClient].groupManager declineJoinApplication:arr[2] applicant:[arr firstObject] reason:nil];
+				}
+				
+				dispatch_async(dispatch_get_main_queue(), ^{
+					if (!error) {
+						//数据库移除好友请求,重新加载.
+						[[DataBaseTools SharedInstance] delPersonByName:[arr firstObject]];
+						[self loadData];
+					}
+				});
+			}
 			
 		});
 	}];
