@@ -9,6 +9,9 @@
 #import "ContactController.h"
 #import "ContactManager.h"
 #import "ChatController.h"
+#import "EMSDK.h"
+#import "EMError.h"
+#import "DataBaseTools.h"
 
 @interface ContactController ()
 
@@ -38,7 +41,9 @@ static NSString *conCell = @"contact_cell";
 }
 
 - (void)loadData{
-	self.data = [[ContactManager shareInstance] dataForFlag:self.flag];
+	self.data = [NSMutableArray array];
+	[self.data removeAllObjects];
+	[self.data addObjectsFromArray:[[ContactManager shareInstance] dataForFlag:self.flag]];
 	[self.tableView reloadData];
 }
 
@@ -58,14 +63,64 @@ static NSString *conCell = @"contact_cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:conCell forIndexPath:indexPath];
-    
+	
+	cell.imageView.image = [UIImage imageNamed:self.leftImage];
 	cell.textLabel.text = self.data[indexPath.row];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	[self.navigationController pushViewController:self.chatController animated:YES];
+	
+	//判断如果flag==3,则是好友请求只需弹出提示框即可.
+	if(self.flag==3){
+		
+		[self showAlert:@"是否接受好友请求" title:@"好友请求" index:indexPath.row];
+		
+	}else{
+		ChatController *chat = [[ChatController alloc] init];
+		chat.receiverId = self.data[indexPath.row];
+		chat.flag = self.flag;
+		[self.navigationController pushViewController:chat animated:YES];
+	}
+	
+}
+
+//显示提示信息.
+- (void)showAlert:(NSString *)string title:(NSString *)title index:(NSInteger)index{
+	UIAlertController *control = [UIAlertController alertControllerWithTitle:title message:string preferredStyle:UIAlertControllerStyleAlert];
+	//保存用户的姓名和message
+	NSArray *arr = [self.data[index] componentsSeparatedByString:@":"];
+	
+	UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+			EMError *error = [[EMClient sharedClient].contactManager acceptInvitationForUsername:[arr firstObject]];
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				if (!error) {
+					//数据库移除好友请求,重新加载.
+					[[DataBaseTools SharedInstance] delPersonByName:[arr firstObject]];
+					[self loadData];
+				}
+			});
+			
+		});
+		
+	}];
+	UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+			
+			[[EMClient sharedClient].contactManager declineInvitationForUsername:[arr firstObject]];
+			
+		});
+	}];
+	[control addAction:action];
+	[control addAction:action1];
+	[self presentViewController:control animated:YES completion:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return 70;
 }
 
 /*

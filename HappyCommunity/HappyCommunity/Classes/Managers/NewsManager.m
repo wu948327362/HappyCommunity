@@ -17,7 +17,7 @@ static NewsManager *manager = nil;
 @end
 @implementation NewsManager
 /**
- *  单例
+ *  单例0
  */
 + (instancetype)shareInstance
 {

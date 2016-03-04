@@ -9,15 +9,41 @@
 #import "DataBaseTools.h"
 #import "FriendsInvitation.h"
 
+#import "AppDelegate.h"
+#import "MessageModel.h"
+
 static DataBaseTools *handler;
+
+@interface DataBaseTools ()<EMChatManagerDelegate>
+//coreData
+@property(nonatomic,strong)NSManagedObjectContext *context;
+@end
+
 @implementation DataBaseTools
 +(instancetype)SharedInstance{
     if (handler==nil) {
         handler = [[DataBaseTools alloc] init];
-		[handler openDataBase];
-		[handler createTable];
+		
     }
     return handler;
+}
+
+//重写init方法
+- (instancetype)init{
+	self = [super init];
+	if (self) {
+		[self initProperties];
+	}
+	return self;
+}
+
+- (void)initProperties{
+	[handler openDataBase];
+	[handler createTable];
+	//设置接收消息代理,并设置接受消息代理方法.
+	[[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+	AppDelegate *app = [UIApplication sharedApplication].delegate;
+	self.context = app.managedObjectContext;
 }
 
 static sqlite3 *dataBase;
@@ -85,6 +111,19 @@ static sqlite3 *dataBase;
     }
     
 }
+
+- (void)delPersonByName:(NSString *)name{
+	NSString *sql = [NSString stringWithFormat:@"delete from FreindsInvitation where userName = '%@' ",name];
+	
+	int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
+	if (result==SQLITE_OK) {
+		NSLog(@"delete成功");
+	}else{
+		NSLog(@"delete失败%d",result);
+	}
+	
+}
+
 - (void)updatePerson:(NSString *)name byPid:(NSInteger)pid{
     NSString *sql = [NSString stringWithFormat:@"update FreindsInvitation set userName='%@' where pid=%ld",name,pid];
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
@@ -150,32 +189,80 @@ static sqlite3 *dataBase;
     }
     
     sqlite3_finalize(stmt);
-    
-    
-    
-//    //生成sql语句
-//    NSString *sql = @"INSERT INTO Persons (name,sex,age) VALUES (?,?,?)";
-//    //创建游标
-//    sqlite3_stmt *stmt = NULL;
-//    //预执行
-//    int result = sqlite3_prepare(dataBase, sql.UTF8String, -1, &stmt, NULL);
-//    
-//    if (result==SQLITE_OK) {
-//        //绑定参数
-//        sqlite3_bind_text(stmt, 1, person.name.UTF8String, -1, NULL);
-//        sqlite3_bind_text(stmt, 2, person.sex.UTF8String, -1, NULL);
-//        sqlite3_bind_int(stmt, 3, (int)person.age);
-//        
-//        //游标下移进行过滤
-//        if(sqlite3_step(stmt)){
-//            NSLog(@"插入数据成功");
-//        }else{
-//            NSLog(@"插入数据失败");
-//        }
-//    }else{
-//        NSLog(@"sql is wrong");
-//    }
-//    sqlite3_finalize(stmt);
+}
+
+//是否存在用户名为那么的用户
+- (BOOL)isExitsUserWithName:(NSString *)name{
+	
+	BOOL flag = NO;
+	NSArray *arr = [self showAllPerson];
+	
+	for (FriendsInvitation *friends in arr) {
+		if ([friends.userName isEqualToString:name]) {
+			flag = YES;
+		}
+	}
+	return flag;
+}
+
+#pragma mark - 接收到消息函数回调
+- (void)didReceiveMessages:(NSArray *)aMessages{
+	
+	for (EMMessage *message in aMessages) {
+		[self saveMessageModelWith:message];
+	}
+	
+}
+
+//根据EMMessage返回MessageModel
+- (void)saveMessageModelWith:(EMMessage *)message{
+	
+	NSEntityDescription *description = [NSEntityDescription entityForName:@"MessageModel" inManagedObjectContext:handler.context];
+	MessageModel *model = [[MessageModel alloc] initWithEntity:description insertIntoManagedObjectContext:handler.context];
+	
+	model.text = ((EMTextMessageBody *)message.body).text;
+	model.direction = [NSNumber numberWithInteger:message.direction];
+	model.messageId = message.messageId;
+	model.conversationId = message.conversationId;
+	model.from = message.from;
+	model.to = message.to;
+	model.timestamp = [NSNumber numberWithLongLong:message.timestamp];
+	model.chatType = [NSNumber numberWithInteger:message.chatType];
+	model.status = [NSNumber numberWithInteger:message.status];
+	model.isReadAcked = [NSNumber numberWithInteger:message.isReadAcked];
+	model.isRead = [NSNumber numberWithInteger:message.isRead];
+	model.isDeliverAcked = [NSNumber numberWithInteger:message.isDeliverAcked];
+	
+	[handler.context save:nil];
+}
+
+//根据用户名返回查询数组结果
+- (NSMutableArray *)messagesWithReceiverId:(NSString *)receiverId from:(NSString *)currentUser{
+	
+	NSMutableArray *data = [NSMutableArray array];
+	
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"MessageModel" inManagedObjectContext:handler.context];
+	[fetchRequest setEntity:entity];
+	// Specify criteria for filtering which objects to fetch
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(from==%@ AND to==%@) OR (from==%@ AND to==%@)",currentUser,receiverId,receiverId,currentUser];
+	[fetchRequest setPredicate:predicate];
+	// Specify how the fetched objects should be sorted
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
+	[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+	
+	NSError *error = nil;
+	NSArray *fetchedObjects = [handler.context executeFetchRequest:fetchRequest error:&error];
+	if (fetchedObjects == nil) {
+		return nil;
+	}
+	
+	for (MessageModel *model in fetchedObjects) {
+		[data addObject:model];
+	}
+	
+	return data;
+	
 }
 
 

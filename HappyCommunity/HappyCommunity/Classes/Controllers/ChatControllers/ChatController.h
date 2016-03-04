@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ChatController : UIViewController
-
+@property(nonatomic,copy)NSString *receiverId;
+@property(nonatomic,assign)NSInteger flag;
 @end
