@@ -101,16 +101,17 @@ static ContactManager *manager;
 	return YES;
 }
 
-//获取多有自己所在的群组.
+//获取所有自己所在的群组.
 - (NSMutableArray *)getGroupContainsMe{
 	
 	NSMutableArray *data = [NSMutableArray array];
 	
-	NSArray *arr = [[EMClient sharedClient].groupManager getAllGroups];
+	EMCursorResult *result = [[EMClient sharedClient].groupManager getPublicGroupsFromServerWithCursor:nil pageSize:-1 error:nil];
 	
-	for (EMGroup *group in arr) {
-		for (NSString *name in group.occupants) {
-			
+	for (EMGroup *group in result.list) {
+		//获取组的详细信息,只有这样才会获得的到群组成员.
+		EMGroup *temp = [[EMClient sharedClient].groupManager fetchGroupInfo:group.groupId includeMembersList:YES error:nil];
+		for (NSString *name in temp.occupants) {
 			if ([name isEqualToString:[[EMClient sharedClient] currentUsername]]) {
 				[data addObject:[NSString stringWithFormat:@"%@:%@",group.groupId,group.description]];
 			}
@@ -129,8 +130,9 @@ static ContactManager *manager;
 	
 	BOOL isContain = NO;
 	for (EMGroup *group in result.list) {
-		
-		for (NSString *name in group.occupants) {
+		//获取组的详细信息,只有这样才会获得的到群组成员.
+		EMGroup *temp = [[EMClient sharedClient].groupManager fetchGroupInfo:group.groupId includeMembersList:YES error:nil];
+		for (NSString *name in temp.occupants) {
 			NSLog(@"%@",name);
 			if ([name isEqualToString:[[EMClient sharedClient] currentUsername]]) {
 				isContain = YES;

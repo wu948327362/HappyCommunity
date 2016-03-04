@@ -99,7 +99,7 @@
 	__weak typeof(self) weakself = self;
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		EMError *error = [[EMClient sharedClient] loginWithUsername:self.userField.text password:self.passWordField.text];
+		EMError *error = [[EMClient sharedClient] loginWithUsername:weakself.userField.text password:weakself.passWordField.text];
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			if (!error) {

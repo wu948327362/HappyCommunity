@@ -11,6 +11,8 @@
 #import "EMError.h"
 #import "MessageModel.h"
 #import "DataBaseTools.h"
+#import "ChatTableViewCell.h"
+#import "ChatModel.h"
 
 @interface ChatController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,EMChatManagerDelegate>
 
@@ -36,7 +38,7 @@ static NSString *chatCell = @"chat_cell";
 	self.messageField.delegate = self;
 	
 	//注册cell
-	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:chatCell];
+	[self.tableView registerNib:[UINib nibWithNibName:@"ChatTableViewCell" bundle:nil] forCellReuseIdentifier:chatCell];
 	
 	//设置接收消息代理,并设置接受消息代理方法.
 	[[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
@@ -64,6 +66,37 @@ static NSString *chatCell = @"chat_cell";
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加好友" style:UIBarButtonItemStyleDone target:self action:@selector(addFriend)];
 	}
 	
+	self.tableView.estimatedRowHeight = 10.0f;
+	
+	//增加监听,当键盘出现或者改变时发出消息
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	
+	//键盘退出时发出消息
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+	
+	
+}
+
+//键盘出现或者改变时调用
+- (void)keyboardWillShow:(NSNotification *)aNotification{
+	
+	//获取键盘数据
+	NSDictionary *userInfo = [aNotification userInfo];
+	NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+	CGRect keyBoardRect = [aValue CGRectValue];
+	int height = keyBoardRect.size.height;
+	
+	CGRect rect = self.view.frame;
+	CGFloat tab = CGRectGetHeight(self.tabBarController.tabBar.frame);
+	
+	rect.size.height = rect.size.height - height + tab;
+	self.view.frame = rect;
+	
+}
+
+//键盘退出时调用
+- (void)keyboardWillHide:(NSNotification *)aNotification{
+	self.view.frame = [UIScreen mainScreen].bounds;
 }
 
 //添加好友的导航栏的方法
@@ -108,18 +141,32 @@ static NSString *chatCell = @"chat_cell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:chatCell forIndexPath:indexPath];
+	ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:chatCell forIndexPath:indexPath];
 	
 	//判断是否是本人发出的消息
 	MessageModel *message = self.messages[indexPath.row];
 	
+	ChatModel *model = [[ChatModel alloc] init];
+	
+	model.chatText = [NSString stringWithFormat:@"%@",message.text];
 	//等于0说明是本人发出的.
 	if ((message.direction).integerValue==0) {
-		cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@",message.text,message.from];
-		cell.textLabel.textAlignment = UITextAlignmentRight;
+		cell.leftIcon.hidden = YES;
+		cell.rightIcon.hidden = NO;
+		cell.leftName.hidden = YES;
+		cell.rightName.hidden = NO;
+		cell.chatModel = model;
+		cell.rightName.text = message.from;
+		cell.chatLabel.textAlignment = NSTextAlignmentRight;
+		
 	}else{
-		cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@",message.from,message.text];
-		cell.textLabel.textAlignment = UITextAlignmentLeft;
+		cell.leftIcon.hidden = NO;
+		cell.rightIcon.hidden = YES;
+		cell.leftName.hidden = NO;
+		cell.rightName.hidden = YES;
+		cell.chatModel = model;
+		cell.leftName.text = message.from;
+		cell.chatLabel.textAlignment = NSTextAlignmentLeft;
 	}
 	
 	return cell;
@@ -127,31 +174,17 @@ static NSString *chatCell = @"chat_cell";
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-	CGRect rect = self.view.frame;
-	
-	rect.size.height = rect.size.height-210;
-	self.view.frame = rect;
-	
-	return YES;
-}
-
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
 	[self updateMessages:self.flag];
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-	self.view.frame = [UIScreen mainScreen].bounds;
-	return YES;
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-	[self.messageField resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 	[textField resignFirstResponder];
 	return YES;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+	[self.messageField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

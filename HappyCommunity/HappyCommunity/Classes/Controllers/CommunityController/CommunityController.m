@@ -55,7 +55,7 @@ static NSString *communityCell = @"community_cell";
 	self.data = [NSMutableArray array];
 	self.images = [NSMutableArray array];
 	
-	self.data = @[@"好友",@"群组",@"所有群组",@"系统消息",@"创建群组"].mutableCopy;
+	self.data = @[@"好友",@"群组",@"其他群组",@"系统消息",@"创建群组"].mutableCopy;
 	self.images = @[@"groupPublicHeader@2x",@"group_header@2x",@"group_creategroup@2x",@"group_joinpublicgroup@2x",@"group_participant_addHL@2x"].mutableCopy;
 	
 	[self.tableView reloadData];

@@ -43,6 +43,8 @@
 				dispatch_async(dispatch_get_main_queue(), ^{
 					if (!error) {
 						[weakself showAlert:@"好友请求已发送" title:@"成功"];
+						self.nameField.text = @"";
+						self.messageField.text = @"";
 					}else{
 						[weakself showAlert:@"添加失败" title:@"失败"];
 					}
@@ -63,12 +65,14 @@
 				EMError *error = nil;
 				EMGroupOptions *options = [[EMGroupOptions alloc] init];
 				options.maxUsersCount = 100;
-				options.style = EMGroupStylePublicOpenJoin;
+				options.style = EMGroupStylePublicJoinNeedApproval;
 				[[EMClient sharedClient].groupManager createGroupWithSubject:self.nameField.text description:self.messageField.text invitees:nil message:self.messageField.text setting:options error:&error];
 				
 				dispatch_async(dispatch_get_main_queue(), ^{
 					if (!error) {
 						[weakself showAlert:@"创建群聊成功" title:@"成功"];
+						self.nameField.text = @"";
+						self.messageField.text = @"";
 					}else{
 						[weakself showAlert:@"创建群聊失败" title:@"失败"];
 					}
