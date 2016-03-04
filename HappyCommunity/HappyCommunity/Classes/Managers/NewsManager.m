@@ -13,7 +13,7 @@
 static NewsManager *manager = nil;
 
 @interface NewsManager ()
-@property(nonatomic, strong)NSMutableArray *data;
+
 @end
 @implementation NewsManager
 /**
@@ -47,12 +47,16 @@ static NewsManager *manager = nil;
  */
 - (NSMutableArray *)requestWithUrl:(NSString *)url finish:(void (^)())finish
 {
+    
+//    [self.data removeAllObjects];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * responseObject) {
         NSLog(@"请求成功");
+        
         NSArray *arr = responseObject[@"itemList"];
+        
         for (NSDictionary *d in arr) {
             NewsModel *model = [[NewsModel alloc] init];
             NSDictionary *dic = d[@"itemImage"];
@@ -70,13 +74,14 @@ static NewsManager *manager = nil;
             }
         }
         
-        //        NSLog(@"%@", self.data);
-        
         finish();
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败%@", error);
     }];
+    
+    
+    
     return self.data;
 }
 

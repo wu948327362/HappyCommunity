@@ -14,16 +14,16 @@
 #import "NewsModel.h"
 #import "WebViewViewController.h"
 
-<<<<<<< HEAD
-#import <MJRefresh.h>
-=======
 
->>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
+#import <MJRefresh.h>
+
+
+
 @interface NewsController ()
 /**
  *  创建可变数组来接受管理类请求的数据
  */
-@property(nonatomic, strong)NSMutableArray *data;
+@property(nonatomic, strong)NSMutableArray *data1;
 /**
  *  创建下拉刷新控件
  */
@@ -36,77 +36,94 @@ static NSString *newsCell = @"mycell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-<<<<<<< HEAD
+    
+
     //设置导航栏状态不透明
     self.navigationController.navigationBar.translucent = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     //进入页面加载数据
-=======
+
         
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:newsCell];
->>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
+
+    //初始化数组
+    self.data1 = [NSMutableArray array];
     [self loadData];
     //注册XIB拖得cell
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
-    //初始化数组
-    self.data = [NSMutableArray array];
     
-<<<<<<< HEAD
+
     self.number = 1;
-    //下拉刷新方法
     [self setupDownRefresh];
     //上拉加载方法
-//    [self setupRefresh];
+    [self setupRefresh];
     
 }
+////上拉刷新
+- (void)setupRefresh
+{
+    self.tableView.mj_footer = [MJRefreshBackFooter footerWithRefreshingTarget:self refreshingAction:@selector(unRefreshAction:)];
+}
 
-//上拉刷新
-//- (void)setupRefresh
-//{
-//    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(unRefreshAction:)];
-//}
+- (void)unRefreshAction:(UIRefreshControl *)refresh
+{
+    
+    NSString *urlString = [NSString stringWithFormat:newsRefresh,++self.number];
+    
+    __block NSMutableArray *array = [NSMutableArray array];
+//    self.data = [array addObjectsFromArray:<#(nonnull NSArray *)#>]
+    NSLog(@"!!!!!!!%@!!!!!!!!", [self.data1[0] itemTitle]);
+    array = [[NewsManager shareInstance] requestWithUrl:urlString finish:^{
+        
+//        array = [NewsManager shareInstance].data;
+//        [self.data1 addObjectsFromArray:[NewsManager shareInstance].data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
 //
-//- (void)unRefreshAction:(UIRefreshControl *)refresh
-//{
-//    
-//    NSString *urlString = [NSString stringWithFormat:newsRefresh,self.number++];
-//    [self.data addObjectsFromArray: [[NewsManager shareInstance] requestWithUrl:urlString finish:^{
+    }];
+    
+    
+    [self.tableView.mj_footer endRefreshing];
+    
+//    for (NewsModel *model in self.data) {
+//        NSLog(@"%@", model.itemTitle);
+//    }
+    
+//   self.data =  [[array addObjectsFromArray: [[[NewsManager shareInstance] requestWithUrl:urlString finish:^{
 //        [self.tableView reloadData];
-//    }]];
-//    [self.tableView.mj_footer endRefreshing];
-//    
-//}
+//   }]];
+    
+    
+    
+}
 //下拉刷新方法
 - (void)setupDownRefresh
 {
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction:)];
+    [self.tableView.mj_header beginRefreshing];
 }
 //下拉刷新的响应事件
 - (void)refreshAction:(UIRefreshControl *)controller
 {
     
     
-    [self.data removeAllObjects];
-    NSString *urlString = [NSString stringWithFormat:newsRefresh,self.number++];
-    NSLog(@"irl:%@", urlString);
-    self.data = [[NewsManager shareInstance] requestWithUrl:urlString finish:^{
-    [self.tableView reloadData];
+    [self.data1 removeAllObjects];
+    NSString *urlString = [NSString stringWithFormat:newsRefresh,1];
+//    NSLog(@"irl:%@", urlString);
+    self.data1 = [[NewsManager shareInstance] requestWithUrl:urlString finish:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     [self.tableView.mj_header endRefreshing];
     }];
 }
 #pragma mark 加载数据方法
-=======
-
-    
-}
-
-
->>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
 - (void)loadData
 {
     NSString *urlString = [NSString stringWithFormat:newsRefresh,1];
     
-    self.data = [[NewsManager shareInstance] requestWithUrl:urlString finish:^{
+    self.data1 = [[NewsManager shareInstance] requestWithUrl:urlString finish:^{
         [self.tableView reloadData];
     }];
     
@@ -120,7 +137,7 @@ static NSString *newsCell = @"mycell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //NSLog(@"%ld",[[NewsManager shareInstance] countOfArray]);
-    return [[NewsManager shareInstance] countOfArray];
+    return [NewsManager shareInstance].data.count;
 }
 #pragma mark 设置cell的属性
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -106,6 +106,8 @@
 		C2EA5B8E1C87178D0072A24B /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B8D1C87178D0072A24B /* AboutViewController.m */; };
 		C2EA5B911C87179B0072A24B /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B901C87179B0072A24B /* ServiceViewController.m */; };
 		C2EA5B941C8717A70072A24B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B931C8717A70072A24B /* SettingViewController.m */; };
+		C2FAE07B1C882498007A8FBF /* LaughTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FAE0791C882498007A8FBF /* LaughTableViewCell.m */; };
+		C2FAE07C1C882498007A8FBF /* LaughTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2FAE07A1C882498007A8FBF /* LaughTableViewCell.xib */; };
 		D7FA6E81B528446836F24365 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CC1CDFFDD9AF9FA2B9DBAE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -294,6 +296,9 @@
 		C2EA5B901C87179B0072A24B /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		C2EA5B921C8717A70072A24B /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		C2EA5B931C8717A70072A24B /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		C2FAE0781C882498007A8FBF /* LaughTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaughTableViewCell.h; sourceTree = "<group>"; };
+		C2FAE0791C882498007A8FBF /* LaughTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaughTableViewCell.m; sourceTree = "<group>"; };
+		C2FAE07A1C882498007A8FBF /* LaughTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaughTableViewCell.xib; sourceTree = "<group>"; };
 		E4CF84918BED27637B1902E7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -465,11 +470,8 @@
 		C2A9BE681C852D00005E19B2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-
 				C21A1B1C1C8721AE00CDAC7D /* ChatControllers */,
-
 				C2EA5B7F1C8705060072A24B /* LeftController */,
-
 				C2A9BF551C85CB4C005E19B2 /* LoginController */,
 				C2A9BEE71C85670A005E19B2 /* NewsAndLauth */,
 				C2A9BE691C852D00005E19B2 /* CommunityController */,
@@ -495,6 +497,9 @@
 			children = (
 				C2A9BEB01C8533EA005E19B2 /* LaughController.h */,
 				C2A9BEB11C8533EA005E19B2 /* LaughController.m */,
+				C2FAE0781C882498007A8FBF /* LaughTableViewCell.h */,
+				C2FAE0791C882498007A8FBF /* LaughTableViewCell.m */,
+				C2FAE07A1C882498007A8FBF /* LaughTableViewCell.xib */,
 			);
 			path = LaughController;
 			sourceTree = "<group>";
@@ -895,6 +900,7 @@
 				C2A9BED81C85368A005E19B2 /* tabbar_Conversation_HL@2x.png in Resources */,
 				C21A1AEC1C86911200CDAC7D /* group_header@2x.png in Resources */,
 				C2A9BF601C85CBC4005E19B2 /* account.png in Resources */,
+				C2FAE07C1C882498007A8FBF /* LaughTableViewCell.xib in Resources */,
 				C21A1AEB1C86911200CDAC7D /* group_creategroup@2x.png in Resources */,
 				C21A1AEF1C86911200CDAC7D /* group_participant_add@2x.png in Resources */,
 				C29CCD641C852A4800AB68E6 /* LaunchScreen.storyboard in Resources */,
@@ -1002,21 +1008,15 @@
 				C2A9BEE01C854478005E19B2 /* NewsController.m in Sources */,
 				C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */,
 				C29CCD5F1C852A4800AB68E6 /* HappyCommunity.xcdatamodeld in Sources */,
-
-
 				C2EA5B781C8703290072A24B /* UIViewController+RESideMenu.m in Sources */,
-				C2A9BEAF1C8533DD005E19B2 /* CommunityController.m in Sources */,
-
 				C2A9BF591C85CB4C005E19B2 /* LoginController.m in Sources */,
 				C2A9BEA31C852DB2005E19B2 /* UIImage+WebP.m in Sources */,
 				C2EA5B911C87179B0072A24B /* ServiceViewController.m in Sources */,
 				C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */,
-<<<<<<< HEAD
 				C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */,
-=======
 				C21A1B0C1C86D18300CDAC7D /* AddFriendController.m in Sources */,
 				C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */,
->>>>>>> 9505569bc2a925c591471accd9f0a489d4990283
+				C2FAE07B1C882498007A8FBF /* LaughTableViewCell.m in Sources */,
 				C2A9BEA51C852DB2005E19B2 /* UIImageView+WebCache.m in Sources */,
 				C2A9BECD1C8535F5005E19B2 /* HappyTabController.m in Sources */,
 				C2A9BE9C1C852DB2005E19B2 /* SDWebImageDownloader.m in Sources */,
@@ -1024,11 +1024,8 @@
 				C21A1ADF1C868C7000CDAC7D /* CommunityController.m in Sources */,
 				C2A9BEA61C852DB2005E19B2 /* UIView+WebCacheOperation.m in Sources */,
 				C2A9BEA01C852DB2005E19B2 /* UIButton+WebCache.m in Sources */,
-
 				C21A1B121C86E68F00CDAC7D /* DataBaseTools.m in Sources */,
-
 				C2EA5B8E1C87178D0072A24B /* AboutViewController.m in Sources */,
-
 				C2A9BF2E1C857ABB005E19B2 /* LaughManager.m in Sources */,
 				C2EA5B941C8717A70072A24B /* SettingViewController.m in Sources */,
 				C2A9BE971C852DB2005E19B2 /* MKAnnotationView+WebCache.m in Sources */,

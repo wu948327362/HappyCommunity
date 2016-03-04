@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface LaughModel : NSObject
-
+@property(nonatomic, copy)NSString *title;
+@property(nonatomic, copy)NSString *image;
+@property(nonatomic, copy)NSString *imageHeight;
+@property(nonatomic, copy)NSString *imageWidth;
 @end
