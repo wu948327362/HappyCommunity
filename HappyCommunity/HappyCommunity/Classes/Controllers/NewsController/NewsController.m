@@ -13,11 +13,7 @@
 #import "NewTableViewCell.h"
 #import "NewsModel.h"
 #import "WebViewViewController.h"
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 220024127a4828abf43848f219808dfae3acc549
 #import <MJRefresh.h>
 
 
@@ -39,10 +35,6 @@ static NSString *newsCell = @"mycell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-<<<<<<< HEAD
-    
-=======
->>>>>>> 220024127a4828abf43848f219808dfae3acc549
 
     //设置导航栏状态不透明
     self.navigationController.navigationBar.translucent = NO;
@@ -52,7 +44,7 @@ static NSString *newsCell = @"mycell";
         
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:newsCell];
 
-<<<<<<< HEAD
+
     //初始化数组
     self.data1 = [NSMutableArray array];
     [self loadData];
@@ -60,14 +52,14 @@ static NSString *newsCell = @"mycell";
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     
 
-=======
+
     [self loadData];
     //注册XIB拖得cell
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     //初始化数组
-    self.data = [NSMutableArray array];
+    self.data1 = [NSMutableArray array];
 	
->>>>>>> 220024127a4828abf43848f219808dfae3acc549
+
     self.number = 1;
     [self setupDownRefresh];
     //上拉加载方法
@@ -112,6 +104,7 @@ static NSString *newsCell = @"mycell";
     
     
 }
+#warning mark 修改这里
 //下拉刷新方法
 - (void)setupDownRefresh
 {
@@ -134,10 +127,6 @@ static NSString *newsCell = @"mycell";
     }];
 }
 #pragma mark 加载数据方法
-<<<<<<< HEAD
-=======
-
->>>>>>> 220024127a4828abf43848f219808dfae3acc549
 - (void)loadData
 {
     NSString *urlString = [NSString stringWithFormat:newsRefresh,1];

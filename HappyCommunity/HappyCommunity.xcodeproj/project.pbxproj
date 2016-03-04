@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C200E17D1C891947009900CB /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C200E17A1C891947009900CB /* MessageModel.m */; };
+		C200E17E1C891947009900CB /* MessageModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C200E17C1C891947009900CB /* MessageModel+CoreDataProperties.m */; };
 		C21A1ADF1C868C7000CDAC7D /* CommunityController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21A1ADE1C868C7000CDAC7D /* CommunityController.m */; };
 		C21A1AEB1C86911200CDAC7D /* group_creategroup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C21A1AE11C86911200CDAC7D /* group_creategroup@2x.png */; };
 		C21A1AEC1C86911200CDAC7D /* group_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C21A1AE21C86911200CDAC7D /* group_header@2x.png */; };
@@ -114,6 +116,10 @@
 /* Begin PBXFileReference section */
 		9C67DF6AC4D3B31EE9A7C85D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B9CC1CDFFDD9AF9FA2B9DBAE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C200E1791C891947009900CB /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		C200E17A1C891947009900CB /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		C200E17B1C891947009900CB /* MessageModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		C200E17C1C891947009900CB /* MessageModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessageModel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		C21A1ADC1C867D1D00CDAC7D /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C21A1ADD1C868C7000CDAC7D /* CommunityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityController.h; sourceTree = "<group>"; };
 		C21A1ADE1C868C7000CDAC7D /* CommunityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityController.m; sourceTree = "<group>"; };
@@ -421,6 +427,10 @@
 		C29CCD501C852A4800AB68E6 /* HappyCommunity */ = {
 			isa = PBXGroup;
 			children = (
+				C200E1791C891947009900CB /* MessageModel.h */,
+				C200E17A1C891947009900CB /* MessageModel.m */,
+				C200E17B1C891947009900CB /* MessageModel+CoreDataProperties.h */,
+				C200E17C1C891947009900CB /* MessageModel+CoreDataProperties.m */,
 				C29CCD571C852A4800AB68E6 /* ViewController.h */,
 				C29CCD581C852A4800AB68E6 /* ViewController.m */,
 				C29CCD5A1C852A4800AB68E6 /* Main.storyboard */,
@@ -1018,7 +1028,9 @@
 				C21A1B2B1C87281700CDAC7D /* ChatController.m in Sources */,
 				C2FAE07B1C882498007A8FBF /* LaughTableViewCell.m in Sources */,
 				C2A9BEA51C852DB2005E19B2 /* UIImageView+WebCache.m in Sources */,
+				C200E17E1C891947009900CB /* MessageModel+CoreDataProperties.m in Sources */,
 				C2A9BECD1C8535F5005E19B2 /* HappyTabController.m in Sources */,
+				C200E17D1C891947009900CB /* MessageModel.m in Sources */,
 				C2A9BE9C1C852DB2005E19B2 /* SDWebImageDownloader.m in Sources */,
 				C2A9BEB21C8533EA005E19B2 /* LaughController.m in Sources */,
 				C21A1ADF1C868C7000CDAC7D /* CommunityController.m in Sources */,
