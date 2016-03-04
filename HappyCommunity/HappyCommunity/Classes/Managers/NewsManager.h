@@ -24,5 +24,7 @@
 
 /** 根据当前的index获得模型*/
 - (NewsModel *)getModelWithIndex:(NSInteger)index;
+/*数组*/
+@property(nonatomic, strong)NSMutableArray *data;
 
 @end

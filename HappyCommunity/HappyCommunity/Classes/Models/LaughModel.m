@@ -10,4 +10,5 @@
 
 @implementation LaughModel
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{}
 @end
