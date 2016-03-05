@@ -265,7 +265,7 @@ static sqlite3 *dataBase;
 	if (flag==0) {
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(from==%@ AND to==%@) OR (from==%@ AND to==%@)",currentUser,receiverId,receiverId,currentUser];
 		[fetchRequest setPredicate:predicate];
-	}else if(flag==1||flag==2){
+	}else if(flag==1){
 		NSArray *arr = [receiverId componentsSeparatedByString:@":"];
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"to==%@",[arr firstObject]];
 		[fetchRequest setPredicate:predicate];
@@ -284,7 +284,6 @@ static sqlite3 *dataBase;
 	for (MessageModel *model in fetchedObjects) {
 		[data addObject:model];
 	}
-	
 	return data;
 	
 }

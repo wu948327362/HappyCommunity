@@ -43,6 +43,8 @@
 		C24D00A31C89CD7400644B95 /* chatListCellHead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C24D00A11C89CD7400644B95 /* chatListCellHead@2x.png */; };
 		C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25731781C85B5F000982579 /* NewTableViewCell.m */; };
 		C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25731791C85B5F000982579 /* NewTableViewCell.xib */; };
+		C25C17531C8A849700CFCA06 /* MyEMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C25C17521C8A849700CFCA06 /* MyEMManager.m */; };
+		C25C17561C8B1D6B00CFCA06 /* LoginAnimatino.m in Sources */ = {isa = PBXBuildFile; fileRef = C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */; };
 		C28792A51C86E3D2009C9336 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28792A41C86E3D2009C9336 /* WebViewViewController.m */; };
 		C29CCD531C852A4800AB68E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD521C852A4800AB68E6 /* main.m */; };
 		C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD581C852A4800AB68E6 /* ViewController.m */; };
@@ -169,6 +171,10 @@
 		C25731771C85B5F000982579 /* NewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTableViewCell.h; sourceTree = "<group>"; };
 		C25731781C85B5F000982579 /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTableViewCell.m; sourceTree = "<group>"; };
 		C25731791C85B5F000982579 /* NewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTableViewCell.xib; sourceTree = "<group>"; };
+		C25C17511C8A849700CFCA06 /* MyEMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEMManager.h; sourceTree = "<group>"; };
+		C25C17521C8A849700CFCA06 /* MyEMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEMManager.m; sourceTree = "<group>"; };
+		C25C17541C8B1D6B00CFCA06 /* LoginAnimatino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAnimatino.h; sourceTree = "<group>"; };
+		C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAnimatino.m; sourceTree = "<group>"; };
 		C28792A31C86E3D2009C9336 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		C28792A41C86E3D2009C9336 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
 		C29CCD4E1C852A4800AB68E6 /* HappyCommunity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCommunity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -587,6 +593,10 @@
 				C21A1AFA1C86955000CDAC7D /* ContactManager.m */,
 				C21A1B101C86E68F00CDAC7D /* DataBaseTools.h */,
 				C21A1B111C86E68F00CDAC7D /* DataBaseTools.m */,
+				C25C17511C8A849700CFCA06 /* MyEMManager.h */,
+				C25C17521C8A849700CFCA06 /* MyEMManager.m */,
+				C25C17541C8B1D6B00CFCA06 /* LoginAnimatino.h */,
+				C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1039,6 +1049,8 @@
 				C2A9BEC71C85345D005E19B2 /* NewsView.m in Sources */,
 				C21A1AFB1C86955000CDAC7D /* ContactManager.m in Sources */,
 				C24D009A1C89BC9F00644B95 /* ChatTableViewCell.m in Sources */,
+				C25C17561C8B1D6B00CFCA06 /* LoginAnimatino.m in Sources */,
+				C25C17531C8A849700CFCA06 /* MyEMManager.m in Sources */,
 				C2A9BEC41C853453005E19B2 /* MessageView.m in Sources */,
 				C24D009E1C89BF9800644B95 /* ChatModel.m in Sources */,
 				C21A1AF81C86951600CDAC7D /* ContactController.m in Sources */,

@@ -10,7 +10,6 @@
 
 @implementation ChatTableViewCell
 
-
 //重写model的set属性
 - (void)setChatModel:(ChatModel *)chatModel{
 	_chatLabel.text = chatModel.chatText;
@@ -20,7 +19,7 @@
 	CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width - 20, 1000);
 	
 	NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:25]};
-	CGRect rect = [chatModel.chatText boundingRectWithSize:size options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+	CGRect rect = [chatModel.chatText boundingRectWithSize:size options:NSStringDrawingTruncatesLastVisibleLine attributes:dic context:nil];
 	
 	CGRect frame = self.chatLabel.frame;
 	frame.size = rect.size;

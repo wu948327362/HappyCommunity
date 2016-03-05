@@ -133,7 +133,6 @@ static ContactManager *manager;
 		//获取组的详细信息,只有这样才会获得的到群组成员.
 		EMGroup *temp = [[EMClient sharedClient].groupManager fetchGroupInfo:group.groupId includeMembersList:YES error:nil];
 		for (NSString *name in temp.occupants) {
-			NSLog(@"%@",name);
 			if ([name isEqualToString:[[EMClient sharedClient] currentUsername]]) {
 				isContain = YES;
 			}

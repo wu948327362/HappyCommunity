@@ -19,7 +19,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQG-Ib-wHQ">
                         <rect key="frame" x="60" y="30" width="439" height="73"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatListCellHead@2x" translatesAutoresizingMaskIntoConstraints="NO" id="Blu-7o-Vq7">
@@ -34,34 +34,34 @@
                             <constraint firstAttribute="width" secondItem="WBx-Q4-Iv8" secondAttribute="height" multiplier="17:18" id="DOi-9k-VTj"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71x-TO-VHW">
-                        <rect key="frame" x="507" y="107" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71x-TO-VHW">
+                        <rect key="frame" x="507" y="106" width="44" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2i-gk-scj">
-                        <rect key="frame" x="10" y="106" width="44" height="22"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2i-gk-scj">
+                        <rect key="frame" x="8" y="106" width="44" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Blu-7o-Vq7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="3D0-Wp-Rco"/>
                     <constraint firstItem="WBx-Q4-Iv8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="4YE-Yf-JbP"/>
+                    <constraint firstItem="l2i-gk-scj" firstAttribute="centerX" secondItem="Blu-7o-Vq7" secondAttribute="centerX" id="7zb-E1-a0R"/>
                     <constraint firstItem="cQG-Ib-wHQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="Gvx-Ji-6ln"/>
+                    <constraint firstItem="71x-TO-VHW" firstAttribute="centerX" secondItem="WBx-Q4-Iv8" secondAttribute="centerX" id="I1T-YP-zzm"/>
                     <constraint firstItem="cQG-Ib-wHQ" firstAttribute="leading" secondItem="Blu-7o-Vq7" secondAttribute="trailing" constant="10" id="OFP-fd-X48"/>
                     <constraint firstAttribute="bottom" secondItem="l2i-gk-scj" secondAttribute="bottom" constant="5" id="Yje-GX-ZMO"/>
                     <constraint firstAttribute="bottom" secondItem="cQG-Ib-wHQ" secondAttribute="bottom" constant="30" id="Zj6-si-SeD"/>
-                    <constraint firstAttribute="trailing" secondItem="71x-TO-VHW" secondAttribute="trailing" constant="10" id="cUZ-3T-IIC"/>
                     <constraint firstItem="cQG-Ib-wHQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="dn4-Mu-25S"/>
                     <constraint firstItem="Blu-7o-Vq7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ecQ-aS-7Sp"/>
                     <constraint firstAttribute="trailing" secondItem="WBx-Q4-Iv8" secondAttribute="trailing" constant="10" id="ii4-Vo-BD3"/>
                     <constraint firstAttribute="bottom" secondItem="71x-TO-VHW" secondAttribute="bottom" constant="5" id="kPe-eC-2BD"/>
                     <constraint firstAttribute="trailing" secondItem="cQG-Ib-wHQ" secondAttribute="trailing" constant="60" id="oVU-Tn-vzc"/>
                     <constraint firstItem="WBx-Q4-Iv8" firstAttribute="leading" secondItem="cQG-Ib-wHQ" secondAttribute="trailing" constant="10" id="oYg-Lj-29M"/>
-                    <constraint firstItem="l2i-gk-scj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vtO-mx-6YQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
