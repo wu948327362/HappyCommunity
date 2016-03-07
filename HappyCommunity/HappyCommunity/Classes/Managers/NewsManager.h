@@ -18,7 +18,7 @@
  *
  *  @return array
  */
-- (NSMutableArray *)requestWithUrl:(NSString *)url finish:(void (^)())finish;
+- (void)requestWithUrl:(NSString *)url finish:(void (^)(NSMutableArray *array))finish;
 /** 根据数组得到数组个数*/
 - (NSInteger)countOfArray;
 

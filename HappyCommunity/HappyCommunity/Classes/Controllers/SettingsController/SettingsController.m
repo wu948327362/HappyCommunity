@@ -2,15 +2,35 @@
 //  SettingsController.m
 //  HappyCommunity
 //
-//  Created by lanou3g on 16/3/1.
+//  Created by lanou3g on 16/3/7.
 //  Copyright © 2016年 吴文涛. All rights reserved.
 //
 
 #import "SettingsController.h"
+<<<<<<< HEAD
 #import "RESideMenu.h"
+=======
+#import "EMSDK.h"
+#import "MyEMManager.h"
+#import "LoginController.h"
 
-static NSString *settingCell = @"setting_cell";
-@interface SettingsController ()
+@interface SettingsController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+
+@property (weak, nonatomic) IBOutlet UISwitch *isAutoLogin;
+
+@property (weak, nonatomic) IBOutlet UIButton *smallGame;
+
+@property (weak, nonatomic) IBOutlet UIButton *logOut;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+@property(nonatomic,strong)UIImagePickerController *picker;
+>>>>>>> a768ca294f76455de80e3f85758bf50f09882045
+
 
 @end
 
@@ -18,6 +38,7 @@ static NSString *settingCell = @"setting_cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+<<<<<<< HEAD
     
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:settingCell];
     
@@ -32,64 +53,84 @@ static NSString *settingCell = @"setting_cell";
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+=======
+    // Do any additional setup after loading the view from its nib.
+	self.nameLabel.text = [[EMClient sharedClient] currentUsername];
+	self.versionLabel.text = [[EMClient sharedClient] version];
+	
+	//初始化照片选择控制器
+	self.picker = [[UIImagePickerController alloc] init];
+	//指定代理
+	self.picker.delegate = self;
+	
+>>>>>>> a768ca294f76455de80e3f85758bf50f09882045
+}
+
+//设置是否免打扰
+- (IBAction)isAutoLoginAction:(UISwitch *)sender {
+	
+	if (sender.isOn) {
+		[[EMClient sharedClient].pushOptions setNoDisturbStatus:EMPushNoDisturbStatusDay];
+	}else{
+		[[EMClient sharedClient].pushOptions setNoDisturbStatus:EMPushNoDisturbStatusClose];
+	}
+	
+	
+}
+
+//小游戏
+- (IBAction)smallGameAction:(UIButton *)sender {
+	
+}
+
+//注销
+- (IBAction)logOutAction:(UIButton *)sender {
+	
+	[[MyEMManager shareInstance] logoutWithFinish:^(EMError *err) {
+		if (err!=nil) {
+			[self showAlert:@"注销失败" title:@"Error"];
+		}else{
+			[[LoginController shareInstance] clearPassword];
+			[self dismissViewControllerAnimated:YES completion:nil];
+		}
+	}];
+	
+}
+
+//选取头像
+- (IBAction)imagePickAction:(UIButton *)sender {
+	
+	self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+	self.picker.allowsEditing = YES;
+	[self presentViewController:self.picker animated:YES completion:nil];
+	
+}
+
+//完成选取图片时执行
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+	self.imageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+	[self.picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+//点击取消是执行
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+	[self.picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)showAlert:(NSString *)string title:(NSString *)title{
+	UIAlertController *control = [UIAlertController alertControllerWithTitle:title message:string preferredStyle:UIAlertControllerStyleAlert];
+	
+	UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		
+	}];
+	[control addAction:action];
+	[self presentViewController:control animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Table view data source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return 10;
-	
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:settingCell forIndexPath:indexPath];
-    
-    cell.textLabel.text = @"setting";
-    
-    return cell;
-}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

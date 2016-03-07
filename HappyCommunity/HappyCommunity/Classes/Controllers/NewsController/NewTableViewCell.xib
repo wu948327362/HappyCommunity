@@ -64,7 +64,7 @@
                 <outlet property="photoView" destination="Thb-6V-Vpf" id="X6v-O8-Z9J"/>
                 <outlet property="titleLabel" destination="iRy-wh-7xF" id="Pts-mF-LwW"/>
             </connections>
-            <point key="canvasLocation" x="266.5" y="366"/>
+            <point key="canvasLocation" x="437.5" y="334"/>
         </tableViewCell>
     </objects>
 </document>

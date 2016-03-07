@@ -159,6 +159,22 @@ static MyEMManager *manager = nil;
 	});
 }
 
+//推出登陆
+- (void)logoutWithFinish:(void (^)(EMError *))finish{
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		//注销登陆
+		EMError *err = [[EMClient sharedClient] logout:YES];
+		
+		//关闭数据库
+		[[DataBaseTools SharedInstance] closeDataBase];
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			finish(err);
+		});
+		
+	});
+}
+
 @end
 
 

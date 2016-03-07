@@ -20,6 +20,7 @@
 #import "MyEMManager.h"
 #import "LoginAnimatino.h"
 
+static LoginController *loginController;
 @interface LoginController ()<RESideMenuDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userField;
@@ -51,6 +52,15 @@
 	self.registerBtn.transform = CGAffineTransformMakeTranslation(-200, 0);
 	self.loginBtn.transform = CGAffineTransformMakeTranslation(400, 0);
 	
+}
+
+//单例方法
++ (instancetype)shareInstance{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		loginController = [[LoginController alloc] init];
+	});
+	return loginController;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -193,6 +203,11 @@
 //点击屏幕回收键盘
 -  (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 	[self.view endEditing:YES];
+}
+
+//将密码输入框置为空
+- (void)clearPassword{
+	self.passWordField.text = @"";
 }
 
 - (void)didReceiveMemoryWarning {
