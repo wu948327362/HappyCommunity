@@ -111,6 +111,7 @@
 		C2A9BF611C85CBC4005E19B2 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */; };
 		C2A9BF621C85CBC4005E19B2 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5E1C85CBC4005E19B2 /* password.png */; };
 		C2A9BF631C85CBC4005E19B2 /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */; };
+		C2DFEEC21C897E240024E167 /* timeline_new_status_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DFEEC11C897E240024E167 /* timeline_new_status_background@2x.png */; };
 		C2EA5B761C8703290072A24B /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B711C8703290072A24B /* RECommonFunctions.m */; };
 		C2EA5B771C8703290072A24B /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B731C8703290072A24B /* RESideMenu.m */; };
 		C2EA5B781C8703290072A24B /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B751C8703290072A24B /* UIViewController+RESideMenu.m */; };
@@ -312,6 +313,7 @@
 		C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account@2x.png"; sourceTree = "<group>"; };
 		C2A9BF5E1C85CBC4005E19B2 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
 		C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@2x.png"; sourceTree = "<group>"; };
+		C2DFEEC11C897E240024E167 /* timeline_new_status_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_new_status_background@2x.png"; sourceTree = "<group>"; };
 		C2EA5B701C8703290072A24B /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
 		C2EA5B711C8703290072A24B /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
 		C2EA5B721C8703290072A24B /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 		C21A1AFC1C86C61200CDAC7D /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
+				C2DFEEC11C897E240024E167 /* timeline_new_status_background@2x.png */,
 				C21A1AFD1C86C61200CDAC7D /* add@2x.png */,
 				C21A1AFE1C86C61200CDAC7D /* back@2x.png */,
 				C21A1AFF1C86C61200CDAC7D /* delete@2x.png */,
@@ -967,6 +970,7 @@
 				C24778BB1C8D662B00411370 /* setting_game.png in Resources */,
 				C24D00A21C89CD7400644B95 /* chatListCellHead.png in Resources */,
 				C21A1B2C1C87281700CDAC7D /* ChatController.xib in Resources */,
+				C2DFEEC21C897E240024E167 /* timeline_new_status_background@2x.png in Resources */,
 				C2A9BED81C85368A005E19B2 /* tabbar_Conversation_HL@2x.png in Resources */,
 				C24778AF1C8D13CD00411370 /* SettingsController.xib in Resources */,
 				C21A1AEC1C86911200CDAC7D /* group_header@2x.png in Resources */,

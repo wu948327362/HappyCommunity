@@ -31,7 +31,6 @@
     
 	[self setRect];
 	
-    [self.view addSubview:self.lac.tableView];
     [self.view addSubview:self.nec.tableView];
 	
 	[self setSegmentWithNavigation];
@@ -86,12 +85,14 @@
 - (void)segmentAction:(UISegmentedControl *)segment{
 	
 	if (segment.selectedSegmentIndex==0) {
-		
-        [self.view bringSubviewToFront:self.nec.tableView];
+        [self.lac.tableView removeFromSuperview];
+        [self.view addSubview:self.nec.tableView];
+        self.lac.label.hidden = YES;
 		
 	}else if(segment.selectedSegmentIndex==1){
 		
-        [self.view bringSubviewToFront:self.lac.tableView];
+        [self.nec.tableView removeFromSuperview];
+        [self.view addSubview:self.lac.tableView];
 	}
 	
 }

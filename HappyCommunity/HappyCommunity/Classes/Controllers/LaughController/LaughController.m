@@ -12,11 +12,17 @@
 #import <AFNetworking.h>
 #import <MJRefresh.h>
 #import "LaughTableViewCell.h"
+#import "MyViewController.h"
 static NSString *indentifil = @"mycell";
 @interface LaughController ()
 @property(nonatomic, strong)NSMutableArray *dataArray;
 @property(nonatomic, assign)CGFloat photoW;
 @property(nonatomic, assign)CGFloat photoH;
+@property(nonatomic, assign)NSInteger num;
+@property(nonatomic, strong)NSMutableArray *title1Array;
+@property(nonatomic, strong)NSMutableArray *title2Array;
+@property(nonatomic, assign)int flag;
+
 @end
 
 
@@ -29,37 +35,39 @@ static NSString *indentifil = @"mycell";
 	[self.tableView registerClass:[LaughTableViewCell class] forCellReuseIdentifier:indentifil];
     //初始化数组
     self.dataArray = [NSMutableArray array];
-    //进入界面刷新数据
-    [self loadData];
+    self.num = 0;
+//    //进入界面刷新数据
+//    [self loadData];
     //取消tableView右边的滑动条
-    self.tableView.showsVerticalScrollIndicator = NO;
+//    self.tableView.showsVerticalScrollIndicator = NO;
     //取消界面的滑动功能
 //    self.tableView.scrollEnabled = NO;
     //下拉刷新
     [self setupRefresh];
+    //上拉加载
+    [self setupPullOnLoad];
+    self.flag = 0;
+//    self.label.hidden = YES;
 	
 }
 
-#pragma mark 下拉刷新
-- (void)setupRefresh
+- (void)setupPullOnLoad
 {
-//    MJRefreshNormalHeader *head = [[MJRefreshNormalHeader alloc] init];
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
-//    self.tableView.becomeFirstResponder = NO;
-    [self.tableView.mj_header beginRefreshing];
+    self.tableView.mj_footer = [MJRefreshBackFooter footerWithRefreshingTarget:self refreshingAction:@selector(pullOnAction)];
+    [self.tableView.mj_footer beginRefreshing];
 }
 
-- (void)refreshAction
+- (void)pullOnAction
 {
-    if (_dataArray) {
-        [_dataArray removeAllObjects];
-    }
-    
+//    if (self.dataArray) {
+//        [self.dataArray removeAllObjects];
+//    }
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:laughUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSString  *str = [NSString stringWithFormat:pullUrl,++self.num];
+    [manager GET:str parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
-    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
-        NSLog(@"请求成功");
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"上拉加载请求成功");
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
         //        NSLog(@"%@", responseObject);
@@ -67,43 +75,142 @@ static NSString *indentifil = @"mycell";
             LaughModel *model = [[LaughModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             [self.dataArray addObject:model];
-            //            NSLog(@"=================%@", self.dataArray);
         }
         [self.tableView reloadData];
-        //暂停刷新
-        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败%@", error);
     }];
-
 }
-#pragma mark 加载数据方法
-- (void)loadData
+#pragma mark 下拉刷新
+- (void)setupRefresh
 {
+//    MJRefreshNormalHeader *head = [[MJRefreshNormalHeader alloc] init];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+//    [self.dataArray removeAllObjects];
+//    self.tableView.becomeFirstResponder = NO;
+    [self.tableView.mj_header beginRefreshing];
     
-//    NSString *urlString = [NSString stringWithFormat:laughUrl];
+}
+//标题数组懒加载
+- (NSMutableArray *)title1Array
+{
+    if (!_title1Array) {
+        _title1Array = [NSMutableArray array];
+    }
+    return _title1Array;
+}
+
+- (NSMutableArray *)title2Array
+{
+    if (!_title2Array) {
+        _title2Array = [NSMutableArray array];
+    }
+    return _title2Array;
+}
+
+- (void)refreshAction
+{
+
+    self.flag = 0;
+    [self.dataArray removeAllObjects];
+    [self.title1Array removeAllObjects];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:laughUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSString *str = [NSString stringWithFormat:laughUrl];
+    [manager GET:str parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
         NSLog(@"请求成功");
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
-//        NSLog(@"%@", responseObject);
+         for (NSDictionary *dic in array) {
+            LaughModel *model = [[LaughModel alloc] init];
+             [model setValuesForKeysWithDictionary:dic];
+             [self.dataArray addObject:model];
+            [self.title1Array addObject:model.title];
+        }
+        for (int i = 0; i < self.dataArray.count; i++) {
+            
+        }
+        for (NSString *str in self.title2Array) {
+            if ([self.title1Array containsObject:str]) {
+                self.flag++;
+            }
+        }
+        [self.tableView reloadData];
+        //暂停刷新
+        [self.tableView.mj_header endRefreshing];
+        
+        [self showNewLaugh:(self.title1Array.count - self.flag)];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求失败%@", error);
+        [self.tableView.mj_header endRefreshing];
+    }];
+
+}
+#pragma mark 显示刷新消息
+- (void)showNewLaugh:(NSInteger)count
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 64 - 35, CGRectGetMaxX([UIScreen mainScreen].bounds), 35)];
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background@2x.png"]];
+    if (count == 0) {
+//        NewsController *nvc = [[NewsController alloc] init];
+        label.text = @"没有数据更新";
+    
+    }else{
+        label.text = [NSString stringWithFormat:@"尊贵的主人有%ld条信息更新奥！", count];
+    }
+    self.label = label;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.tintColor = [UIColor blueColor];
+    label.font = [UIFont systemFontOfSize:15];
+//    MyViewController *mvc = [[MyViewController alloc] init];
+    [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
+    [UIView animateWithDuration:2 animations:^{
+        label.transform = CGAffineTransformMakeTranslation(0, label.frame.size.height);
+        
+    } completion:^(BOOL finished) {
+        
+        
+        [UIView animateWithDuration:1.0 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            label.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            //最后从父视图中去掉
+            [label removeFromSuperview];
+        }];
+    }];
+    
+}
+
+#pragma mark 加载数据方法
+- (void)loadData
+{
+    self.label.hidden = YES;
+    [self.title2Array removeAllObjects];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:laughUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+        NSLog(@"请求成功");
+//        [self.dataArray removeAllObjects];
+        NSMutableArray *array = [NSMutableArray array];
+        [array addObjectsFromArray:responseObject[@"value"]];
         for (NSDictionary *dic in array) {
             LaughModel *model = [[LaughModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             [self.dataArray addObject:model];
-//            NSLog(@"=================%@", self.dataArray);
+            [self.title2Array addObject:model.title];
         }
         [self.tableView reloadData];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败%@", error);
     }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
