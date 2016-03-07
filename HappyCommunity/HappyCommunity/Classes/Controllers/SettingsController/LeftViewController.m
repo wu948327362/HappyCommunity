@@ -28,7 +28,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     
     self.view.backgroundColor = [UIColor yellowColor];
     
-    _lefs = @[@"首页", @"客服热线", @"用户反馈"];
+    _lefs = @[@"新闻和笑话", @"关于app", @"客服呈上"];
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width - 64);
     _tableView.dataSource = self;
@@ -91,7 +91,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     else if(indexPath.row == 1){
         ServiceViewController *service = [[ServiceViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:service];
-    }else if(indexPath.row == 3){
+    }else if(indexPath.row == 2){
         SettingViewController *setting = [[SettingViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:setting];
     }else{

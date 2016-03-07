@@ -18,6 +18,9 @@
 
 
 
+#import <MJRefresh.h>
+
+
 @interface NewsController ()
 /**
  *  创建可变数组来接受管理类请求的数据
@@ -49,7 +52,10 @@ static NSString *newsCell = @"mycell";
     //注册XIB拖得cell
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     //初始化数组
+
     self.data1 = [NSMutableArray array];
+
+	
     self.number = 1;
     [self setupDownRefresh];
     //上拉加载方法
@@ -98,6 +104,10 @@ static NSString *newsCell = @"mycell";
 
 }
 #pragma mark 加载数据方法
+
+
+
+
 - (void)loadData
 {
     NSString *urlString = [NSString stringWithFormat:newsRefresh,1];

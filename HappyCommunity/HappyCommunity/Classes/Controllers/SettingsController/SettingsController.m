@@ -7,6 +7,9 @@
 //
 
 #import "SettingsController.h"
+
+#import "RESideMenu.h"
+#import "BirdFlyViewController.h"
 #import "EMSDK.h"
 #import "MyEMManager.h"
 #import "LoginController.h"
@@ -28,21 +31,33 @@
 @property(nonatomic,strong)UIImagePickerController *picker;
 
 
+
 @end
 
 @implementation SettingsController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-	self.nameLabel.text = [[EMClient sharedClient] currentUsername];
-	self.versionLabel.text = [[EMClient sharedClient] version];
-	
-	//初始化照片选择控制器
-	self.picker = [[UIImagePickerController alloc] init];
-	//指定代理
-	self.picker.delegate = self;
-	
+    
+    self.nameLabel.text = [[EMClient sharedClient] currentUsername];
+    self.versionLabel.text = [[EMClient sharedClient] version];
+    
+    // 初始化照片选择控制器
+    self.picker = [[UIImagePickerController alloc] init];
+    // 指定代理
+    self.picker.delegate = self;
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
+}
+
+#pragma mark - Configuring the view’s layout behavior
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 //设置是否免打扰
@@ -59,7 +74,8 @@
 
 //小游戏
 - (IBAction)smallGameAction:(UIButton *)sender {
-	
+    BirdFlyViewController *bfvc = [[BirdFlyViewController alloc] init];
+    [self.navigationController pushViewController:bfvc animated:YES];
 }
 
 //注销
