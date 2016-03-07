@@ -9,7 +9,7 @@
 #import "SettingsController.h"
 
 #import "RESideMenu.h"
-
+#import "BirdFlyViewController.h"
 #import "EMSDK.h"
 #import "MyEMManager.h"
 #import "LoginController.h"
@@ -38,9 +38,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
-	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:settingCell];
+    self.nameLabel.text = [[EMClient sharedClient] currentUsername];
+    self.versionLabel.text = [[EMClient sharedClient] version];
+    
+    // 初始化照片选择控制器
+    self.picker = [[UIImagePickerController alloc] init];
+    // 指定代理
+    self.picker.delegate = self;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
 }
@@ -53,17 +58,6 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
-
-    // Do any additional setup after loading the view from its nib.
-	self.nameLabel.text = [[EMClient sharedClient] currentUsername];
-	self.versionLabel.text = [[EMClient sharedClient] version];
-	
-	//初始化照片选择控制器
-	self.picker = [[UIImagePickerController alloc] init];
-	//指定代理
-	self.picker.delegate = self;
-	
-
 }
 
 //设置是否免打扰
@@ -80,7 +74,8 @@
 
 //小游戏
 - (IBAction)smallGameAction:(UIButton *)sender {
-	
+    BirdFlyViewController *bfvc = [[BirdFlyViewController alloc] init];
+    [self.navigationController pushViewController:bfvc animated:YES];
 }
 
 //注销

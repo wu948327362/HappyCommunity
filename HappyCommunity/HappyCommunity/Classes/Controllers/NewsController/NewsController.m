@@ -54,12 +54,8 @@ static NSString *newsCell = @"mycell";
     //初始化数组
 
     self.data1 = [NSMutableArray array];
-<<<<<<< HEAD
+
 	
-
-
-=======
->>>>>>> a768ca294f76455de80e3f85758bf50f09882045
     self.number = 1;
     [self setupDownRefresh];
     //上拉加载方法
