@@ -7,9 +7,9 @@
 //
 
 #import "SettingsController.h"
-<<<<<<< HEAD
+
 #import "RESideMenu.h"
-=======
+
 #import "EMSDK.h"
 #import "MyEMManager.h"
 #import "LoginController.h"
@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property(nonatomic,strong)UIImagePickerController *picker;
->>>>>>> a768ca294f76455de80e3f85758bf50f09882045
+
 
 
 @end
@@ -38,7 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-<<<<<<< HEAD
+
     
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:settingCell];
     
@@ -53,7 +53,7 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
-=======
+
     // Do any additional setup after loading the view from its nib.
 	self.nameLabel.text = [[EMClient sharedClient] currentUsername];
 	self.versionLabel.text = [[EMClient sharedClient] version];
@@ -63,7 +63,7 @@
 	//指定代理
 	self.picker.delegate = self;
 	
->>>>>>> a768ca294f76455de80e3f85758bf50f09882045
+
 }
 
 //设置是否免打扰
