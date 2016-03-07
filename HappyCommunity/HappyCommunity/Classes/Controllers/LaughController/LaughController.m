@@ -114,14 +114,14 @@ static NSString *indentifil = @"mycell";
 {
 
     self.flag = 0;
-    [self.dataArray removeAllObjects];
-    [self.title1Array removeAllObjects];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *str = [NSString stringWithFormat:laughUrl];
     [manager GET:str parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
         NSLog(@"请求成功");
+        [self.dataArray removeAllObjects];
+        [self.title1Array removeAllObjects];
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
          for (NSDictionary *dic in array) {
