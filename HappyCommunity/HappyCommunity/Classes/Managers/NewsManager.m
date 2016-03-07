@@ -45,44 +45,37 @@ static NewsManager *manager = nil;
  *
  *  @return NSMutableArray
  */
-- (NSMutableArray *)requestWithUrl:(NSString *)url finish:(void (^)())finish
+- (void)requestWithUrl:(NSString *)url finish:(void (^)(NSMutableArray *))finish
 {
-    
-//    [self.data removeAllObjects];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * responseObject) {
-        NSLog(@"请求成功");
-        
-        NSArray *arr = responseObject[@"itemList"];
-        
-        for (NSDictionary *d in arr) {
-            NewsModel *model = [[NewsModel alloc] init];
-            NSDictionary *dic = d[@"itemImage"];
-            model.imgUrl1 = dic[@"imgUrl1"];
-            model.itemTitle = d[@"itemTitle"];
-            model.detailUrl = d[@"detailUrl"];
-            model.itemType = d[@"itemType"];
-            [self.data addObject:model];
-            if ([model.itemType isEqualToString:@"classtopic_flag"]) {
-            [self.data removeObject:model];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * responseObject) {
+            NSLog(@"请求成功");
+            
+            NSArray *arr = responseObject[@"itemList"];
+            
+            for (NSDictionary *d in arr) {
+                NewsModel *model = [[NewsModel alloc] init];
+                NSDictionary *dic = d[@"itemImage"];
+                model.imgUrl1 = dic[@"imgUrl1"];
+                model.itemTitle = d[@"itemTitle"];
+                model.detailUrl = d[@"detailUrl"];
+                model.itemType = d[@"itemType"];
+                if (!([model.itemType isEqualToString:@"classtopic_flag"] || [model.itemTitle isEqualToString:@"如您看到此提示，请升级客户端到最新版本"])) {
+                    [self.data addObject:model];
+                }
             }
             
-            if ([model.itemTitle isEqualToString:@"如您看到此提示，请升级客户端到最新版本"]) {
-                [self.data removeObject:model];
-            }
-        }
-        
-        finish();
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败%@", error);
-    }];
+            finish(self.data);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"请求失败%@", error);
+        }];
+
+    });
     
-    
-    
-    return self.data;
 }
 
 /**
@@ -99,6 +92,11 @@ static NewsManager *manager = nil;
 - (NewsModel *)getModelWithIndex:(NSInteger)index
 {
     NewsModel *model = self.data[index];
+    if (self.data.count>=index) {
+        return model;
+    }else{
+        return nil;
+    }
     return model;
 }
 @end

@@ -19,6 +19,9 @@ static NSString *indentifil = @"mycell";
 @property(nonatomic, assign)CGFloat photoW;
 @property(nonatomic, assign)CGFloat photoH;
 @property(nonatomic, assign)NSInteger num;
+@property(nonatomic, strong)NSMutableArray *title1Array;
+@property(nonatomic, strong)NSMutableArray *title2Array;
+@property(nonatomic, assign)int flag;
 
 @end
 
@@ -43,8 +46,8 @@ static NSString *indentifil = @"mycell";
     [self setupRefresh];
     //上拉加载
     [self setupPullOnLoad];
-    
-    
+    self.flag = 0;
+//    self.label.hidden = YES;
 	
 }
 
@@ -90,41 +93,56 @@ static NSString *indentifil = @"mycell";
     [self.tableView.mj_header beginRefreshing];
     
 }
+//标题数组懒加载
+- (NSMutableArray *)title1Array
+{
+    if (!_title1Array) {
+        _title1Array = [NSMutableArray array];
+    }
+    return _title1Array;
+}
+
+- (NSMutableArray *)title2Array
+{
+    if (!_title2Array) {
+        _title2Array = [NSMutableArray array];
+    }
+    return _title2Array;
+}
 
 - (void)refreshAction
 {
-//    ;
+
+    self.flag = 0;
+    [self.dataArray removeAllObjects];
+    [self.title1Array removeAllObjects];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *str = [NSString stringWithFormat:laughUrl];
     [manager GET:str parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
         NSLog(@"请求成功");
-//        [self.dataArray removeAllObjects];
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
-        
-        NSMutableArray *newLaught = [NSMutableArray array];
-        
-        //        NSLog(@"%@", responseObject);
-        for (NSDictionary *dic in array) {
+         for (NSDictionary *dic in array) {
             LaughModel *model = [[LaughModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic];
-            [newLaught addObject:model];
-            //            NSLog(@"=================%@", self.dataArray);
+             [model setValuesForKeysWithDictionary:dic];
+             [self.dataArray addObject:model];
+            [self.title1Array addObject:model.title];
+        }
+        for (int i = 0; i < self.dataArray.count; i++) {
+            
+        }
+        for (NSString *str in self.title2Array) {
+            if ([self.title1Array containsObject:str]) {
+                self.flag++;
+            }
         }
         [self.tableView reloadData];
         //暂停刷新
         [self.tableView.mj_header endRefreshing];
-        NSRange range = NSMakeRange(0, newLaught.count);
-        NSIndexSet *set = [[NSIndexSet alloc] initWithIndexesInRange:range];
-        [self.dataArray insertObjects:newLaught atIndexes:set];
-        if (self.dataArray == nil) {
-            [self loadData];
-            self.label.text = @"没有任何消息更新";
-        }
-        //显示刷新的笑话数
-        [self showNewLaugh:self.dataArray.count];
+        
+        [self showNewLaugh:(self.title1Array.count - self.flag)];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败%@", error);
         [self.tableView.mj_header endRefreshing];
@@ -138,11 +156,12 @@ static NSString *indentifil = @"mycell";
     label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background@2x.png"]];
     if (count == 0) {
 //        NewsController *nvc = [[NewsController alloc] init];
-        
+        label.text = @"没有数据更新";
     
     }else{
         label.text = [NSString stringWithFormat:@"尊贵的主人有%ld条信息更新奥！", count];
     }
+    self.label = label;
     label.textAlignment = NSTextAlignmentCenter;
     label.tintColor = [UIColor blueColor];
     label.font = [UIFont systemFontOfSize:15];
@@ -167,19 +186,24 @@ static NSString *indentifil = @"mycell";
 #pragma mark 加载数据方法
 - (void)loadData
 {
+    self.label.hidden = YES;
+    [self.title2Array removeAllObjects];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:laughUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
         NSLog(@"请求成功");
+//        [self.dataArray removeAllObjects];
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
         for (NSDictionary *dic in array) {
             LaughModel *model = [[LaughModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             [self.dataArray addObject:model];
+            [self.title2Array addObject:model.title];
         }
         [self.tableView reloadData];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败%@", error);
     }];

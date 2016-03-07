@@ -24,27 +24,35 @@ static DataBaseTools *handler;
     if (handler==nil) {
         handler = [[DataBaseTools alloc] init];
 		
+		[handler openDataBase];
+		[handler createTable];
+		//设置接收消息代理,并设置接受消息代理方法.
+		[[EMClient sharedClient].chatManager addDelegate:handler delegateQueue:nil];
+		[[EMClient sharedClient].groupManager addDelegate:handler delegateQueue:nil];
+		AppDelegate *app = [UIApplication sharedApplication].delegate;
+		handler.context = app.managedObjectContext;
     }
     return handler;
 }
 
-//重写init方法
-- (instancetype)init{
-	self = [super init];
-	if (self) {
-		[self initProperties];
-	}
-	return self;
-}
-
-- (void)initProperties{
-	[self openDataBase];
-	[self createTable];
-	//设置接收消息代理,并设置接受消息代理方法.
-	[[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
-	AppDelegate *app = [UIApplication sharedApplication].delegate;
-	self.context = app.managedObjectContext;
-}
+////重写init方法
+//- (instancetype)init{
+//	self = [super init];
+//	if (self) {
+//		[self initProperties];
+//	}
+//	return self;
+//}
+//
+//- (void)initProperties{
+//	[self openDataBase];
+//	[self createTable];
+//	//设置接收消息代理,并设置接受消息代理方法.
+//	[[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+//	[[EMClient sharedClient].groupManager addDelegate:self delegateQueue:nil];
+//	AppDelegate *app = [UIApplication sharedApplication].delegate;
+//	self.context = app.managedObjectContext;
+//}
 
 static sqlite3 *dataBase;
 
@@ -257,7 +265,7 @@ static sqlite3 *dataBase;
 	if (flag==0) {
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(from==%@ AND to==%@) OR (from==%@ AND to==%@)",currentUser,receiverId,receiverId,currentUser];
 		[fetchRequest setPredicate:predicate];
-	}else if(flag==1||flag==2){
+	}else if(flag==1){
 		NSArray *arr = [receiverId componentsSeparatedByString:@":"];
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"to==%@",[arr firstObject]];
 		[fetchRequest setPredicate:predicate];
@@ -276,7 +284,6 @@ static sqlite3 *dataBase;
 	for (MessageModel *model in fetchedObjects) {
 		[data addObject:model];
 	}
-	
 	return data;
 	
 }
@@ -284,6 +291,7 @@ static sqlite3 *dataBase;
 //收到某人的加群申请.如果是好友则默认可以进入该群在否则等待群主的验证.
 - (void)didReceiveJoinGroupApplication:(EMGroup *)aGroup applicant:(NSString *)aApplicant reason:(NSString *)aReason{
 	
+	NSLog(@"%@===%@====%@",aGroup.groupId,aReason,aApplicant);
 	//判断是否是好友.
 	BOOL isFriend = [handler isExitsUserWithName:aApplicant];
 	
