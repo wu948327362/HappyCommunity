@@ -152,6 +152,10 @@ static NSString *chatCell = @"chat_cell";
 	return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+	return 0.001;
+}
+
 //由于约束生效等问题只能将设置cell的圆角等操作放在这里.
 - (ChatTableViewCell *)setCellAttrinbutes:(ChatTableViewCell *)cell{
 	//设置圆角

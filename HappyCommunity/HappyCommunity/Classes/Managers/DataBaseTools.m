@@ -307,6 +307,34 @@ static sqlite3 *dataBase;
 	
 }
 
+//获取文件(Documents)路径,然后设置图片缓存路径.
+- (NSString *)filePath{
+	//设置图片缓存路径
+	NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+	NSString *filePath = [docPath stringByAppendingString:@"/icon.png"];
+	return filePath;
+}
+
+//获取缓存的图片
+- (id)getCachePicture{
+	
+	//获取图片缓存路径
+	NSString *filePath = [self filePath];
+	
+	return [UIImage imageWithContentsOfFile:filePath];
+	
+}
+
+//缓存图片
+- (void)cachePictureWithImage:(UIImage *)image{
+	
+	//根据图片缓存路径,缓存图片
+	NSString *filePath = [self filePath];
+	
+	[UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
+	
+}
+
 @end
 
 
