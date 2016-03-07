@@ -113,7 +113,13 @@ static NSString *conCell = @"contact_cell";
 					}
 				});
 			}else if (self.flag==2){
-				[[EMClient sharedClient].groupManager applyJoinPublicGroup:[arr firstObject] message:[NSString stringWithFormat:@"%@申请加入群聊",[[EMClient sharedClient] currentUsername]] error:nil];
+				EMError *err = nil;
+				[[EMClient sharedClient].groupManager applyJoinPublicGroup:[arr firstObject] message:[NSString stringWithFormat:@"%@申请加入群聊",[[EMClient sharedClient] currentUsername]] error:&err];
+				dispatch_async(dispatch_get_main_queue(), ^{
+					if (!err) {
+						NSLog(@"%@",err);
+					}
+				});
 			}
 			
 		});

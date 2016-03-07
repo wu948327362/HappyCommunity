@@ -9,6 +9,7 @@
 #import "AddFriendController.h"
 #import "EMSDK.h"
 #import "EMError.h"
+#import "MyEMManager.h"
 
 @interface AddFriendController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -37,18 +38,15 @@
 			
 			__weak typeof(self) weakself = self;
 			
-			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-				EMError *error = [[EMClient sharedClient].contactManager addContact:self.nameField.text message:self.messageField.text];
-				
-				dispatch_async(dispatch_get_main_queue(), ^{
-					if (!error) {
-						[weakself showAlert:@"好友请求已发送" title:@"成功"];
-					}else{
-						[weakself showAlert:@"添加失败" title:@"失败"];
-					}
-				});
-				
-			});
+			[[MyEMManager shareInstance] addFriendWithName:self.nameField.text message:self.messageField.text finish:^(EMError *err) {
+				if (!err) {
+					[weakself showAlert:@"好友请求已发送" title:@"成功"];
+					self.nameField.text = @"";
+					self.messageField.text = @"";
+				}else{
+					[weakself showAlert:@"添加失败" title:@"失败"];
+				}
+			}];
 			
 		}else{
 			[self showAlert:@"请输入用户名" title:@"Error"];
@@ -59,22 +57,15 @@
 			
 			__weak typeof(self) weakself = self;
 			
-			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-				EMError *error = nil;
-				EMGroupOptions *options = [[EMGroupOptions alloc] init];
-				options.maxUsersCount = 100;
-				options.style = EMGroupStylePublicOpenJoin;
-				[[EMClient sharedClient].groupManager createGroupWithSubject:self.nameField.text description:self.messageField.text invitees:nil message:self.messageField.text setting:options error:&error];
-				
-				dispatch_async(dispatch_get_main_queue(), ^{
-					if (!error) {
-						[weakself showAlert:@"创建群聊成功" title:@"成功"];
-					}else{
-						[weakself showAlert:@"创建群聊失败" title:@"失败"];
-					}
-				});
-				
-			});
+			[[MyEMManager shareInstance] addGroupWithName:self.nameField.text message:self.messageField.text finish:^(EMError *err) {
+				if (!err) {
+					[weakself showAlert:@"创建群聊成功" title:@"成功"];
+					self.nameField.text = @"";
+					self.messageField.text = @"";
+				}else{
+					[weakself showAlert:@"创建群聊失败" title:@"失败"];
+				}
+			}];
 			
 		}else{
 			[self showAlert:@"请输入群名称" title:@"Error"];
