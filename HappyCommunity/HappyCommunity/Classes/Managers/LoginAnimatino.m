@@ -9,11 +9,11 @@
 #import "LoginAnimatino.h"
 
 
-static CGFloat bottomLineWidth = 275;
+#define BottomlineWidth ([UIScreen mainScreen].bounds.size.width - 140)
 @implementation LoginAnimatino
 
 + (void)labelAnimationWithLabel:(NSLayoutConstraint *)constraint view:(UIView *)view{
-	constraint.constant = bottomLineWidth;
+	constraint.constant = BottomlineWidth;
 	
 	[UIView animateWithDuration:1.5 animations:^{
 		[view layoutIfNeeded];

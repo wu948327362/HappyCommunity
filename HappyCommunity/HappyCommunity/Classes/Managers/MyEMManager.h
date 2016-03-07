@@ -31,6 +31,9 @@
 //创建群组
 - (void)addGroupWithName:(NSString *)name message:(NSString *)message finish:(void(^)(EMError *err))finish;
 
+//退出当前登陆
+- (void)logoutWithFinish:(void(^)(EMError *err))finish;
+
 @end
 
 
