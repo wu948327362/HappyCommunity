@@ -131,8 +131,9 @@ static NSString *newsCell = @"mycell";
 #pragma mark 设置cell的点击响应事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NewTableViewCell *cell = [[NewTableViewCell alloc] init];
-    cell.Model = self.data1[indexPath.row];;
+    cell.Model = self.data1[indexPath.row];
     WebViewViewController *webV = [[WebViewViewController alloc] init];
+	NSLog(@"%@",cell.Model.detailUrl);
     webV.url = cell.Model.detailUrl;
     [self.navigationController pushViewController:webV animated:YES];
     self.tabBarController.tabBar.hidden = YES;

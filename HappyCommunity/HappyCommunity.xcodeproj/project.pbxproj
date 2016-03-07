@@ -41,6 +41,9 @@
 		C24778BA1C8D662B00411370 /* setting_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = C24778B81C8D662B00411370 /* setting_logout.png */; };
 		C24778BB1C8D662B00411370 /* setting_game.png in Resources */ = {isa = PBXBuildFile; fileRef = C24778B91C8D662B00411370 /* setting_game.png */; };
 		C24778BD1C8D71D200411370 /* setting_nodisturb.png in Resources */ = {isa = PBXBuildFile; fileRef = C24778BC1C8D71D200411370 /* setting_nodisturb.png */; };
+		C24778C11C8D9B0900411370 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = C24778BE1C8D9B0900411370 /* logout.png */; };
+		C24778C21C8D9B0900411370 /* game.png in Resources */ = {isa = PBXBuildFile; fileRef = C24778BF1C8D9B0900411370 /* game.png */; };
+		C24778C31C8D9B0900411370 /* troublefree.png in Resources */ = {isa = PBXBuildFile; fileRef = C24778C01C8D9B0900411370 /* troublefree.png */; };
 		C24D009A1C89BC9F00644B95 /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C24D00981C89BC9F00644B95 /* ChatTableViewCell.m */; };
 		C24D009B1C89BC9F00644B95 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24D00991C89BC9F00644B95 /* ChatTableViewCell.xib */; };
 		C24D009E1C89BF9800644B95 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C24D009D1C89BF9800644B95 /* ChatModel.m */; };
@@ -172,6 +175,9 @@
 		C24778B81C8D662B00411370 /* setting_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_logout.png; sourceTree = "<group>"; };
 		C24778B91C8D662B00411370 /* setting_game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_game.png; sourceTree = "<group>"; };
 		C24778BC1C8D71D200411370 /* setting_nodisturb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_nodisturb.png; sourceTree = "<group>"; };
+		C24778BE1C8D9B0900411370 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
+		C24778BF1C8D9B0900411370 /* game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game.png; sourceTree = "<group>"; };
+		C24778C01C8D9B0900411370 /* troublefree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = troublefree.png; sourceTree = "<group>"; };
 		C24D00971C89BC9F00644B95 /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
 		C24D00981C89BC9F00644B95 /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
 		C24D00991C89BC9F00644B95 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
@@ -436,6 +442,9 @@
 		C24778B71C8D661E00411370 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				C24778BE1C8D9B0900411370 /* logout.png */,
+				C24778BF1C8D9B0900411370 /* game.png */,
+				C24778C01C8D9B0900411370 /* troublefree.png */,
 				C24778BC1C8D71D200411370 /* setting_nodisturb.png */,
 				C24778B81C8D662B00411370 /* setting_logout.png */,
 				C24778B91C8D662B00411370 /* setting_game.png */,
@@ -976,6 +985,7 @@
 				C21A1AEC1C86911200CDAC7D /* group_header@2x.png in Resources */,
 				C2A9BF601C85CBC4005E19B2 /* account.png in Resources */,
 				C2FAE07C1C882498007A8FBF /* LaughTableViewCell.xib in Resources */,
+				C24778C11C8D9B0900411370 /* logout.png in Resources */,
 				C21A1AEB1C86911200CDAC7D /* group_creategroup@2x.png in Resources */,
 				C21A1AEF1C86911200CDAC7D /* group_participant_add@2x.png in Resources */,
 				C29CCD641C852A4800AB68E6 /* LaunchScreen.storyboard in Resources */,
@@ -985,6 +995,7 @@
 				C21A1AF31C86911200CDAC7D /* nav_createGroup@2x.png in Resources */,
 				C24D009B1C89BC9F00644B95 /* ChatTableViewCell.xib in Resources */,
 				C2A9BED71C85368A005E19B2 /* tabbar_Conversation@2x.png in Resources */,
+				C24778C21C8D9B0900411370 /* game.png in Resources */,
 				C21A1B031C86C61200CDAC7D /* add@2x.png in Resources */,
 				C21A1AF41C86911200CDAC7D /* newFriends@2x.png in Resources */,
 				C21A1B0D1C86D18300CDAC7D /* AddFriendController.xib in Resources */,
@@ -996,6 +1007,7 @@
 				C2A9BF5A1C85CB4C005E19B2 /* LoginController.xib in Resources */,
 				C21A1AEE1C86911200CDAC7D /* group_joinpublicgroup@2x.png in Resources */,
 				C2A9BF621C85CBC4005E19B2 /* password.png in Resources */,
+				C24778C31C8D9B0900411370 /* troublefree.png in Resources */,
 				C21A1AED1C86911200CDAC7D /* group_invitee_delete@2x.png in Resources */,
 				C2A9BF631C85CBC4005E19B2 /* password@2x.png in Resources */,
 				C2A9BED91C85368A005E19B2 /* tabbar_setting@2x.png in Resources */,
