@@ -19,9 +19,6 @@ static NSString *indentifil = @"mycell";
 @property(nonatomic, assign)CGFloat photoW;
 @property(nonatomic, assign)CGFloat photoH;
 @property(nonatomic, assign)NSInteger num;
-@property(nonatomic, strong)NSMutableArray *title1Array;
-@property(nonatomic, strong)NSMutableArray *title2Array;
-@property(nonatomic, assign)int flag;
 
 @end
 
@@ -36,17 +33,11 @@ static NSString *indentifil = @"mycell";
     //初始化数组
     self.dataArray = [NSMutableArray array];
     self.num = 0;
-//    //进入界面刷新数据
-//    [self loadData];
-    //取消tableView右边的滑动条
-//    self.tableView.showsVerticalScrollIndicator = NO;
-    //取消界面的滑动功能
-//    self.tableView.scrollEnabled = NO;
+
     //下拉刷新
     [self setupRefresh];
     //上拉加载
     [self setupPullOnLoad];
-    self.flag = 0;
 //    self.label.hidden = YES;
 	
 }
@@ -59,9 +50,7 @@ static NSString *indentifil = @"mycell";
 
 - (void)pullOnAction
 {
-//    if (self.dataArray) {
-//        [self.dataArray removeAllObjects];
-//    }
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString  *str = [NSString stringWithFormat:pullUrl,++self.num];
     [manager GET:str parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -70,6 +59,7 @@ static NSString *indentifil = @"mycell";
         NSLog(@"上拉加载请求成功");
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
+		
         //        NSLog(@"%@", responseObject);
         for (NSDictionary *dic in array) {
             LaughModel *model = [[LaughModel alloc] init];
@@ -93,56 +83,48 @@ static NSString *indentifil = @"mycell";
     [self.tableView.mj_header beginRefreshing];
     
 }
-//标题数组懒加载
-- (NSMutableArray *)title1Array
-{
-    if (!_title1Array) {
-        _title1Array = [NSMutableArray array];
-    }
-    return _title1Array;
-}
-
-- (NSMutableArray *)title2Array
-{
-    if (!_title2Array) {
-        _title2Array = [NSMutableArray array];
-    }
-    return _title2Array;
-}
 
 - (void)refreshAction
 {
-
-    self.flag = 0;
-    [self.dataArray removeAllObjects];
-    [self.title1Array removeAllObjects];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *str = [NSString stringWithFormat:laughUrl];
     [manager GET:str parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
         NSLog(@"请求成功");
+
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
-         for (NSDictionary *dic in array) {
-            LaughModel *model = [[LaughModel alloc] init];
-             [model setValuesForKeysWithDictionary:dic];
-             [self.dataArray addObject:model];
-            [self.title1Array addObject:model.title];
-        }
-        for (int i = 0; i < self.dataArray.count; i++) {
-            
-        }
-        for (NSString *str in self.title2Array) {
-            if ([self.title1Array containsObject:str]) {
-                self.flag++;
-            }
-        }
-        [self.tableView reloadData];
-        //暂停刷新
-        [self.tableView.mj_header endRefreshing];
-        
-        [self showNewLaugh:(self.title1Array.count - self.flag)];
+		
+		NSInteger a = array.count;
+		NSMutableArray *modelArray = [NSMutableArray array];
+		
+		for (NSDictionary *dic in array) {
+			LaughModel *model = [[LaughModel alloc] init];
+			[model setValuesForKeysWithDictionary:dic];
+			[modelArray addObject:model];
+			
+			for (LaughModel *m in self.dataArray) {
+				if ([m.title isEqualToString:model.title]) {
+					a--;
+				}
+			}
+			
+		}
+		
+		if (a>0) {
+			[self.dataArray removeAllObjects];
+			[self.dataArray addObjectsFromArray:modelArray];
+		}
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self.tableView reloadData];
+			//暂停刷新
+			[self.tableView.mj_header endRefreshing];
+			
+			[self showNewLaugh:a];
+		});
+		
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败%@", error);
         [self.tableView.mj_header endRefreshing];
@@ -187,20 +169,18 @@ static NSString *indentifil = @"mycell";
 - (void)loadData
 {
     self.label.hidden = YES;
-    [self.title2Array removeAllObjects];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:laughUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
         NSLog(@"请求成功");
-//        [self.dataArray removeAllObjects];
+
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
         for (NSDictionary *dic in array) {
             LaughModel *model = [[LaughModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             [self.dataArray addObject:model];
-            [self.title2Array addObject:model.title];
         }
         [self.tableView reloadData];
         
@@ -233,8 +213,6 @@ static NSString *indentifil = @"mycell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
     return self.photoH + 50;
 }
 /*
