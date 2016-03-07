@@ -59,8 +59,6 @@ static NSString *newsCell = @"mycell";
 - (void)setupRefresh
 {
     self.tableView.mj_footer = [MJRefreshBackFooter footerWithRefreshingTarget:self refreshingAction:@selector(unRefreshAction:)];
-    LaughController *lav = [[LaughController alloc] init];
-    lav.label.hidden = YES;
 }
 
 - (void)unRefreshAction:(UIRefreshControl *)refresh

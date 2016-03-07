@@ -27,7 +27,7 @@
 	[self.window makeKeyAndVisible];
 	
 	//登陆界面
-	LoginController *loc = [[LoginController alloc] init];
+	LoginController *loc = [LoginController shareInstance];
 	
 	//设置环信相关参数
 	//AppKey:注册的appKey，详细见下面注释。

@@ -99,6 +99,8 @@ static NSString *chatCell = @"chat_cell";
 	rect.size.height = rect.size.height - height + tab;
 	self.view.frame = rect;
 	
+	[self updateMessages:self.flag];
+	
 }
 
 //键盘退出时调用
