@@ -13,6 +13,7 @@
 #import "EMSDK.h"
 #import "MyEMManager.h"
 #import "LoginController.h"
+#import "DataBaseTools.h"
 
 @interface SettingsController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -30,7 +31,7 @@
 
 @property(nonatomic,strong)UIImagePickerController *picker;
 
-
+@property(nonatomic,strong)NSString *picturePath;
 
 @end
 
@@ -48,6 +49,10 @@
     self.picker.delegate = self;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
+	
+	//获取缓存的图片
+	self.imageView.image = [[DataBaseTools SharedInstance] getCachePicture];
+	
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -105,12 +110,15 @@
 	self.picker.allowsEditing = YES;
 	[self presentViewController:self.picker animated:YES completion:nil];
 	
+	
 }
 
 //完成选取图片时执行
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
 	self.imageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
 	[self.picker dismissViewControllerAnimated:YES completion:nil];
+	//缓存图片
+	[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image];
 }
 
 //点击取消是执行
