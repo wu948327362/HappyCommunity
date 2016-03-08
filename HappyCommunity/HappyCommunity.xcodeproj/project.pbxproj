@@ -120,6 +120,25 @@
 		C2A9BF611C85CBC4005E19B2 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */; };
 		C2A9BF621C85CBC4005E19B2 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5E1C85CBC4005E19B2 /* password.png */; };
 		C2A9BF631C85CBC4005E19B2 /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */; };
+		C2B74CB31C8F0A1E00DC3BFD /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74C9F1C8F0A1E00DC3BFD /* about_icon.png */; };
+		C2B74CB41C8F0A1E00DC3BFD /* calendar_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA01C8F0A1E00DC3BFD /* calendar_icon.png */; };
+		C2B74CB51C8F0A1E00DC3BFD /* news_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA11C8F0A1E00DC3BFD /* news_icon.png */; };
+		C2B74CB61C8F0A1E00DC3BFD /* weather_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA21C8F0A1E00DC3BFD /* weather_icon.png */; };
+		C2B74CB71C8F0A1E00DC3BFD /* group_creategroup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA41C8F0A1E00DC3BFD /* group_creategroup@2x.png */; };
+		C2B74CB81C8F0A1E00DC3BFD /* group_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA51C8F0A1E00DC3BFD /* group_header@2x.png */; };
+		C2B74CB91C8F0A1E00DC3BFD /* group_invitee_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA61C8F0A1E00DC3BFD /* group_invitee_delete@2x.png */; };
+		C2B74CBA1C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA71C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png */; };
+		C2B74CBB1C8F0A1E00DC3BFD /* group_participant_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA81C8F0A1E00DC3BFD /* group_participant_add@2x.png */; };
+		C2B74CBC1C8F0A1E00DC3BFD /* group_participant_addHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA91C8F0A1E00DC3BFD /* group_participant_addHL@2x.png */; };
+		C2B74CBD1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAA1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png */; };
+		C2B74CBE1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAB1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png */; };
+		C2B74CBF1C8F0A1E00DC3BFD /* my_friends.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAC1C8F0A1E00DC3BFD /* my_friends.png */; };
+		C2B74CC01C8F0A1E00DC3BFD /* my_group.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAD1C8F0A1E00DC3BFD /* my_group.png */; };
+		C2B74CC11C8F0A1E00DC3BFD /* nav_createGroup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAE1C8F0A1E00DC3BFD /* nav_createGroup@2x.png */; };
+		C2B74CC21C8F0A1E00DC3BFD /* new_group.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAF1C8F0A1E00DC3BFD /* new_group.png */; };
+		C2B74CC31C8F0A1E00DC3BFD /* newFriends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CB01C8F0A1E00DC3BFD /* newFriends@2x.png */; };
+		C2B74CC41C8F0A1E00DC3BFD /* other_group.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CB11C8F0A1E00DC3BFD /* other_group.png */; };
+		C2B74CC51C8F0A1E00DC3BFD /* program_message.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CB21C8F0A1E00DC3BFD /* program_message.png */; };
 		C2DB9D821C8836CC00FA0EA9 /* NewsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF271C857AA1005E19B2 /* NewsManager.m */; };
 		C2DB9D841C883B2800FA0EA9 /* AddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DB9D831C883B2800FA0EA9 /* AddFriendController.m */; };
 		C2DB9D851C883B5500FA0EA9 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28792A41C86E3D2009C9336 /* WebViewViewController.m */; };
@@ -342,6 +361,25 @@
 		C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account@2x.png"; sourceTree = "<group>"; };
 		C2A9BF5E1C85CBC4005E19B2 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
 		C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@2x.png"; sourceTree = "<group>"; };
+		C2B74C9F1C8F0A1E00DC3BFD /* about_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_icon.png; sourceTree = "<group>"; };
+		C2B74CA01C8F0A1E00DC3BFD /* calendar_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_icon.png; sourceTree = "<group>"; };
+		C2B74CA11C8F0A1E00DC3BFD /* news_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_icon.png; sourceTree = "<group>"; };
+		C2B74CA21C8F0A1E00DC3BFD /* weather_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather_icon.png; sourceTree = "<group>"; };
+		C2B74CA41C8F0A1E00DC3BFD /* group_creategroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_creategroup@2x.png"; sourceTree = "<group>"; };
+		C2B74CA51C8F0A1E00DC3BFD /* group_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_header@2x.png"; sourceTree = "<group>"; };
+		C2B74CA61C8F0A1E00DC3BFD /* group_invitee_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_invitee_delete@2x.png"; sourceTree = "<group>"; };
+		C2B74CA71C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_joinpublicgroup@2x.png"; sourceTree = "<group>"; };
+		C2B74CA81C8F0A1E00DC3BFD /* group_participant_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_participant_add@2x.png"; sourceTree = "<group>"; };
+		C2B74CA91C8F0A1E00DC3BFD /* group_participant_addHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_participant_addHL@2x.png"; sourceTree = "<group>"; };
+		C2B74CAA1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groupPrivateHeader@2x.png"; sourceTree = "<group>"; };
+		C2B74CAB1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groupPublicHeader@2x.png"; sourceTree = "<group>"; };
+		C2B74CAC1C8F0A1E00DC3BFD /* my_friends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_friends.png; sourceTree = "<group>"; };
+		C2B74CAD1C8F0A1E00DC3BFD /* my_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_group.png; sourceTree = "<group>"; };
+		C2B74CAE1C8F0A1E00DC3BFD /* nav_createGroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_createGroup@2x.png"; sourceTree = "<group>"; };
+		C2B74CAF1C8F0A1E00DC3BFD /* new_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_group.png; sourceTree = "<group>"; };
+		C2B74CB01C8F0A1E00DC3BFD /* newFriends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newFriends@2x.png"; sourceTree = "<group>"; };
+		C2B74CB11C8F0A1E00DC3BFD /* other_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = other_group.png; sourceTree = "<group>"; };
+		C2B74CB21C8F0A1E00DC3BFD /* program_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = program_message.png; sourceTree = "<group>"; };
 		C2DB9D831C883B2800FA0EA9 /* AddFriendController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddFriendController.m; path = HappyCommunity/Classes/Controllers/CommunityController/ContactsController/AddFriendController.m; sourceTree = "<group>"; };
 		C2DFEEC11C897E240024E167 /* timeline_new_status_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_new_status_background@2x.png"; sourceTree = "<group>"; };
 		C2EA5B701C8703290072A24B /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
@@ -716,6 +754,8 @@
 		C2A9BE711C852D00005E19B2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2B74C9E1C8F0A1E00DC3BFD /* chatIconAndLeftIcon */,
+				C2B74CA31C8F0A1E00DC3BFD /* other */,
 				C29942731C8EBF38002DE866 /* weather */,
 				C23954DF1C8D9A5900A1FC69 /* play */,
 				C24778B71C8D661E00411370 /* Settings */,
@@ -953,6 +993,39 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		C2B74C9E1C8F0A1E00DC3BFD /* chatIconAndLeftIcon */ = {
+			isa = PBXGroup;
+			children = (
+				C2B74C9F1C8F0A1E00DC3BFD /* about_icon.png */,
+				C2B74CA01C8F0A1E00DC3BFD /* calendar_icon.png */,
+				C2B74CA11C8F0A1E00DC3BFD /* news_icon.png */,
+				C2B74CA21C8F0A1E00DC3BFD /* weather_icon.png */,
+			);
+			path = chatIconAndLeftIcon;
+			sourceTree = "<group>";
+		};
+		C2B74CA31C8F0A1E00DC3BFD /* other */ = {
+			isa = PBXGroup;
+			children = (
+				C2B74CA41C8F0A1E00DC3BFD /* group_creategroup@2x.png */,
+				C2B74CA51C8F0A1E00DC3BFD /* group_header@2x.png */,
+				C2B74CA61C8F0A1E00DC3BFD /* group_invitee_delete@2x.png */,
+				C2B74CA71C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png */,
+				C2B74CA81C8F0A1E00DC3BFD /* group_participant_add@2x.png */,
+				C2B74CA91C8F0A1E00DC3BFD /* group_participant_addHL@2x.png */,
+				C2B74CAA1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png */,
+				C2B74CAB1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png */,
+				C2B74CAC1C8F0A1E00DC3BFD /* my_friends.png */,
+				C2B74CAD1C8F0A1E00DC3BFD /* my_group.png */,
+				C2B74CAE1C8F0A1E00DC3BFD /* nav_createGroup@2x.png */,
+				C2B74CAF1C8F0A1E00DC3BFD /* new_group.png */,
+				C2B74CB01C8F0A1E00DC3BFD /* newFriends@2x.png */,
+				C2B74CB11C8F0A1E00DC3BFD /* other_group.png */,
+				C2B74CB21C8F0A1E00DC3BFD /* program_message.png */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
 		C2EA5B6F1C8703290072A24B /* RESideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1053,29 +1126,43 @@
 				C2DFEEC21C897E240024E167 /* timeline_new_status_background@2x.png in Resources */,
 				C2A9BED81C85368A005E19B2 /* tabbar_Conversation_HL@2x.png in Resources */,
 				C24778AF1C8D13CD00411370 /* SettingsController.xib in Resources */,
+				C2B74CC11C8F0A1E00DC3BFD /* nav_createGroup@2x.png in Resources */,
+				C2B74CC41C8F0A1E00DC3BFD /* other_group.png in Resources */,
 				C21A1AEC1C86911200CDAC7D /* group_header@2x.png in Resources */,
+				C2B74CBE1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png in Resources */,
 				C2A9BF601C85CBC4005E19B2 /* account.png in Resources */,
 				C2FAE07C1C882498007A8FBF /* LaughTableViewCell.xib in Resources */,
 				C24778C11C8D9B0900411370 /* logout.png in Resources */,
+				C2B74CB51C8F0A1E00DC3BFD /* news_icon.png in Resources */,
 				C21A1AEB1C86911200CDAC7D /* group_creategroup@2x.png in Resources */,
+				C2B74CB41C8F0A1E00DC3BFD /* calendar_icon.png in Resources */,
+				C2B74CBD1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png in Resources */,
 				C21A1AEF1C86911200CDAC7D /* group_participant_add@2x.png in Resources */,
+				C2B74CB81C8F0A1E00DC3BFD /* group_header@2x.png in Resources */,
 				C29942771C8EC0BD002DE866 /* resizeApi.php.png in Resources */,
 				C29CCD641C852A4800AB68E6 /* LaunchScreen.storyboard in Resources */,
 				C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */,
+				C2B74CC31C8F0A1E00DC3BFD /* newFriends@2x.png in Resources */,
 				C24778BD1C8D71D200411370 /* setting_nodisturb.png in Resources */,
 				C21A1AF11C86911200CDAC7D /* groupPrivateHeader@2x.png in Resources */,
+				C2B74CB91C8F0A1E00DC3BFD /* group_invitee_delete@2x.png in Resources */,
 				C21A1AF31C86911200CDAC7D /* nav_createGroup@2x.png in Resources */,
+				C2B74CBB1C8F0A1E00DC3BFD /* group_participant_add@2x.png in Resources */,
+				C2B74CBC1C8F0A1E00DC3BFD /* group_participant_addHL@2x.png in Resources */,
 				C24D009B1C89BC9F00644B95 /* ChatTableViewCell.xib in Resources */,
 				C2A9BED71C85368A005E19B2 /* tabbar_Conversation@2x.png in Resources */,
 				C24778C21C8D9B0900411370 /* game.png in Resources */,
 				C21A1B031C86C61200CDAC7D /* add@2x.png in Resources */,
+				C2B74CBA1C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png in Resources */,
 				C21A1AF41C86911200CDAC7D /* newFriends@2x.png in Resources */,
 				C21A1B0D1C86D18300CDAC7D /* AddFriendController.xib in Resources */,
 				C24D00A31C89CD7400644B95 /* chatListCellHead@2x.png in Resources */,
 				C2A9BF611C85CBC4005E19B2 /* account@2x.png in Resources */,
+				C2B74CB31C8F0A1E00DC3BFD /* about_icon.png in Resources */,
 				C21A1AF21C86911200CDAC7D /* groupPublicHeader@2x.png in Resources */,
 				C21A1B071C86C61200CDAC7D /* titleBar.png in Resources */,
 				C21A1AF01C86911200CDAC7D /* group_participant_addHL@2x.png in Resources */,
+				C2B74CB71C8F0A1E00DC3BFD /* group_creategroup@2x.png in Resources */,
 				C23954E41C8D9A6D00A1FC69 /* up_bar.png in Resources */,
 				C2A9BF5A1C85CB4C005E19B2 /* LoginController.xib in Resources */,
 				C21A1AEE1C86911200CDAC7D /* group_joinpublicgroup@2x.png in Resources */,
@@ -1084,14 +1171,19 @@
 				C24778C31C8D9B0900411370 /* troublefree.png in Resources */,
 				C21A1AED1C86911200CDAC7D /* group_invitee_delete@2x.png in Resources */,
 				C2A9BF631C85CBC4005E19B2 /* password@2x.png in Resources */,
+				C2B74CBF1C8F0A1E00DC3BFD /* my_friends.png in Resources */,
+				C2B74CC51C8F0A1E00DC3BFD /* program_message.png in Resources */,
 				C2A9BED91C85368A005E19B2 /* tabbar_setting@2x.png in Resources */,
 				C2A9BEDA1C85368A005E19B2 /* tabbar_setting_HL@2x.png in Resources */,
 				C29942761C8EC0BD002DE866 /* resizeApi-1.php.png in Resources */,
 				C21A1B061C86C61200CDAC7D /* group_detail@2x.png in Resources */,
 				C2A9BED61C85368A005E19B2 /* tabbar_contact_HL@2x.png in Resources */,
+				C2B74CC21C8F0A1E00DC3BFD /* new_group.png in Resources */,
+				C2B74CC01C8F0A1E00DC3BFD /* my_group.png in Resources */,
 				C21A1B041C86C61200CDAC7D /* back@2x.png in Resources */,
 				C299426E1C8EB1A1002DE866 /* WeatherViewController.xib in Resources */,
 				C2A9BED51C85368A005E19B2 /* tabbar_contact@2x.png in Resources */,
+				C2B74CB61C8F0A1E00DC3BFD /* weather_icon.png in Resources */,
 				C21A1B051C86C61200CDAC7D /* delete@2x.png in Resources */,
 				C29CCD611C852A4800AB68E6 /* Assets.xcassets in Resources */,
 				C29CCD5C1C852A4800AB68E6 /* Main.storyboard in Resources */,
