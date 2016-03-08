@@ -70,9 +70,9 @@
 	
 	NSArray *segmentedArray = [NSArray arrayWithObjects:@"新闻",@"笑话",nil];
 	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedArray];
-	segmentedControl.frame = CGRectMake(0.0, 0.0, 200, 30.0);
+	segmentedControl.frame = CGRectMake(0.0, 0.0, 130, 30.0);
 	segmentedControl.selectedSegmentIndex = 0;
-	segmentedControl.tintColor = [UIColor redColor];
+	segmentedControl.tintColor = [UIColor colorWithRed:0.19 green:0.69 blue:0.78 alpha:1];
 	
 	[segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
 	

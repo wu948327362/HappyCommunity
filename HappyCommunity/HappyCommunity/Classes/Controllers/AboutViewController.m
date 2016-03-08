@@ -9,9 +9,8 @@
 #import "AboutViewController.h"
 #import "RESideMenu.h"
 
+static NSString *cell_id = @"cell_identifier";
 @interface AboutViewController ()
-
-@property (nonatomic, strong) UIButton *openDrawerButton;
 
 @end
 
@@ -19,14 +18,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-    [btn  setTitle:@"这是关于我们页面" forState:UIControlStateNormal];
-    [self.view addSubview:btn];
-    
+	
+	//显示侧边栏的导航栏按钮.
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
-    
-    // Do any additional setup after loading the view.
+	
+	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cell_id];
+	
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -40,6 +37,21 @@
 {
     return UIStatusBarStyleLightContent;
 }
+
+#pragma mark - UITableViewController代理方法
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+	return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id forIndexPath:indexPath];
+	
+	return cell;
+	
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

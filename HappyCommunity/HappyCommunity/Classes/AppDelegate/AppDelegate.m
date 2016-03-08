@@ -40,8 +40,7 @@
 
 
     UINavigationBar *bar = [UINavigationBar appearance];
-    bar.barTintColor = [UIColor lightGrayColor];
-
+    bar.barTintColor = [UIColor colorWithRed:0.87 green:0.88 blue:0.9 alpha:1];
 	
 	return YES;
 }

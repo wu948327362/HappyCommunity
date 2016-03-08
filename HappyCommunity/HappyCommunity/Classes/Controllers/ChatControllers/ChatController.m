@@ -32,17 +32,15 @@ static NSString *chatCell = @"chat_cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    //设置tableView的frame;
+    //设置tableView的frame及其他相关设置;
 	[self loadMyView];
-	self.tableView.delegate = self;
-	self.tableView.dataSource = self;
-	self.messageField.delegate = self;
 	
 	//注册cell
 	[self.tableView registerNib:[UINib nibWithNibName:@"ChatTableViewCell" bundle:nil] forCellReuseIdentifier:chatCell];
 	
 	//设置接收消息代理,并设置接受消息代理方法.
 	[[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+	
 	
 }
 
@@ -52,6 +50,12 @@ static NSString *chatCell = @"chat_cell";
 
 //设置tableView的frame;
 - (void)loadMyView{
+	
+	//设置代理
+	self.tableView.delegate = self;
+	self.tableView.dataSource = self;
+	self.messageField.delegate = self;
+	
 	//设置tableView的frame;
 	CGRect frame = self.tableView.frame;
 	frame.origin.y = CGRectGetMaxY(self.navigationController.navigationBar.frame);
@@ -106,6 +110,7 @@ static NSString *chatCell = @"chat_cell";
 //键盘退出时调用
 - (void)keyboardWillHide:(NSNotification *)aNotification{
 	self.view.frame = [UIScreen mainScreen].bounds;
+	[self updateMessages:self.flag];
 }
 
 //添加好友的导航栏的方法
@@ -260,8 +265,6 @@ static NSString *chatCell = @"chat_cell";
 			return;
 		}
 	}
-	
-	
 }
 
 /*

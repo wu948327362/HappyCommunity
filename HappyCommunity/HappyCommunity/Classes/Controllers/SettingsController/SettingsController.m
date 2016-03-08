@@ -52,6 +52,9 @@
 	
 	//获取缓存的图片
 	self.imageView.image = [[DataBaseTools SharedInstance] getCachePicture];
+	if (self.imageView.image==nil) {
+		self.imageView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
+	}
 	
 }
 
