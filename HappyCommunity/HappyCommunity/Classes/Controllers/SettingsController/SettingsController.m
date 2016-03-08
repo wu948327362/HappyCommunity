@@ -74,8 +74,14 @@
 
 //小游戏
 - (IBAction)smallGameAction:(UIButton *)sender {
+    
+    // 在跳转界面后隐藏tabbar
+    self.hidesBottomBarWhenPushed = YES;
     BirdFlyViewController *bfvc = [[BirdFlyViewController alloc] init];
     [self.navigationController pushViewController:bfvc animated:YES];
+    
+    // 将hidesBottomBarWhenPushed设置为NO
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 //注销

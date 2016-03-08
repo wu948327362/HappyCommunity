@@ -8,7 +8,7 @@
 
 #import "LeftViewController.h"
 #import "RESideMenu.h"
-#import "AboutViewController.h"
+#import "WeatherViewController.h"
 #import "ServiceViewController.h"
 #import "SettingViewController.h"
 
@@ -28,7 +28,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     
     self.view.backgroundColor = [UIColor yellowColor];
     
-    _lefs = @[@"新闻和笑话", @"关于app", @"客服呈上"];
+    _lefs = @[@"新闻和笑话", @"关于app", @"客服呈上", @"天气"];
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width - 64);
     _tableView.dataSource = self;
@@ -94,9 +94,9 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     }else if(indexPath.row == 2){
         SettingViewController *setting = [[SettingViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:setting];
-    }else{
-        AboutViewController *about = [[AboutViewController alloc ] init];
-        center = [[UINavigationController alloc] initWithRootViewController:about];
+    }else if(indexPath.row == 3){
+        WeatherViewController *weather = [[WeatherViewController alloc] init];
+        center = [[UINavigationController alloc] initWithRootViewController:weather];
     }
     [self.sideMenuViewController setContentViewController:center
                                                  animated:YES];

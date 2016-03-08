@@ -10,6 +10,7 @@
 #import "NewsModel.h"
 #import <AFNetworking.h>
 #import "NewsController.h"
+#import "WeatherModel.h"
 static NewsManager *manager = nil;
 
 @interface NewsManager ()
@@ -99,4 +100,48 @@ static NewsManager *manager = nil;
     }
     return model;
 }
+
+//根据返回的json数据得到model
+- (WeatherModel *)getWeatherModelWithStr:(NSString *)string{
+    WeatherModel *model = [[WeatherModel alloc] init];
+    
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    
+    NSDictionary *dict = [dic[@"HeWeather data service 3.0"] firstObject];
+    
+    NSArray *arr = dict[@"daily_forecast"];
+    
+    for (NSDictionary *d in arr) {
+        NSDictionary *now = [dict[@"hourly_forecast"] firstObject];
+        
+        NSString *nowDate = [[now[@"date"] componentsSeparatedByString:@" "] firstObject];
+        
+        NSString *date = d[@"date"];
+        if ([date isEqualToString:nowDate]) {
+            model.max = d[@"tmp"][@"max"];
+            model.min = d[@"tmp"][@"min"];
+            model.dir = d[@"wind"][@"dir"];
+            model.sc = d[@"wind"][@"sc"];
+            model.txt_d = d[@"cond"][@"txt_d"];
+            model.txt_n = d[@"cond"][@"txt_n"];
+            
+        }
+    }
+    model.txt = dict[@"suggestion"][@"drsg"][@"txt"];
+    
+    return model;
+}
 @end
+
+
+
+
+
+
+
+
+
+
+

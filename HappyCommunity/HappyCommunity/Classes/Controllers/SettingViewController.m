@@ -24,7 +24,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
 
     UILabel *contact = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 300, 300)];
-    contact.text = @"官方QQ:1617354568\n官方微信:袁世凯是逗比\n夫人等着你调戏哦";
+    contact.text = @"官方QQ:1617354568\n官方微信:袁世凯是逗比\n袁世凯在逗比";
     contact.font = [UIFont systemFontOfSize:20 weight:0.5];
     contact.numberOfLines = 0;
     [self.view addSubview:contact];
