@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class NewsModel;
+@class WeatherModel;
 @interface NewsManager : NSObject
 /** 单例*/
 + (instancetype)shareInstance;
@@ -27,4 +28,16 @@
 /*数组*/
 @property(nonatomic, strong)NSMutableArray *data;
 
+//根据返回的json数据得到model
+- (WeatherModel *)getWeatherModelWithStr:(NSString *)string;
+
 @end
+
+
+
+
+
+
+
+
+

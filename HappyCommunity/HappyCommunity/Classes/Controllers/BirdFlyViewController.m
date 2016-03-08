@@ -80,6 +80,8 @@ typedef enum {
 {
     [super viewDidLoad];
     
+    self.title = @"小游戏";
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self initBirdAndOther];

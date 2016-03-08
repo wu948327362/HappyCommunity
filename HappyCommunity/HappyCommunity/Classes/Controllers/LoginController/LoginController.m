@@ -10,9 +10,7 @@
 #import "EMError.h"
 #import "EMSDK.h"
 #import "HappyTabController.h"
-
 #import "DataBaseTools.h"
-
 #import "AppDelegate.h"
 #import "RESideMenu.h"
 #import "LeftViewController.h"
