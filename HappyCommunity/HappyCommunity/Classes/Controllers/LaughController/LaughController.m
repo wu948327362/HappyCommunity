@@ -86,23 +86,13 @@ static NSString *indentifil = @"mycell";
 
 - (void)refreshAction
 {
-<<<<<<< HEAD
-
-    self.flag = 0;
-=======
->>>>>>> a768ca294f76455de80e3f85758bf50f09882045
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *str = [NSString stringWithFormat:laughUrl];
     [manager GET:str parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
         NSLog(@"请求成功");
-<<<<<<< HEAD
-        [self.dataArray removeAllObjects];
-        [self.title1Array removeAllObjects];
-=======
-
->>>>>>> a768ca294f76455de80e3f85758bf50f09882045
+        
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
 		
@@ -159,13 +149,13 @@ static NSString *indentifil = @"mycell";
     label.font = [UIFont systemFontOfSize:15];
 //    MyViewController *mvc = [[MyViewController alloc] init];
     [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
-    [UIView animateWithDuration:2 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         label.transform = CGAffineTransformMakeTranslation(0, label.frame.size.height);
         
     } completion:^(BOOL finished) {
         
         
-        [UIView animateWithDuration:1.0 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [UIView animateWithDuration:1.0 delay:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
             label.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
             //最后从父视图中去掉

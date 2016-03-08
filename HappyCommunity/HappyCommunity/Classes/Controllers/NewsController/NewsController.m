@@ -27,7 +27,7 @@
  *  创建下拉刷新控件
  */
 @property(nonatomic, strong)UIRefreshControl *refresh;
-
+@property(nonatomic, strong)WebViewViewController *webV;
 @property(nonatomic, assign)int number;
 @end
 
@@ -54,6 +54,7 @@ static NSString *newsCell = @"mycell";
     [self setupDownRefresh];
     //上拉加载方法
     [self setupRefresh];
+    self.webV = [[WebViewViewController alloc] init];
 }
 ////上拉刷新
 - (void)setupRefresh
@@ -131,10 +132,9 @@ static NSString *newsCell = @"mycell";
 #pragma mark 设置cell的点击响应事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NewTableViewCell *cell = [[NewTableViewCell alloc] init];
-    cell.Model = self.data1[indexPath.row];;
-    WebViewViewController *webV = [[WebViewViewController alloc] init];
-    webV.url = cell.Model.detailUrl;
-    [self.navigationController pushViewController:webV animated:YES];
+    cell.Model = self.data1[indexPath.row];
+    _webV.url = cell.Model.detailUrl;
+    [self.navigationController pushViewController:_webV animated:YES];
     self.tabBarController.tabBar.hidden = YES;
     
 }
