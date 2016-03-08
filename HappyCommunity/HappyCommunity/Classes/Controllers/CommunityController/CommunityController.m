@@ -7,14 +7,21 @@
 //
 
 #import "CommunityController.h"
+#import "CommunityView.h"
+#import "RESideMenu.h"
 #import "ContactController.h"
-#import "AddFriendController.h"
 #import "DataBaseTools.h"
 #import "EMSDK.h"
 #import "EMError.h"
 #import "FriendsInvitation.h"
 
+#import "AddFriendController.h"
+
+@interface CommunityController ()<EMContactManagerDelegate>
+
+@end
 @interface CommunityController ()
+
 @property(nonatomic,strong)NSMutableArray *data;
 @property(nonatomic,strong)NSMutableArray *images;
 @property(nonatomic,strong)ContactController *comController;
@@ -42,6 +49,26 @@ static NSString *communityCell = @"community_cell";
 	
 	self.friendController = [[AddFriendController alloc] initWithNibName:@"AddFriendController" bundle:nil];
 	
+
+	//设置接收到好友请求代理
+	[[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
+	
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
+}
+
+#pragma mark - Configuring the view’s layout behavior
+
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+
+
 }
 
 //添加好友方法

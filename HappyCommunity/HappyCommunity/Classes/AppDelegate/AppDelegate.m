@@ -38,7 +38,7 @@
 	
 	self.window.rootViewController = loc;
 
-    
+
     UINavigationBar *bar = [UINavigationBar appearance];
     bar.barTintColor = [UIColor lightGrayColor];
 

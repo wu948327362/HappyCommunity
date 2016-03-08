@@ -7,9 +7,13 @@
 //
 
 #import "SettingsController.h"
+
+#import "RESideMenu.h"
+#import "BirdFlyViewController.h"
 #import "EMSDK.h"
 #import "MyEMManager.h"
 #import "LoginController.h"
+#import "DataBaseTools.h"
 
 @interface SettingsController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -27,6 +31,7 @@
 
 @property(nonatomic,strong)UIImagePickerController *picker;
 
+@property(nonatomic,strong)NSString *picturePath;
 
 @end
 
@@ -34,15 +39,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-	self.nameLabel.text = [[EMClient sharedClient] currentUsername];
-	self.versionLabel.text = [[EMClient sharedClient] version];
+    
+    self.nameLabel.text = [[EMClient sharedClient] currentUsername];
+    self.versionLabel.text = [[EMClient sharedClient] version];
+    
+    // 初始化照片选择控制器
+    self.picker = [[UIImagePickerController alloc] init];
+    // 指定代理
+    self.picker.delegate = self;
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
 	
-	//初始化照片选择控制器
-	self.picker = [[UIImagePickerController alloc] init];
-	//指定代理
-	self.picker.delegate = self;
+	//获取缓存的图片
+	self.imageView.image = [[DataBaseTools SharedInstance] getCachePicture];
 	
+}
+
+#pragma mark - Configuring the view’s layout behavior
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 //设置是否免打扰
@@ -59,7 +79,8 @@
 
 //小游戏
 - (IBAction)smallGameAction:(UIButton *)sender {
-	
+    BirdFlyViewController *bfvc = [[BirdFlyViewController alloc] init];
+    [self.navigationController pushViewController:bfvc animated:YES];
 }
 
 //注销
@@ -83,12 +104,15 @@
 	self.picker.allowsEditing = YES;
 	[self presentViewController:self.picker animated:YES completion:nil];
 	
+	
 }
 
 //完成选取图片时执行
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
 	self.imageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
 	[self.picker dismissViewControllerAnimated:YES completion:nil];
+	//缓存图片
+	[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image];
 }
 
 //点击取消是执行

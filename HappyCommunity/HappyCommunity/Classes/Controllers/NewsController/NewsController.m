@@ -18,6 +18,9 @@
 
 
 
+#import <MJRefresh.h>
+
+
 @interface NewsController ()
 /**
  *  创建可变数组来接受管理类请求的数据
@@ -49,7 +52,10 @@ static NSString *newsCell = @"mycell";
     //注册XIB拖得cell
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     //初始化数组
+
     self.data1 = [NSMutableArray array];
+
+	
     self.number = 1;
     [self setupDownRefresh];
     //上拉加载方法
@@ -99,6 +105,10 @@ static NSString *newsCell = @"mycell";
 
 }
 #pragma mark 加载数据方法
+
+
+
+
 - (void)loadData
 {
     NSString *urlString = [NSString stringWithFormat:newsRefresh,1];
@@ -133,8 +143,15 @@ static NSString *newsCell = @"mycell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NewTableViewCell *cell = [[NewTableViewCell alloc] init];
     cell.Model = self.data1[indexPath.row];
+<<<<<<< HEAD
     _webV.url = cell.Model.detailUrl;
     [self.navigationController pushViewController:_webV animated:YES];
+=======
+    WebViewViewController *webV = [[WebViewViewController alloc] init];
+	NSLog(@"%@",cell.Model.detailUrl);
+    webV.url = cell.Model.detailUrl;
+    [self.navigationController pushViewController:webV animated:YES];
+>>>>>>> 9ef9c0874350fbef4d710a538d2ce3758f337d01
     self.tabBarController.tabBar.hidden = YES;
     
 }

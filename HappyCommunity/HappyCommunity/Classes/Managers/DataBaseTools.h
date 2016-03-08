@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 #import "EMSDK.h"
+#import <UIKit/UIKit.h>
 
 @class FriendsInvitation;
 @interface DataBaseTools : NSObject
@@ -44,6 +45,12 @@
 
 //保存两个人的;聊天记录
 - (void)saveMessageModelWith:(EMMessage *)message;
+
+//获取缓存的图片
+- (UIImage *)getCachePicture;
+
+//缓存图片
+- (void)cachePictureWithImage:(UIImage *)image;
 
 @end
 
