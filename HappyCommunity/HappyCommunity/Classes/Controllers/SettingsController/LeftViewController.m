@@ -127,7 +127,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
 	
 	//设置头像icon
 	UIImageView *imView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 18, 55, 55)];
-	imView.image = [[DataBaseTools SharedInstance] getCachePicture];
+	imView.image = [[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]];
 	if (imView.image==nil) {
 		imView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
 	}

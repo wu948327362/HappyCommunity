@@ -4,4 +4,5 @@ pod 'AFNetworking'
 pod 'SVProgressHUD'
 pod 'MJExtension'
 pod 'MJRefresh'
+pod 'AVOSCloud'
 

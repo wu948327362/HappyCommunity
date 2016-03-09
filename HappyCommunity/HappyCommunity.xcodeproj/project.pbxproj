@@ -56,6 +56,7 @@
 		C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25731791C85B5F000982579 /* NewTableViewCell.xib */; };
 		C25C17531C8A849700CFCA06 /* MyEMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C25C17521C8A849700CFCA06 /* MyEMManager.m */; };
 		C25C17561C8B1D6B00CFCA06 /* LoginAnimatino.m in Sources */ = {isa = PBXBuildFile; fileRef = C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */; };
+		C25CFDA11C9014C000D8DB04 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C25CFDA01C9014C000D8DB04 /* CloudManager.m */; };
 		C29942651C8EB05A002DE866 /* libAPIStoreSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C29942641C8EB05A002DE866 /* libAPIStoreSDK.a */; };
 		C299426D1C8EB1A1002DE866 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C299426B1C8EB1A1002DE866 /* WeatherViewController.m */; };
 		C299426E1C8EB1A1002DE866 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C299426C1C8EB1A1002DE866 /* WeatherViewController.xib */; };
@@ -164,7 +165,7 @@
 		C200E17B1C891947009900CB /* MessageModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageModel+CoreDataProperties.h"; sourceTree = "<group>"; };
 		C200E17C1C891947009900CB /* MessageModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessageModel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		C21A1ADC1C867D1D00CDAC7D /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C21A1ADD1C868C7000CDAC7D /* CommunityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityController.h; sourceTree = "<group>"; };
+		C21A1ADD1C868C7000CDAC7D /* CommunityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommunityController.h; path = ../CommunityController.h; sourceTree = "<group>"; };
 		C21A1ADE1C868C7000CDAC7D /* CommunityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityController.m; sourceTree = "<group>"; };
 		C21A1AE11C86911200CDAC7D /* group_creategroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_creategroup@2x.png"; sourceTree = "<group>"; };
 		C21A1AE21C86911200CDAC7D /* group_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_header@2x.png"; sourceTree = "<group>"; };
@@ -227,6 +228,8 @@
 		C25C17521C8A849700CFCA06 /* MyEMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEMManager.m; sourceTree = "<group>"; };
 		C25C17541C8B1D6B00CFCA06 /* LoginAnimatino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAnimatino.h; sourceTree = "<group>"; };
 		C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAnimatino.m; sourceTree = "<group>"; };
+		C25CFD9F1C9014C000D8DB04 /* CloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudManager.h; sourceTree = "<group>"; };
+		C25CFDA01C9014C000D8DB04 /* CloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudManager.m; sourceTree = "<group>"; };
 		C28792A31C86E3D2009C9336 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		C28792A41C86E3D2009C9336 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
 		C29942631C8EB059002DE866 /* APIStoreSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIStoreSDK.h; sourceTree = "<group>"; };
@@ -470,6 +473,7 @@
 			children = (
 				C21A1AF61C86951600CDAC7D /* ContactController.h */,
 				C21A1AF71C86951600CDAC7D /* ContactController.m */,
+				C21A1ADD1C868C7000CDAC7D /* CommunityController.h */,
 				C21A1B091C86D18300CDAC7D /* AddFriendController.h */,
 				C21A1B0A1C86D18300CDAC7D /* AddFriendController.m */,
 				C21A1B0B1C86D18300CDAC7D /* AddFriendController.xib */,
@@ -654,7 +658,6 @@
 			isa = PBXGroup;
 			children = (
 				C21A1AF51C8694EF00CDAC7D /* ContactsController */,
-				C21A1ADD1C868C7000CDAC7D /* CommunityController.h */,
 				C21A1ADE1C868C7000CDAC7D /* CommunityController.m */,
 			);
 			path = CommunityController;
@@ -729,6 +732,8 @@
 				C25C17521C8A849700CFCA06 /* MyEMManager.m */,
 				C25C17541C8B1D6B00CFCA06 /* LoginAnimatino.h */,
 				C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */,
+				C25CFD9F1C9014C000D8DB04 /* CloudManager.h */,
+				C25CFDA01C9014C000D8DB04 /* CloudManager.m */,
 			);
 			name = Managers;
 			path = ../Managers;
@@ -1247,6 +1252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2DB9D861C883C8A00FA0EA9 /* ChatController.m in Sources */,
+				C25CFDA11C9014C000D8DB04 /* CloudManager.m in Sources */,
 				C2DB9D851C883B5500FA0EA9 /* WebViewViewController.m in Sources */,
 				C2DB9D841C883B2800FA0EA9 /* AddFriendController.m in Sources */,
 				C2DB9D821C8836CC00FA0EA9 /* NewsManager.m in Sources */,

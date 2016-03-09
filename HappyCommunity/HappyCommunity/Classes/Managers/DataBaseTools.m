@@ -11,12 +11,12 @@
 
 #import "AppDelegate.h"
 #import "MessageModel.h"
+#import "CloudManager.h"
 
 static DataBaseTools *handler;
 
 @interface DataBaseTools ()<EMChatManagerDelegate,EMGroupManagerDelegate>
-//coreData
-@property(nonatomic,strong)NSManagedObjectContext *context;
+
 @end
 
 @implementation DataBaseTools
@@ -117,7 +117,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)delPersonByPid:(NSInteger)pid{
-    NSString *sql = [NSString stringWithFormat:@"delete from FreindsAndGroup where pid = %ld ",pid];
+    NSString *sql = [NSString stringWithFormat:@"delete from FreindsAndGroup where pid = %ld ",(long)pid];
     
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     if (result==SQLITE_OK) {
@@ -141,7 +141,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)updatePerson:(NSString *)name byPid:(NSInteger)pid{
-    NSString *sql = [NSString stringWithFormat:@"update FreindsAndGroup set userName='%@' where pid=%ld",name,pid];
+    NSString *sql = [NSString stringWithFormat:@"update FreindsAndGroup set userName='%@' where pid=%ld",name,(long)pid];
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     
     if (result==SQLITE_OK) {
@@ -250,6 +250,8 @@ static sqlite3 *dataBase;
 	model.isRead = [NSNumber numberWithInteger:message.isRead];
 	model.isDeliverAcked = [NSNumber numberWithInteger:message.isDeliverAcked];
 	
+	NSLog(@"%@====%@=====%d",message.from,message.to,message.direction);
+	
 	[handler.context save:nil];
 }
 
@@ -291,7 +293,6 @@ static sqlite3 *dataBase;
 //收到某人的加群申请.如果是好友则默认可以进入该群在否则等待群主的验证.
 - (void)didReceiveJoinGroupApplication:(EMGroup *)aGroup applicant:(NSString *)aApplicant reason:(NSString *)aReason{
 	
-	NSLog(@"%@===%@====%@",aGroup.groupId,aReason,aApplicant);
 	//判断是否是好友.
 	BOOL isFriend = [handler isExitsUserWithName:aApplicant];
 	
@@ -308,30 +309,38 @@ static sqlite3 *dataBase;
 }
 
 //获取文件(Documents)路径,然后设置图片缓存路径.
-- (NSString *)filePath{
-	//设置图片缓存路径
-	NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-	NSString *filePath = [docPath stringByAppendingString:@"/icon.png"];
-	return filePath;
+- (NSString *)filePathWithName:(NSString *)name{
+	if (![name isEqualToString:@""]) {
+		//设置图片缓存路径
+		NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+		NSString *filePath = [docPath stringByAppendingString:[NSString stringWithFormat:@"/%@.png",name]];
+		return filePath;
+	}else{
+		return nil;
+	}
+	
 }
 
 //获取缓存的图片
-- (id)getCachePicture{
+- (id)getCachePictureWithName:(NSString *)name{
 	
 	//获取图片缓存路径
-	NSString *filePath = [self filePath];
+	NSString *filePath = [self filePathWithName:name];
 	
 	return [UIImage imageWithContentsOfFile:filePath];
 	
 }
 
 //缓存图片
-- (void)cachePictureWithImage:(UIImage *)image{
+- (void)cachePictureWithImage:(UIImage *)image andName:(NSString *)name{
 	
 	//根据图片缓存路径,缓存图片
-	NSString *filePath = [self filePath];
+	NSString *filePath = [self filePathWithName:name];
 	
 	[UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
+	
+	//保存图片到leanCloud服务器
+	[[CloudManager shareInstance] saveUserIconWithPath:[self filePathWithName:name]];
 	
 }
 
