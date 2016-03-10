@@ -12,6 +12,7 @@
 #import "RESideMenu.h"
 #import "LeftViewController.h"
 #import "MyViewController.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface AppDelegate ()
 
@@ -40,8 +41,11 @@
 
 
     UINavigationBar *bar = [UINavigationBar appearance];
-    bar.barTintColor = [UIColor lightGrayColor];
-
+    bar.barTintColor = [UIColor colorWithRed:0.87 green:0.88 blue:0.9 alpha:1];
+	
+	//leanCloud应用的使用
+	[AVOSCloud setApplicationId:@"b2IyBhheoInrCoFwkBpgfUth-gzGzoHsz"
+					  clientKey:@"9cADTIMSLj35jDGVmcsWUmTq"];
 	
 	return YES;
 }

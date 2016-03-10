@@ -47,10 +47,16 @@
 - (void)saveMessageModelWith:(EMMessage *)message;
 
 //获取缓存的图片
-- (UIImage *)getCachePicture;
+- (UIImage *)getCachePictureWithName:(NSString *)name;
 
 //缓存图片
-- (void)cachePictureWithImage:(UIImage *)image;
+- (void)cachePictureWithImage:(UIImage *)image andName:(NSString *)name;
+
+//coreData
+@property(nonatomic,strong)NSManagedObjectContext *context;
+
+//获取文件(Documents)路径,然后设置图片缓存路径.
+- (NSString *)filePathWithName:(NSString *)name;
 
 @end
 

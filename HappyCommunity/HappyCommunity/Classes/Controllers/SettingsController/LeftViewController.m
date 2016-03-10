@@ -11,14 +11,19 @@
 #import "WeatherViewController.h"
 #import "ServiceViewController.h"
 #import "SettingViewController.h"
-
+#import "DataBaseTools.h"
+#import "CalendarHomeViewController.h"
 static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControllerCellReuseId";
 
 @interface LeftViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *lefs;
 @property (nonatomic, assign) NSInteger previousRow;
+@property (nonatomic, strong) NSArray *images;
+//@property (nonatomic, strong) CalendarHomeViewController *chvc;
 
+@property(nonatomic,strong)UIView *myview;
+@property(nonatomic,strong)UIImageView *imView;
 @end
 
 @implementation LeftViewController
@@ -26,13 +31,17 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor colorWithRed:0.22 green:0.71 blue:0.98 alpha:1];
     
-    _lefs = @[@"新闻和笑话", @"关于app", @"客服呈上", @"天气"];
-    _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width - 64);
+
+    _lefs = @[@"新闻和笑话", @"关于app", @"日历",@"天气"];
+	_images = @[@"news_icon", @"about_icon", @"calendar_icon",@"weather_icon"];
+    _tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    _tableView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
+	
     _tableView.dataSource = self;
     _tableView.delegate = self;
+	
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kYCLeftViewControllerCellReuseId];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -41,7 +50,16 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     [self.view addSubview:self.tableView];
 
     
-    // Do any additional setup after loading the view.
+	//设置tableView的tableHeaderView
+	[self setHeaderView];
+	
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+	self.imView.image = [[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]];
+	if (self.imView.image==nil) {
+		self.imView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
+	}
 }
 
 //设置状态栏
@@ -76,6 +94,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     cell.textLabel.highlightedTextColor = [UIColor grayColor];
     cell.selectedBackgroundView = [[UIView alloc] init];
     cell.backgroundColor = [UIColor clearColor];
+	cell.imageView.image = [UIImage imageNamed:self.images[indexPath.row]];
     
     return cell;
 }
@@ -92,8 +111,10 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
         ServiceViewController *service = [[ServiceViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:service];
     }else if(indexPath.row == 2){
-        SettingViewController *setting = [[SettingViewController alloc ] init];
+        CalendarHomeViewController *setting = [[CalendarHomeViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:setting];
+        [setting setAirPlaneToDay:365 ToDateforString:nil];//飞机初始化
+//        [self.navigationController pushViewController:_chvc animated:YES];
     }else if(indexPath.row == 3){
         WeatherViewController *weather = [[WeatherViewController alloc] init];
         center = [[UINavigationController alloc] initWithRootViewController:weather];
@@ -112,6 +133,27 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     return 60;
 }
 
+//添加header视图
+- (void)setHeaderView{
+	
+	self.myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100)];
+	
+	//设置头像icon
+	self.imView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 18, 55, 55)];
+	
+	//设置圆角
+	self.imView.layer.masksToBounds = YES;
+	self.imView.layer.cornerRadius = 55/2;
+	[self.myview addSubview:self.imView];
+	
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 18, 80, 55)];
+	label.text = [[EMClient sharedClient] currentUsername];
+	
+	[self.myview addSubview:label];
+	self.myview.backgroundColor = [UIColor whiteColor];
+	
+	self.tableView.tableHeaderView = self.myview;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -38,11 +38,8 @@
 // 夜晚天气的属性
 @property (weak, nonatomic) IBOutlet UILabel *nightWeatherLabel;
 
-// model
-@property (nonatomic, strong) WeatherModel *model;
+@property(nonatomic,strong)WeatherModel *model;
 
-// 搜索按钮的属性
-@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
 
@@ -62,7 +59,6 @@
     self.searchTextField.text = @"";
     self.searchTextField.delegate = self;
     self.searchTextField.returnKeyType = UIReturnKeySearch;
-    
     
     // Do any additional setup after loading the view.
 }
@@ -90,7 +86,7 @@
     // 实例化一个回调,处理请求的返回值
     APISCallBack *callBack = [APISCallBack alloc];
     callBack.onSuccess = ^(long status, NSString* responseString) {
-//        NSLog(@"onSuccess");
+        NSLog(@"onSuccess");
         if(responseString != nil) {
             
             WeatherModel *wmodel = [[NewsManager shareInstance] getWeatherModelWithStr:responseString];
@@ -100,12 +96,12 @@
     };
     
     callBack.onError = ^(long status, NSString* responseString) {
-//        NSLog(@"onError");
+        NSLog(@"onError");
         
     };
     
     callBack.onComplete = ^() {
-//        NSLog(@"onComplete");
+        NSLog(@"onComplete");
     };
     
     //部分参数

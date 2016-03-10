@@ -27,12 +27,16 @@ static CloudManager *manager = nil;
 	
 	[userNameAndIcon setObject:[[EMClient sharedClient] currentUsername] forKey:@"userName"];
 	
-	AVFile *icon = [self saveIconFileWithPath:filePath];
+	NSData *data = [NSData dataWithContentsOfFile:filePath];
 	
-	//avfile文件上传完成后
-	[userNameAndIcon setObject:icon forKey:@"userIcon"];
-	[userNameAndIcon saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-		
+	AVFile *icon = [AVFile fileWithData:data];
+	
+	[icon saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+		//avfile文件上传完成后
+		[userNameAndIcon setObject:icon forKey:@"userIcon"];
+		[userNameAndIcon saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+			NSLog(@"%@",error);
+		}];
 	}];
 	
 }

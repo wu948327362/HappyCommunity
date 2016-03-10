@@ -17,7 +17,7 @@
 - (UIAlertController *)addToGroup:(NSString *)receiveId;
 
 //发送消息
-- (void)sendMessageWithReceiveId:(NSString *)receiveId message:(NSString *)messge flag:(NSInteger)flag finish:(void(^)())finish;
+- (void)sendMessageWithReceiveId:(NSString *)receiveId message:(NSString *)messge flag:(NSInteger)flag finish:(void(^)(EMMessage *mes))finish;
 
 //登陆
 - (void)LoginWithName:(NSString *)name password:(NSString *)password finish:(void(^)(EMError *err))finish;

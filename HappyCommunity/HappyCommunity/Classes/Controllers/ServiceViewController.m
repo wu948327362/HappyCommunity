@@ -8,6 +8,7 @@
 
 #import "ServiceViewController.h"
 #import "RESideMenu.h"
+#import "EMSDK.h"
 
 @interface ServiceViewController ()
 
@@ -29,8 +30,9 @@
 //    [btn  setTitle:@"这是abc页面" forState:UIControlStateNormal];
 //    [self.view addSubview:btn];
     
-    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 300, 300)];
-    description.text = @"这是一款神奇的app,你可以在这里看到新闻,无聊的时候看一下笑话,定能让你身心放松,可以在社区中与人交流\n\n此版本为v1.0.0";
+    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(35, 70, [UIScreen mainScreen].bounds.size.width-70, 300)];
+    description.text = [NSString stringWithFormat:@"这是一款神奇的app,你可以在这里看到新闻,无聊的时候看一下笑话,定能让你身心放松,可以在社区中与人交流\n\n此版本为%@",[[EMClient sharedClient] version]];
+	
     description.numberOfLines = 0;
     description.font = [UIFont systemFontOfSize:20 weight:0.5];
     [self.view addSubview:description];

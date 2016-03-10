@@ -14,18 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
+  - AVOSCloud (3.2.7)
   - MJExtension (3.0.10)
   - MJRefresh (3.1.0)
   - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
   - AFNetworking
+  - AVOSCloud
   - MJExtension
   - MJRefresh
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  AVOSCloud: 957d1508104d7c8ed501df9d9b734d7a98c2e047
   MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1

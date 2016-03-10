@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginController : UIViewController
-
 + (instancetype)shareInstance;
 //将密码输入框置为空
 - (void)clearPassword;
-
 @end

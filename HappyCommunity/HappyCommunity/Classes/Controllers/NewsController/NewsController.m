@@ -105,6 +105,9 @@ static NSString *newsCell = @"mycell";
 }
 #pragma mark 加载数据方法
 
+
+
+
 - (void)loadData
 {
     NSString *urlString = [NSString stringWithFormat:newsRefresh,1];
@@ -140,7 +143,7 @@ static NSString *newsCell = @"mycell";
     NewTableViewCell *cell = [[NewTableViewCell alloc] init];
     cell.Model = self.data1[indexPath.row];
     WebViewViewController *webV = [[WebViewViewController alloc] init];
-//	NSLog(@"%@",cell.Model.detailUrl);
+	NSLog(@"%@",cell.Model.detailUrl);
     webV.url = cell.Model.detailUrl;
     [self.navigationController pushViewController:webV animated:YES];
     self.tabBarController.tabBar.hidden = YES;

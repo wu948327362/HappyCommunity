@@ -11,7 +11,6 @@
 #import <AFNetworking.h>
 #import "NewsController.h"
 #import "WeatherModel.h"
-
 static NewsManager *manager = nil;
 
 @interface NewsManager ()
@@ -99,12 +98,10 @@ static NewsManager *manager = nil;
     }else{
         return nil;
     }
-    
     return model;
 }
 
-#pragma mark - 根据返回的json数据得到model
-
+//根据返回的json数据得到model
 - (WeatherModel *)getWeatherModelWithStr:(NSString *)string{
     WeatherModel *model = [[WeatherModel alloc] init];
     
