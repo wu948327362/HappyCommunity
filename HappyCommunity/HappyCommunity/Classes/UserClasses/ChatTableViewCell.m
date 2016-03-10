@@ -8,7 +8,6 @@
 
 #import "ChatTableViewCell.h"
 
-
 @implementation ChatTableViewCell
 
 //重写model的set属性

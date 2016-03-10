@@ -11,7 +11,7 @@
 #import "EMError.h"
 #import "MyEMManager.h"
 
-@interface AddFriendController ()<UITextFieldDelegate>
+@interface AddFriendController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *messageField;
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
@@ -27,10 +27,6 @@
 	self.addBtn.layer.cornerRadius = 5;
 	self.cancelBtn.layer.masksToBounds = YES;
 	self.cancelBtn.layer.cornerRadius = 5;
-	
-	//设置uitextField代理
-	self.nameField.delegate = self;
-	self.messageField.delegate = self;
 	
 }
 
@@ -98,12 +94,6 @@
 	}];
 	[control addAction:action];
 	[self presentViewController:control animated:YES completion:nil];
-}
-
-#pragma mark - uitextField代理
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-	[self.view endEditing:YES];
-	return YES;
 }
 
 - (void)didReceiveMemoryWarning {

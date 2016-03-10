@@ -92,7 +92,7 @@ static NSString *indentifil = @"mycell";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
         NSLog(@"请求成功");
-
+        
         NSMutableArray *array = [NSMutableArray array];
         [array addObjectsFromArray:responseObject[@"value"]];
 		
@@ -149,13 +149,13 @@ static NSString *indentifil = @"mycell";
     label.font = [UIFont systemFontOfSize:15];
 //    MyViewController *mvc = [[MyViewController alloc] init];
     [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
-    [UIView animateWithDuration:2 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         label.transform = CGAffineTransformMakeTranslation(0, label.frame.size.height);
         
     } completion:^(BOOL finished) {
         
         
-        [UIView animateWithDuration:1.0 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [UIView animateWithDuration:1.0 delay:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
             label.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
             //最后从父视图中去掉

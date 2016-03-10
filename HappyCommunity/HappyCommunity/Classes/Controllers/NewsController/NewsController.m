@@ -30,7 +30,7 @@
  *  创建下拉刷新控件
  */
 @property(nonatomic, strong)UIRefreshControl *refresh;
-
+@property(nonatomic, strong)WebViewViewController *webV;
 @property(nonatomic, assign)int number;
 @end
 
@@ -50,16 +50,14 @@ static NSString *newsCell = @"mycell";
     //注册XIB拖得cell
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     //注册XIB拖得cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:newsCell];
     //初始化数组
-
     self.data1 = [NSMutableArray array];
-
-	
     self.number = 1;
     [self setupDownRefresh];
     //上拉加载方法
     [self setupRefresh];
+    self.webV = [[WebViewViewController alloc] init];
 }
 ////上拉刷新
 - (void)setupRefresh
@@ -142,10 +140,10 @@ static NSString *newsCell = @"mycell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NewTableViewCell *cell = [[NewTableViewCell alloc] init];
     cell.Model = self.data1[indexPath.row];
-    WebViewViewController *webV = [[WebViewViewController alloc] init];
-	NSLog(@"%@",cell.Model.detailUrl);
-    webV.url = cell.Model.detailUrl;
-    [self.navigationController pushViewController:webV animated:YES];
+//    WebViewViewController *web = [[WebViewViewController alloc] init];
+    NSLog(@"%@",cell.Model.detailUrl);
+    _webV.url = cell.Model.detailUrl;
+    [self.navigationController pushViewController:_webV animated:YES];
     self.tabBarController.tabBar.hidden = YES;
     
 }

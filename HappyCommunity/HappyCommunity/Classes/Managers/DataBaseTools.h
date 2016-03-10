@@ -47,13 +47,10 @@
 - (void)saveMessageModelWith:(EMMessage *)message;
 
 //获取缓存的图片
-- (id)getCachePictureWithName:(NSString *)name;
+- (UIImage *)getCachePicture;
 
 //缓存图片
-- (void)cachePictureWithImage:(UIImage *)image andName:(NSString *)name;
-
-//coreData
-@property(nonatomic,strong)NSManagedObjectContext *context;
+- (void)cachePictureWithImage:(UIImage *)image;
 
 @end
 

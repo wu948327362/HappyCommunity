@@ -14,8 +14,6 @@
 #import "MyEMManager.h"
 #import "LoginController.h"
 #import "DataBaseTools.h"
-#import "CloudManager.h"
-
 
 @interface SettingsController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -53,17 +51,11 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
 	
 	//获取缓存的图片
-	self.imageView.image = [[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]];
+	self.imageView.image = [[DataBaseTools SharedInstance] getCachePicture];
 	if (self.imageView.image==nil) {
-		
-		//读取leanCloud云端图片.
-		[[CloudManager shareInstance] getUserIconByName:[[EMClient sharedClient] currentUsername] finish:^(UIImage *findImage) {
-			self.imageView.image = findImage;
-			if (self.imageView.image==nil) {
-				self.imageView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
-			}
-		}];
+		self.imageView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
 	}
+	
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -129,8 +121,7 @@
 	self.imageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
 	[self.picker dismissViewControllerAnimated:YES completion:nil];
 	//缓存图片
-	[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image andName:[[EMClient sharedClient] currentUsername]];
-	
+	[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image];
 }
 
 //点击取消是执行

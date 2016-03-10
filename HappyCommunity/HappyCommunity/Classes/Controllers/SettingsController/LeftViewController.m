@@ -10,8 +10,12 @@
 #import "RESideMenu.h"
 #import "WeatherViewController.h"
 #import "ServiceViewController.h"
+
+#import "CalendarHomeViewController.h"
+
 #import "SettingViewController.h"
 #import "DataBaseTools.h"
+
 
 static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControllerCellReuseId";
 
@@ -19,7 +23,11 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
 
 @property (nonatomic, strong) NSArray *lefs;
 @property (nonatomic, assign) NSInteger previousRow;
+
+@property(nonatomic, strong)CalendarHomeViewController *chvc;;
+
 @property (nonatomic, strong) NSArray *images;
+
 
 @end
 
@@ -31,11 +39,17 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     self.view.backgroundColor = [UIColor colorWithRed:0.22 green:0.71 blue:0.98 alpha:1];
     
 
-    _lefs = @[@"新闻和笑话", @"关于app", @"客服呈上",@"天气"];
+//    _lefs = @[@"新闻和笑话", @"关于app", @"功能历"];
+//    _tableView = [[UITableView alloc] init];
+//    _tableView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width - 64);
+
+
+    _lefs = @[@"新闻和笑话", @"关于app", @"日历",@"天气"];
 	_images = @[@"news_icon", @"about_icon", @"calendar_icon",@"weather_icon"];
     _tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
     _tableView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
 	
+
     _tableView.dataSource = self;
     _tableView.delegate = self;
 	//设置tableView的tableHeaderView
@@ -100,11 +114,19 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
         ServiceViewController *service = [[ServiceViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:service];
     }else if(indexPath.row == 2){
-        SettingViewController *setting = [[SettingViewController alloc ] init];
+        CalendarHomeViewController *setting = [[CalendarHomeViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:setting];
+        [setting setAirPlaneToDay:365 ToDateforString:nil];//飞机初始化
+        [self.navigationController pushViewController:_chvc animated:YES];
+        
+    }else{
+        AboutViewController *about = [[AboutViewController alloc ] init];
+        center = [[UINavigationController alloc] initWithRootViewController:about];
+
     }else if(indexPath.row == 3){
         WeatherViewController *weather = [[WeatherViewController alloc] init];
         center = [[UINavigationController alloc] initWithRootViewController:weather];
+
     }
     [self.sideMenuViewController setContentViewController:center
                                                  animated:YES];
@@ -127,7 +149,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
 	
 	//设置头像icon
 	UIImageView *imView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 18, 55, 55)];
-	imView.image = [[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]];
+	imView.image = [[DataBaseTools SharedInstance] getCachePicture];
 	if (imView.image==nil) {
 		imView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
 	}
