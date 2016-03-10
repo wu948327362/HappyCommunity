@@ -10,7 +10,7 @@
 #import "RESideMenu.h"
 #import "AboutViewController.h"
 #import "ServiceViewController.h"
-#import "SettingViewController.h"
+#import "CalendarHomeViewController.h"
 
 static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControllerCellReuseId";
 
@@ -18,7 +18,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
 
 @property (nonatomic, strong) NSArray *lefs;
 @property (nonatomic, assign) NSInteger previousRow;
-
+@property(nonatomic, strong)CalendarHomeViewController *chvc;;
 @end
 
 @implementation LeftViewController
@@ -28,7 +28,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     
     self.view.backgroundColor = [UIColor yellowColor];
     
-    _lefs = @[@"新闻和笑话", @"关于app", @"客服呈上"];
+    _lefs = @[@"新闻和笑话", @"关于app", @"功能历"];
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width - 64);
     _tableView.dataSource = self;
@@ -92,8 +92,11 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
         ServiceViewController *service = [[ServiceViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:service];
     }else if(indexPath.row == 2){
-        SettingViewController *setting = [[SettingViewController alloc ] init];
+        CalendarHomeViewController *setting = [[CalendarHomeViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:setting];
+        [setting setAirPlaneToDay:365 ToDateforString:nil];//飞机初始化
+        [self.navigationController pushViewController:_chvc animated:YES];
+        
     }else{
         AboutViewController *about = [[AboutViewController alloc ] init];
         center = [[UINavigationController alloc] initWithRootViewController:about];

@@ -56,6 +56,27 @@
 		C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25731791C85B5F000982579 /* NewTableViewCell.xib */; };
 		C25C17531C8A849700CFCA06 /* MyEMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C25C17521C8A849700CFCA06 /* MyEMManager.m */; };
 		C25C17561C8B1D6B00CFCA06 /* LoginAnimatino.m in Sources */ = {isa = PBXBuildFile; fileRef = C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */; };
+		C27036811C8EA2DC00F908B3 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27036691C8EA2DC00F908B3 /* FirstViewController.m */; };
+		C27036821C8EA2DC00F908B3 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C270366B1C8EA2DC00F908B3 /* MASCompositeConstraint.m */; };
+		C27036831C8EA2DC00F908B3 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C270366E1C8EA2DC00F908B3 /* MASConstraint.m */; };
+		C27036841C8EA2DC00F908B3 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = C27036701C8EA2DC00F908B3 /* MASConstraintMaker.m */; };
+		C27036851C8EA2DC00F908B3 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C27036721C8EA2DC00F908B3 /* MASLayoutConstraint.m */; };
+		C27036861C8EA2DC00F908B3 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = C27036761C8EA2DC00F908B3 /* MASViewAttribute.m */; };
+		C27036871C8EA2DC00F908B3 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C27036781C8EA2DC00F908B3 /* MASViewConstraint.m */; };
+		C27036881C8EA2DC00F908B3 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C270367A1C8EA2DC00F908B3 /* NSArray+MASAdditions.m */; };
+		C27036891C8EA2DC00F908B3 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C270367D1C8EA2DC00F908B3 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		C270368A1C8EA2DC00F908B3 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C270367F1C8EA2DC00F908B3 /* View+MASAdditions.m */; };
+		C270368E1C8EB3B200F908B3 /* NSDate+YCKCalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = C270368D1C8EB3B200F908B3 /* NSDate+YCKCalendarLogic.m */; };
+		C27036911C8ED8A200F908B3 /* CalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C27036901C8ED8A200F908B3 /* CalendarDayModel.m */; };
+		C27036941C8EEE8D00F908B3 /* CalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = C27036931C8EEE8D00F908B3 /* CalendarLogic.m */; };
+		C28169421C8FAE6500CD86A1 /* CalendarCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C28169411C8FAE6500CD86A1 /* CalendarCollectionCell.m */; };
+		C28169441C8FB54100CD86A1 /* chack.png in Resources */ = {isa = PBXBuildFile; fileRef = C28169431C8FB54000CD86A1 /* chack.png */; };
+		C28169471C8FCFD300CD86A1 /* CalendarCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C28169461C8FCFD300CD86A1 /* CalendarCollectionReusableView.m */; };
+		C281694A1C8FFAD200CD86A1 /* CalendarFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C28169491C8FFAD200CD86A1 /* CalendarFlowLayout.m */; };
+		C281694D1C8FFF2900CD86A1 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C281694C1C8FFF2900CD86A1 /* CalendarViewController.m */; };
+		C28169501C9015AD00CD86A1 /* CalendarHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C281694F1C9015AD00CD86A1 /* CalendarHomeViewController.m */; };
+		C28169521C903B1600CD86A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28169511C903B1600CD86A1 /* UIKit.framework */; };
+		C28169541C903B2700CD86A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28169531C903B2700CD86A1 /* Foundation.framework */; };
 		C29CCD531C852A4800AB68E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD521C852A4800AB68E6 /* main.m */; };
 		C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD581C852A4800AB68E6 /* ViewController.m */; };
 		C29CCD5C1C852A4800AB68E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29CCD5A1C852A4800AB68E6 /* Main.storyboard */; };
@@ -204,6 +225,51 @@
 		C25C17521C8A849700CFCA06 /* MyEMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEMManager.m; sourceTree = "<group>"; };
 		C25C17541C8B1D6B00CFCA06 /* LoginAnimatino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAnimatino.h; sourceTree = "<group>"; };
 		C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAnimatino.m; sourceTree = "<group>"; };
+		C27036681C8EA2DC00F908B3 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		C27036691C8EA2DC00F908B3 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		C270366A1C8EA2DC00F908B3 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		C270366B1C8EA2DC00F908B3 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		C270366C1C8EA2DC00F908B3 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		C270366D1C8EA2DC00F908B3 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		C270366E1C8EA2DC00F908B3 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		C270366F1C8EA2DC00F908B3 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		C27036701C8EA2DC00F908B3 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		C27036711C8EA2DC00F908B3 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		C27036721C8EA2DC00F908B3 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		C27036731C8EA2DC00F908B3 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		C27036741C8EA2DC00F908B3 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		C27036751C8EA2DC00F908B3 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		C27036761C8EA2DC00F908B3 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		C27036771C8EA2DC00F908B3 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		C27036781C8EA2DC00F908B3 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		C27036791C8EA2DC00F908B3 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		C270367A1C8EA2DC00F908B3 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		C270367B1C8EA2DC00F908B3 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		C270367C1C8EA2DC00F908B3 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		C270367D1C8EA2DC00F908B3 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		C270367E1C8EA2DC00F908B3 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		C270367F1C8EA2DC00F908B3 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		C27036801C8EA2DC00F908B3 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		C270368C1C8EB3B200F908B3 /* NSDate+YCKCalendarLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+YCKCalendarLogic.h"; sourceTree = "<group>"; };
+		C270368D1C8EB3B200F908B3 /* NSDate+YCKCalendarLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+YCKCalendarLogic.m"; sourceTree = "<group>"; };
+		C270368F1C8ED8A200F908B3 /* CalendarDayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayModel.h; sourceTree = "<group>"; };
+		C27036901C8ED8A200F908B3 /* CalendarDayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayModel.m; sourceTree = "<group>"; };
+		C27036921C8EEE8D00F908B3 /* CalendarLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarLogic.h; sourceTree = "<group>"; };
+		C27036931C8EEE8D00F908B3 /* CalendarLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarLogic.m; sourceTree = "<group>"; };
+		C281693F1C8FAE1600CD86A1 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		C28169401C8FAE6500CD86A1 /* CalendarCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCollectionCell.h; sourceTree = "<group>"; };
+		C28169411C8FAE6500CD86A1 /* CalendarCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCollectionCell.m; sourceTree = "<group>"; };
+		C28169431C8FB54000CD86A1 /* chack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chack.png; path = ../calendar/chack.png; sourceTree = "<group>"; };
+		C28169451C8FCFD300CD86A1 /* CalendarCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCollectionReusableView.h; sourceTree = "<group>"; };
+		C28169461C8FCFD300CD86A1 /* CalendarCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCollectionReusableView.m; sourceTree = "<group>"; };
+		C28169481C8FFAD200CD86A1 /* CalendarFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarFlowLayout.h; sourceTree = "<group>"; };
+		C28169491C8FFAD200CD86A1 /* CalendarFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarFlowLayout.m; sourceTree = "<group>"; };
+		C281694B1C8FFF2900CD86A1 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		C281694C1C8FFF2900CD86A1 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		C281694E1C9015AD00CD86A1 /* CalendarHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarHomeViewController.h; sourceTree = "<group>"; };
+		C281694F1C9015AD00CD86A1 /* CalendarHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarHomeViewController.m; sourceTree = "<group>"; };
+		C28169511C903B1600CD86A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C28169531C903B2700CD86A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C28792A31C86E3D2009C9336 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		C28792A41C86E3D2009C9336 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
 		C29CCD4E1C852A4800AB68E6 /* HappyCommunity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCommunity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -360,6 +426,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C28169541C903B2700CD86A1 /* Foundation.framework in Frameworks */,
+				C28169521C903B1600CD86A1 /* UIKit.framework in Frameworks */,
 				C23954E91C8D9ABE00A1FC69 /* CoreGraphics.framework in Frameworks */,
 				C21A1B0F1C86E66600CDAC7D /* libsqlite3.0.tbd in Frameworks */,
 				C2A9BF241C857586005E19B2 /* libsqlite3.tbd in Frameworks */,
@@ -393,6 +461,8 @@
 		31BA07306DAF986938807A06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C28169531C903B2700CD86A1 /* Foundation.framework */,
+				C28169511C903B1600CD86A1 /* UIKit.framework */,
 				C21A1B0E1C86E66600CDAC7D /* libsqlite3.0.tbd */,
 				B9CC1CDFFDD9AF9FA2B9DBAE /* libPods.a */,
 			);
@@ -495,6 +565,62 @@
 			path = chatListCell;
 			sourceTree = "<group>";
 		};
+		C27036671C8EA2DC00F908B3 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				C27036681C8EA2DC00F908B3 /* FirstViewController.h */,
+				C27036691C8EA2DC00F908B3 /* FirstViewController.m */,
+				C270366A1C8EA2DC00F908B3 /* MASCompositeConstraint.h */,
+				C270366B1C8EA2DC00F908B3 /* MASCompositeConstraint.m */,
+				C270366C1C8EA2DC00F908B3 /* MASConstraint+Private.h */,
+				C270366D1C8EA2DC00F908B3 /* MASConstraint.h */,
+				C270366E1C8EA2DC00F908B3 /* MASConstraint.m */,
+				C270366F1C8EA2DC00F908B3 /* MASConstraintMaker.h */,
+				C27036701C8EA2DC00F908B3 /* MASConstraintMaker.m */,
+				C27036711C8EA2DC00F908B3 /* MASLayoutConstraint.h */,
+				C27036721C8EA2DC00F908B3 /* MASLayoutConstraint.m */,
+				C27036731C8EA2DC00F908B3 /* Masonry.h */,
+				C27036741C8EA2DC00F908B3 /* MASUtilities.h */,
+				C27036751C8EA2DC00F908B3 /* MASViewAttribute.h */,
+				C27036761C8EA2DC00F908B3 /* MASViewAttribute.m */,
+				C27036771C8EA2DC00F908B3 /* MASViewConstraint.h */,
+				C27036781C8EA2DC00F908B3 /* MASViewConstraint.m */,
+				C27036791C8EA2DC00F908B3 /* NSArray+MASAdditions.h */,
+				C270367A1C8EA2DC00F908B3 /* NSArray+MASAdditions.m */,
+				C270367B1C8EA2DC00F908B3 /* NSArray+MASShorthandAdditions.h */,
+				C270367C1C8EA2DC00F908B3 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				C270367D1C8EA2DC00F908B3 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				C270367E1C8EA2DC00F908B3 /* View+MASAdditions.h */,
+				C270367F1C8EA2DC00F908B3 /* View+MASAdditions.m */,
+				C27036801C8EA2DC00F908B3 /* View+MASShorthandAdditions.h */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		C270368B1C8EB14B00F908B3 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C270368C1C8EB3B200F908B3 /* NSDate+YCKCalendarLogic.h */,
+				C270368D1C8EB3B200F908B3 /* NSDate+YCKCalendarLogic.m */,
+				C270368F1C8ED8A200F908B3 /* CalendarDayModel.h */,
+				C27036901C8ED8A200F908B3 /* CalendarDayModel.m */,
+				C27036921C8EEE8D00F908B3 /* CalendarLogic.h */,
+				C27036931C8EEE8D00F908B3 /* CalendarLogic.m */,
+				C281693F1C8FAE1600CD86A1 /* Color.h */,
+				C28169401C8FAE6500CD86A1 /* CalendarCollectionCell.h */,
+				C28169411C8FAE6500CD86A1 /* CalendarCollectionCell.m */,
+				C28169451C8FCFD300CD86A1 /* CalendarCollectionReusableView.h */,
+				C28169461C8FCFD300CD86A1 /* CalendarCollectionReusableView.m */,
+				C28169481C8FFAD200CD86A1 /* CalendarFlowLayout.h */,
+				C28169491C8FFAD200CD86A1 /* CalendarFlowLayout.m */,
+				C281694B1C8FFF2900CD86A1 /* CalendarViewController.h */,
+				C281694C1C8FFF2900CD86A1 /* CalendarViewController.m */,
+				C281694E1C9015AD00CD86A1 /* CalendarHomeViewController.h */,
+				C281694F1C9015AD00CD86A1 /* CalendarHomeViewController.m */,
+			);
+			path = calendar;
+			sourceTree = "<group>";
+		};
 		C29CCD451C852A4800AB68E6 = {
 			isa = PBXGroup;
 			children = (
@@ -546,6 +672,7 @@
 		C2A9BE641C852D00005E19B2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C270368B1C8EB14B00F908B3 /* calendar */,
 				C2A9BE651C852D00005E19B2 /* AppDelegate */,
 				C2A9BE681C852D00005E19B2 /* Controllers */,
 				C2A9BE6D1C852D00005E19B2 /* Headers */,
@@ -686,6 +813,7 @@
 		C2A9BE711C852D00005E19B2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C28169431C8FB54000CD86A1 /* chack.png */,
 				C23954DF1C8D9A5900A1FC69 /* play */,
 				C24778B71C8D661E00411370 /* Settings */,
 				C24D009F1C89CD7400644B95 /* chatListCell */,
@@ -724,6 +852,7 @@
 		C2A9BE751C852DB2005E19B2 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
+				C27036671C8EA2DC00F908B3 /* Masonry */,
 				C2A9BE761C852DB2005E19B2 /* MKAnnotationView+WebCache.h */,
 				C2A9BE771C852DB2005E19B2 /* MKAnnotationView+WebCache.m */,
 				C2A9BE781C852DB2005E19B2 /* NSData+ImageContentType.h */,
@@ -1028,6 +1157,7 @@
 				C21A1AEB1C86911200CDAC7D /* group_creategroup@2x.png in Resources */,
 				C21A1AEF1C86911200CDAC7D /* group_participant_add@2x.png in Resources */,
 				C29CCD641C852A4800AB68E6 /* LaunchScreen.storyboard in Resources */,
+				C28169441C8FB54100CD86A1 /* chack.png in Resources */,
 				C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */,
 				C24778BD1C8D71D200411370 /* setting_nodisturb.png in Resources */,
 				C21A1AF11C86911200CDAC7D /* groupPrivateHeader@2x.png in Resources */,
@@ -1119,6 +1249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C281694A1C8FFAD200CD86A1 /* CalendarFlowLayout.m in Sources */,
 				C2DB9D861C883C8A00FA0EA9 /* ChatController.m in Sources */,
 				C2DB9D851C883B5500FA0EA9 /* WebViewViewController.m in Sources */,
 				C2DB9D841C883B2800FA0EA9 /* AddFriendController.m in Sources */,
@@ -1132,14 +1263,22 @@
 				C2A9BEEA1C85670A005E19B2 /* MyViewController.m in Sources */,
 				C2A9BEC71C85345D005E19B2 /* NewsView.m in Sources */,
 				C21A1AFB1C86955000CDAC7D /* ContactManager.m in Sources */,
+				C270368E1C8EB3B200F908B3 /* NSDate+YCKCalendarLogic.m in Sources */,
 				C24D009A1C89BC9F00644B95 /* ChatTableViewCell.m in Sources */,
 				C24778AE1C8D13CD00411370 /* SettingsController.m in Sources */,
 				C25C17561C8B1D6B00CFCA06 /* LoginAnimatino.m in Sources */,
 				C25C17531C8A849700CFCA06 /* MyEMManager.m in Sources */,
+				C28169501C9015AD00CD86A1 /* CalendarHomeViewController.m in Sources */,
 				C2A9BEC41C853453005E19B2 /* MessageView.m in Sources */,
 				C24D009E1C89BF9800644B95 /* ChatModel.m in Sources */,
 				C21A1AF81C86951600CDAC7D /* ContactController.m in Sources */,
+				C27036941C8EEE8D00F908B3 /* CalendarLogic.m in Sources */,
+				C27036841C8EA2DC00F908B3 /* MASConstraintMaker.m in Sources */,
 				C2A9BE9D1C852DB2005E19B2 /* SDWebImageDownloaderOperation.m in Sources */,
+				C27036891C8EA2DC00F908B3 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				C27036871C8EA2DC00F908B3 /* MASViewConstraint.m in Sources */,
+				C270368A1C8EA2DC00F908B3 /* View+MASAdditions.m in Sources */,
+				C27036911C8ED8A200F908B3 /* CalendarDayModel.m in Sources */,
 				C23954EC1C8D9B5800A1FC69 /* BirdFlyViewController.m in Sources */,
 				C2A9BE741C852D00005E19B2 /* AppDelegate.m in Sources */,
 				C2A9BE9A1C852DB2005E19B2 /* SDWebImageCompat.m in Sources */,
@@ -1149,13 +1288,17 @@
 				C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */,
 				C29CCD5F1C852A4800AB68E6 /* HappyCommunity.xcdatamodeld in Sources */,
 				C2EA5B781C8703290072A24B /* UIViewController+RESideMenu.m in Sources */,
+				C27036821C8EA2DC00F908B3 /* MASCompositeConstraint.m in Sources */,
 				C2A9BF591C85CB4C005E19B2 /* LoginController.m in Sources */,
 				C2A9BEA31C852DB2005E19B2 /* UIImage+WebP.m in Sources */,
 				C2EA5B911C87179B0072A24B /* ServiceViewController.m in Sources */,
+				C28169471C8FCFD300CD86A1 /* CalendarCollectionReusableView.m in Sources */,
 				C257317A1C85B5F000982579 /* NewTableViewCell.m in Sources */,
 				C2FAE07B1C882498007A8FBF /* LaughTableViewCell.m in Sources */,
 				C2A9BEA51C852DB2005E19B2 /* UIImageView+WebCache.m in Sources */,
 				C200E17E1C891947009900CB /* MessageModel+CoreDataProperties.m in Sources */,
+				C27036881C8EA2DC00F908B3 /* NSArray+MASAdditions.m in Sources */,
+				C27036851C8EA2DC00F908B3 /* MASLayoutConstraint.m in Sources */,
 				C2A9BECD1C8535F5005E19B2 /* HappyTabController.m in Sources */,
 				C200E17D1C891947009900CB /* MessageModel.m in Sources */,
 				C2A9BE9C1C852DB2005E19B2 /* SDWebImageDownloader.m in Sources */,
@@ -1163,13 +1306,18 @@
 				C21A1ADF1C868C7000CDAC7D /* CommunityController.m in Sources */,
 				C2A9BEA61C852DB2005E19B2 /* UIView+WebCacheOperation.m in Sources */,
 				C2A9BEA01C852DB2005E19B2 /* UIButton+WebCache.m in Sources */,
+				C27036811C8EA2DC00F908B3 /* FirstViewController.m in Sources */,
+				C281694D1C8FFF2900CD86A1 /* CalendarViewController.m in Sources */,
 				C21A1B121C86E68F00CDAC7D /* DataBaseTools.m in Sources */,
+				C27036831C8EA2DC00F908B3 /* MASConstraint.m in Sources */,
 				C2EA5B8E1C87178D0072A24B /* AboutViewController.m in Sources */,
 				C2A9BF2E1C857ABB005E19B2 /* LaughManager.m in Sources */,
 				C2EA5B941C8717A70072A24B /* SettingViewController.m in Sources */,
 				C2A9BE971C852DB2005E19B2 /* MKAnnotationView+WebCache.m in Sources */,
+				C28169421C8FAE6500CD86A1 /* CalendarCollectionCell.m in Sources */,
 				C21A1B151C86E6BC00CDAC7D /* FriendsInvitation.m in Sources */,
 				C2A9BE981C852DB2005E19B2 /* NSData+ImageContentType.m in Sources */,
+				C27036861C8EA2DC00F908B3 /* MASViewAttribute.m in Sources */,
 				C29CCD531C852A4800AB68E6 /* main.m in Sources */,
 				C2EA5B771C8703290072A24B /* RESideMenu.m in Sources */,
 				C2A9BEC11C853447005E19B2 /* LaughView.m in Sources */,

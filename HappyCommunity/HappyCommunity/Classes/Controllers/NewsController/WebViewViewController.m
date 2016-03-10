@@ -18,6 +18,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.web = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    NSURL *url = [NSURL URLWithString:self.url];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    [self.view addSubview:self.web];
+//    [self.web loadRequest:request];
+//    //尺寸页面适配
+//    self.web.scalesPageToFit = YES;
+//    //取消右边竖直方向的滑条
+//    self.web.scrollView.showsVerticalScrollIndicator = NO;
+//    //取消sebView的回弹功能
+//    self.web.scrollView.bounces = NO;
+    // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     NSURL *url = [NSURL URLWithString:self.url];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.view addSubview:self.web];
@@ -28,7 +43,7 @@
     self.web.scrollView.showsVerticalScrollIndicator = NO;
     //取消sebView的回弹功能
     self.web.scrollView.bounces = NO;
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
