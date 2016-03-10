@@ -138,6 +138,7 @@
 		C2A9BF221C85757C005E19B2 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A9BF211C85757C005E19B2 /* libstdc++.6.0.9.tbd */; };
 		C2A9BF241C857586005E19B2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A9BF231C857586005E19B2 /* libsqlite3.tbd */; };
 		C2A9BF2B1C857AB0005E19B2 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF2A1C857AB0005E19B2 /* NewsModel.m */; };
+		C2A9BF2E1C857ABB005E19B2 /* LaughManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF2D1C857ABB005E19B2 /* LaughManager.m */; };
 		C2A9BF311C857AD5005E19B2 /* LaughModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF301C857AD5005E19B2 /* LaughModel.m */; };
 		C2A9BF591C85CB4C005E19B2 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF571C85CB4C005E19B2 /* LoginController.m */; };
 		C2A9BF5A1C85CB4C005E19B2 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF581C85CB4C005E19B2 /* LoginController.xib */; };
