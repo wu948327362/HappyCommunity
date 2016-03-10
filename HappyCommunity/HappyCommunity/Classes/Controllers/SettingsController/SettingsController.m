@@ -14,6 +14,8 @@
 #import "MyEMManager.h"
 #import "LoginController.h"
 #import "DataBaseTools.h"
+#import "CloudManager.h"
+
 
 @interface SettingsController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -51,8 +53,17 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(presentLeftMenuViewController:)];
 	
 	//获取缓存的图片
-	self.imageView.image = [[DataBaseTools SharedInstance] getCachePicture];
-	
+	self.imageView.image = [[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]];
+	if (self.imageView.image==nil) {
+		
+		//读取leanCloud云端图片.
+		[[CloudManager shareInstance] getUserIconByName:[[EMClient sharedClient] currentUsername] finish:^(UIImage *findImage) {
+			self.imageView.image = findImage;
+			if (self.imageView.image==nil) {
+				self.imageView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
+			}
+		}];
+	}
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -79,8 +90,14 @@
 
 //小游戏
 - (IBAction)smallGameAction:(UIButton *)sender {
+    
+    // 在跳转界面后隐藏tabbar
+    self.hidesBottomBarWhenPushed = YES;
     BirdFlyViewController *bfvc = [[BirdFlyViewController alloc] init];
     [self.navigationController pushViewController:bfvc animated:YES];
+    
+    // 将hidesBottomBarWhenPushed设置为NO
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 //注销
@@ -112,7 +129,8 @@
 	self.imageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
 	[self.picker dismissViewControllerAnimated:YES completion:nil];
 	//缓存图片
-	[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image];
+	[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image andName:[[EMClient sharedClient] currentUsername]];
+	
 }
 
 //点击取消是执行

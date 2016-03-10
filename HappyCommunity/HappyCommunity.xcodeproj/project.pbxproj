@@ -56,6 +56,7 @@
 		C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25731791C85B5F000982579 /* NewTableViewCell.xib */; };
 		C25C17531C8A849700CFCA06 /* MyEMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C25C17521C8A849700CFCA06 /* MyEMManager.m */; };
 		C25C17561C8B1D6B00CFCA06 /* LoginAnimatino.m in Sources */ = {isa = PBXBuildFile; fileRef = C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */; };
+
 		C27036811C8EA2DC00F908B3 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27036691C8EA2DC00F908B3 /* FirstViewController.m */; };
 		C27036821C8EA2DC00F908B3 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C270366B1C8EA2DC00F908B3 /* MASCompositeConstraint.m */; };
 		C27036831C8EA2DC00F908B3 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C270366E1C8EA2DC00F908B3 /* MASConstraint.m */; };
@@ -77,6 +78,15 @@
 		C28169501C9015AD00CD86A1 /* CalendarHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C281694F1C9015AD00CD86A1 /* CalendarHomeViewController.m */; };
 		C28169521C903B1600CD86A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28169511C903B1600CD86A1 /* UIKit.framework */; };
 		C28169541C903B2700CD86A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28169531C903B2700CD86A1 /* Foundation.framework */; };
+
+		C25CFDA11C9014C000D8DB04 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C25CFDA01C9014C000D8DB04 /* CloudManager.m */; };
+		C29942651C8EB05A002DE866 /* libAPIStoreSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C29942641C8EB05A002DE866 /* libAPIStoreSDK.a */; };
+		C299426D1C8EB1A1002DE866 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C299426B1C8EB1A1002DE866 /* WeatherViewController.m */; };
+		C299426E1C8EB1A1002DE866 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C299426C1C8EB1A1002DE866 /* WeatherViewController.xib */; };
+		C29942761C8EC0BD002DE866 /* resizeApi-1.php.png in Resources */ = {isa = PBXBuildFile; fileRef = C29942741C8EC0BD002DE866 /* resizeApi-1.php.png */; };
+		C29942771C8EC0BD002DE866 /* resizeApi.php.png in Resources */ = {isa = PBXBuildFile; fileRef = C29942751C8EC0BD002DE866 /* resizeApi.php.png */; };
+		C299427A1C8ED38B002DE866 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C29942791C8ED38B002DE866 /* WeatherModel.m */; };
+
 		C29CCD531C852A4800AB68E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD521C852A4800AB68E6 /* main.m */; };
 		C29CCD591C852A4800AB68E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CCD581C852A4800AB68E6 /* ViewController.m */; };
 		C29CCD5C1C852A4800AB68E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29CCD5A1C852A4800AB68E6 /* Main.storyboard */; };
@@ -128,7 +138,6 @@
 		C2A9BF221C85757C005E19B2 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A9BF211C85757C005E19B2 /* libstdc++.6.0.9.tbd */; };
 		C2A9BF241C857586005E19B2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A9BF231C857586005E19B2 /* libsqlite3.tbd */; };
 		C2A9BF2B1C857AB0005E19B2 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF2A1C857AB0005E19B2 /* NewsModel.m */; };
-		C2A9BF2E1C857ABB005E19B2 /* LaughManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF2D1C857ABB005E19B2 /* LaughManager.m */; };
 		C2A9BF311C857AD5005E19B2 /* LaughModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF301C857AD5005E19B2 /* LaughModel.m */; };
 		C2A9BF591C85CB4C005E19B2 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF571C85CB4C005E19B2 /* LoginController.m */; };
 		C2A9BF5A1C85CB4C005E19B2 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF581C85CB4C005E19B2 /* LoginController.xib */; };
@@ -136,6 +145,25 @@
 		C2A9BF611C85CBC4005E19B2 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */; };
 		C2A9BF621C85CBC4005E19B2 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5E1C85CBC4005E19B2 /* password.png */; };
 		C2A9BF631C85CBC4005E19B2 /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */; };
+		C2B74CB31C8F0A1E00DC3BFD /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74C9F1C8F0A1E00DC3BFD /* about_icon.png */; };
+		C2B74CB41C8F0A1E00DC3BFD /* calendar_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA01C8F0A1E00DC3BFD /* calendar_icon.png */; };
+		C2B74CB51C8F0A1E00DC3BFD /* news_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA11C8F0A1E00DC3BFD /* news_icon.png */; };
+		C2B74CB61C8F0A1E00DC3BFD /* weather_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA21C8F0A1E00DC3BFD /* weather_icon.png */; };
+		C2B74CB71C8F0A1E00DC3BFD /* group_creategroup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA41C8F0A1E00DC3BFD /* group_creategroup@2x.png */; };
+		C2B74CB81C8F0A1E00DC3BFD /* group_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA51C8F0A1E00DC3BFD /* group_header@2x.png */; };
+		C2B74CB91C8F0A1E00DC3BFD /* group_invitee_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA61C8F0A1E00DC3BFD /* group_invitee_delete@2x.png */; };
+		C2B74CBA1C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA71C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png */; };
+		C2B74CBB1C8F0A1E00DC3BFD /* group_participant_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA81C8F0A1E00DC3BFD /* group_participant_add@2x.png */; };
+		C2B74CBC1C8F0A1E00DC3BFD /* group_participant_addHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CA91C8F0A1E00DC3BFD /* group_participant_addHL@2x.png */; };
+		C2B74CBD1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAA1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png */; };
+		C2B74CBE1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAB1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png */; };
+		C2B74CBF1C8F0A1E00DC3BFD /* my_friends.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAC1C8F0A1E00DC3BFD /* my_friends.png */; };
+		C2B74CC01C8F0A1E00DC3BFD /* my_group.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAD1C8F0A1E00DC3BFD /* my_group.png */; };
+		C2B74CC11C8F0A1E00DC3BFD /* nav_createGroup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAE1C8F0A1E00DC3BFD /* nav_createGroup@2x.png */; };
+		C2B74CC21C8F0A1E00DC3BFD /* new_group.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CAF1C8F0A1E00DC3BFD /* new_group.png */; };
+		C2B74CC31C8F0A1E00DC3BFD /* newFriends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CB01C8F0A1E00DC3BFD /* newFriends@2x.png */; };
+		C2B74CC41C8F0A1E00DC3BFD /* other_group.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CB11C8F0A1E00DC3BFD /* other_group.png */; };
+		C2B74CC51C8F0A1E00DC3BFD /* program_message.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B74CB21C8F0A1E00DC3BFD /* program_message.png */; };
 		C2DB9D821C8836CC00FA0EA9 /* NewsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A9BF271C857AA1005E19B2 /* NewsManager.m */; };
 		C2DB9D841C883B2800FA0EA9 /* AddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DB9D831C883B2800FA0EA9 /* AddFriendController.m */; };
 		C2DB9D851C883B5500FA0EA9 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28792A41C86E3D2009C9336 /* WebViewViewController.m */; };
@@ -146,7 +174,6 @@
 		C2EA5B781C8703290072A24B /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B751C8703290072A24B /* UIViewController+RESideMenu.m */; };
 		C2EA5B7B1C87037B0072A24B /* YCServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B7A1C87037B0072A24B /* YCServiceViewController.m */; };
 		C2EA5B7E1C8704FF0072A24B /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B7D1C8704FF0072A24B /* LeftViewController.m */; };
-		C2EA5B8E1C87178D0072A24B /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B8D1C87178D0072A24B /* AboutViewController.m */; };
 		C2EA5B911C87179B0072A24B /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B901C87179B0072A24B /* ServiceViewController.m */; };
 		C2EA5B941C8717A70072A24B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EA5B931C8717A70072A24B /* SettingViewController.m */; };
 		C2FAE07B1C882498007A8FBF /* LaughTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FAE0791C882498007A8FBF /* LaughTableViewCell.m */; };
@@ -162,7 +189,7 @@
 		C200E17B1C891947009900CB /* MessageModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageModel+CoreDataProperties.h"; sourceTree = "<group>"; };
 		C200E17C1C891947009900CB /* MessageModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessageModel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		C21A1ADC1C867D1D00CDAC7D /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C21A1ADD1C868C7000CDAC7D /* CommunityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityController.h; sourceTree = "<group>"; };
+		C21A1ADD1C868C7000CDAC7D /* CommunityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommunityController.h; path = ../CommunityController.h; sourceTree = "<group>"; };
 		C21A1ADE1C868C7000CDAC7D /* CommunityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityController.m; sourceTree = "<group>"; };
 		C21A1AE11C86911200CDAC7D /* group_creategroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_creategroup@2x.png"; sourceTree = "<group>"; };
 		C21A1AE21C86911200CDAC7D /* group_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_header@2x.png"; sourceTree = "<group>"; };
@@ -225,6 +252,7 @@
 		C25C17521C8A849700CFCA06 /* MyEMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEMManager.m; sourceTree = "<group>"; };
 		C25C17541C8B1D6B00CFCA06 /* LoginAnimatino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAnimatino.h; sourceTree = "<group>"; };
 		C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAnimatino.m; sourceTree = "<group>"; };
+
 		C27036681C8EA2DC00F908B3 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		C27036691C8EA2DC00F908B3 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		C270366A1C8EA2DC00F908B3 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -270,8 +298,21 @@
 		C281694F1C9015AD00CD86A1 /* CalendarHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarHomeViewController.m; sourceTree = "<group>"; };
 		C28169511C903B1600CD86A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C28169531C903B2700CD86A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+
+		C25CFD9F1C9014C000D8DB04 /* CloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudManager.h; sourceTree = "<group>"; };
+		C25CFDA01C9014C000D8DB04 /* CloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudManager.m; sourceTree = "<group>"; };
+
 		C28792A31C86E3D2009C9336 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		C28792A41C86E3D2009C9336 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
+		C29942631C8EB059002DE866 /* APIStoreSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIStoreSDK.h; sourceTree = "<group>"; };
+		C29942641C8EB05A002DE866 /* libAPIStoreSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAPIStoreSDK.a; sourceTree = "<group>"; };
+		C299426A1C8EB1A1002DE866 /* WeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
+		C299426B1C8EB1A1002DE866 /* WeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
+		C299426C1C8EB1A1002DE866 /* WeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
+		C29942741C8EC0BD002DE866 /* resizeApi-1.php.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resizeApi-1.php.png"; sourceTree = "<group>"; };
+		C29942751C8EC0BD002DE866 /* resizeApi.php.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resizeApi.php.png; sourceTree = "<group>"; };
+		C29942781C8ED38B002DE866 /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherModel.h; path = ../Controllers/WeatherModel.h; sourceTree = "<group>"; };
+		C29942791C8ED38B002DE866 /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherModel.m; path = ../Controllers/WeatherModel.m; sourceTree = "<group>"; };
 		C29CCD4E1C852A4800AB68E6 /* HappyCommunity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCommunity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29CCD521C852A4800AB68E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C29CCD571C852A4800AB68E6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -386,8 +427,6 @@
 		C2A9BF271C857AA1005E19B2 /* NewsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsManager.m; sourceTree = "<group>"; };
 		C2A9BF291C857AB0005E19B2 /* NewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
 		C2A9BF2A1C857AB0005E19B2 /* NewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
-		C2A9BF2C1C857ABB005E19B2 /* LaughManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaughManager.h; sourceTree = "<group>"; };
-		C2A9BF2D1C857ABB005E19B2 /* LaughManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaughManager.m; sourceTree = "<group>"; };
 		C2A9BF2F1C857AD5005E19B2 /* LaughModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaughModel.h; sourceTree = "<group>"; };
 		C2A9BF301C857AD5005E19B2 /* LaughModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaughModel.m; sourceTree = "<group>"; };
 		C2A9BF561C85CB4C005E19B2 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -397,6 +436,25 @@
 		C2A9BF5D1C85CBC4005E19B2 /* account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account@2x.png"; sourceTree = "<group>"; };
 		C2A9BF5E1C85CBC4005E19B2 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
 		C2A9BF5F1C85CBC4005E19B2 /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@2x.png"; sourceTree = "<group>"; };
+		C2B74C9F1C8F0A1E00DC3BFD /* about_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_icon.png; sourceTree = "<group>"; };
+		C2B74CA01C8F0A1E00DC3BFD /* calendar_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_icon.png; sourceTree = "<group>"; };
+		C2B74CA11C8F0A1E00DC3BFD /* news_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_icon.png; sourceTree = "<group>"; };
+		C2B74CA21C8F0A1E00DC3BFD /* weather_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather_icon.png; sourceTree = "<group>"; };
+		C2B74CA41C8F0A1E00DC3BFD /* group_creategroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_creategroup@2x.png"; sourceTree = "<group>"; };
+		C2B74CA51C8F0A1E00DC3BFD /* group_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_header@2x.png"; sourceTree = "<group>"; };
+		C2B74CA61C8F0A1E00DC3BFD /* group_invitee_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_invitee_delete@2x.png"; sourceTree = "<group>"; };
+		C2B74CA71C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_joinpublicgroup@2x.png"; sourceTree = "<group>"; };
+		C2B74CA81C8F0A1E00DC3BFD /* group_participant_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_participant_add@2x.png"; sourceTree = "<group>"; };
+		C2B74CA91C8F0A1E00DC3BFD /* group_participant_addHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_participant_addHL@2x.png"; sourceTree = "<group>"; };
+		C2B74CAA1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groupPrivateHeader@2x.png"; sourceTree = "<group>"; };
+		C2B74CAB1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groupPublicHeader@2x.png"; sourceTree = "<group>"; };
+		C2B74CAC1C8F0A1E00DC3BFD /* my_friends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_friends.png; sourceTree = "<group>"; };
+		C2B74CAD1C8F0A1E00DC3BFD /* my_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_group.png; sourceTree = "<group>"; };
+		C2B74CAE1C8F0A1E00DC3BFD /* nav_createGroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_createGroup@2x.png"; sourceTree = "<group>"; };
+		C2B74CAF1C8F0A1E00DC3BFD /* new_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_group.png; sourceTree = "<group>"; };
+		C2B74CB01C8F0A1E00DC3BFD /* newFriends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newFriends@2x.png"; sourceTree = "<group>"; };
+		C2B74CB11C8F0A1E00DC3BFD /* other_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = other_group.png; sourceTree = "<group>"; };
+		C2B74CB21C8F0A1E00DC3BFD /* program_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = program_message.png; sourceTree = "<group>"; };
 		C2DB9D831C883B2800FA0EA9 /* AddFriendController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddFriendController.m; path = HappyCommunity/Classes/Controllers/CommunityController/ContactsController/AddFriendController.m; sourceTree = "<group>"; };
 		C2DFEEC11C897E240024E167 /* timeline_new_status_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_new_status_background@2x.png"; sourceTree = "<group>"; };
 		C2EA5B701C8703290072A24B /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
@@ -409,8 +467,6 @@
 		C2EA5B7A1C87037B0072A24B /* YCServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCServiceViewController.m; sourceTree = "<group>"; };
 		C2EA5B7C1C8704FF0072A24B /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftViewController.h; path = SettingsController/LeftViewController.h; sourceTree = "<group>"; };
 		C2EA5B7D1C8704FF0072A24B /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftViewController.m; path = SettingsController/LeftViewController.m; sourceTree = "<group>"; };
-		C2EA5B8C1C87178D0072A24B /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
-		C2EA5B8D1C87178D0072A24B /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		C2EA5B8F1C87179B0072A24B /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		C2EA5B901C87179B0072A24B /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		C2EA5B921C8717A70072A24B /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
@@ -443,6 +499,7 @@
 				C2A9BF101C8574FD005E19B2 /* CoreMedia.framework in Frameworks */,
 				C2A9BF0E1C8574C5005E19B2 /* libHyphenateSDK.a in Frameworks */,
 				D7FA6E81B528446836F24365 /* libPods.a in Frameworks */,
+				C29942651C8EB05A002DE866 /* libAPIStoreSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +549,7 @@
 			children = (
 				C21A1AF61C86951600CDAC7D /* ContactController.h */,
 				C21A1AF71C86951600CDAC7D /* ContactController.m */,
+				C21A1ADD1C868C7000CDAC7D /* CommunityController.h */,
 				C21A1B091C86D18300CDAC7D /* AddFriendController.h */,
 				C21A1B0A1C86D18300CDAC7D /* AddFriendController.m */,
 				C21A1B0B1C86D18300CDAC7D /* AddFriendController.xib */,
@@ -565,6 +623,7 @@
 			path = chatListCell;
 			sourceTree = "<group>";
 		};
+
 		C27036671C8EA2DC00F908B3 /* Masonry */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +678,24 @@
 				C281694F1C9015AD00CD86A1 /* CalendarHomeViewController.m */,
 			);
 			path = calendar;
+
+		C29942661C8EB062002DE866 /* APIStoreSDK */ = {
+			isa = PBXGroup;
+			children = (
+				C29942631C8EB059002DE866 /* APIStoreSDK.h */,
+				C29942641C8EB05A002DE866 /* libAPIStoreSDK.a */,
+			);
+			name = APIStoreSDK;
+			sourceTree = "<group>";
+		};
+		C29942731C8EBF38002DE866 /* weather */ = {
+			isa = PBXGroup;
+			children = (
+				C29942741C8EC0BD002DE866 /* resizeApi-1.php.png */,
+				C29942751C8EC0BD002DE866 /* resizeApi.php.png */,
+			);
+			name = weather;
+
 			sourceTree = "<group>";
 		};
 		C29CCD451C852A4800AB68E6 = {
@@ -677,7 +754,6 @@
 				C2A9BE681C852D00005E19B2 /* Controllers */,
 				C2A9BE6D1C852D00005E19B2 /* Headers */,
 				C2A9BE6E1C852D00005E19B2 /* Libs */,
-				C2A9BE6F1C852D00005E19B2 /* Managers */,
 				C2A9BE701C852D00005E19B2 /* Models */,
 				C2A9BE711C852D00005E19B2 /* Resources */,
 				C2A9BE721C852D00005E19B2 /* UserClasses */,
@@ -716,7 +792,6 @@
 			isa = PBXGroup;
 			children = (
 				C21A1AF51C8694EF00CDAC7D /* ContactsController */,
-				C21A1ADD1C868C7000CDAC7D /* CommunityController.h */,
 				C21A1ADE1C868C7000CDAC7D /* CommunityController.m */,
 			);
 			path = CommunityController;
@@ -768,6 +843,8 @@
 		C2A9BE6E1C852D00005E19B2 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				C2A9BE6F1C852D00005E19B2 /* Managers */,
+				C29942661C8EB062002DE866 /* APIStoreSDK */,
 				C2EA5B6F1C8703290072A24B /* RESideMenu */,
 				C2A9BF251C857704005E19B2 /* HuanXinLibs */,
 				C2A9BEEC1C8574C5005E19B2 /* HyphenateSDK */,
@@ -781,8 +858,6 @@
 			children = (
 				C2A9BF261C857AA1005E19B2 /* NewsManager.h */,
 				C2A9BF271C857AA1005E19B2 /* NewsManager.m */,
-				C2A9BF2C1C857ABB005E19B2 /* LaughManager.h */,
-				C2A9BF2D1C857ABB005E19B2 /* LaughManager.m */,
 				C21A1AF91C86955000CDAC7D /* ContactManager.h */,
 				C21A1AFA1C86955000CDAC7D /* ContactManager.m */,
 				C21A1B101C86E68F00CDAC7D /* DataBaseTools.h */,
@@ -791,13 +866,18 @@
 				C25C17521C8A849700CFCA06 /* MyEMManager.m */,
 				C25C17541C8B1D6B00CFCA06 /* LoginAnimatino.h */,
 				C25C17551C8B1D6B00CFCA06 /* LoginAnimatino.m */,
+				C25CFD9F1C9014C000D8DB04 /* CloudManager.h */,
+				C25CFDA01C9014C000D8DB04 /* CloudManager.m */,
 			);
-			path = Managers;
+			name = Managers;
+			path = ../Managers;
 			sourceTree = "<group>";
 		};
 		C2A9BE701C852D00005E19B2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C29942781C8ED38B002DE866 /* WeatherModel.h */,
+				C29942791C8ED38B002DE866 /* WeatherModel.m */,
 				C2A9BF291C857AB0005E19B2 /* NewsModel.h */,
 				C2A9BF2A1C857AB0005E19B2 /* NewsModel.m */,
 				C2A9BF2F1C857AD5005E19B2 /* LaughModel.h */,
@@ -813,7 +893,13 @@
 		C2A9BE711C852D00005E19B2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+
 				C28169431C8FB54000CD86A1 /* chack.png */,
+
+				C2B74C9E1C8F0A1E00DC3BFD /* chatIconAndLeftIcon */,
+				C2B74CA31C8F0A1E00DC3BFD /* other */,
+				C29942731C8EBF38002DE866 /* weather */,
+
 				C23954DF1C8D9A5900A1FC69 /* play */,
 				C24778B71C8D661E00411370 /* Settings */,
 				C24D009F1C89CD7400644B95 /* chatListCell */,
@@ -1051,6 +1137,39 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		C2B74C9E1C8F0A1E00DC3BFD /* chatIconAndLeftIcon */ = {
+			isa = PBXGroup;
+			children = (
+				C2B74C9F1C8F0A1E00DC3BFD /* about_icon.png */,
+				C2B74CA01C8F0A1E00DC3BFD /* calendar_icon.png */,
+				C2B74CA11C8F0A1E00DC3BFD /* news_icon.png */,
+				C2B74CA21C8F0A1E00DC3BFD /* weather_icon.png */,
+			);
+			path = chatIconAndLeftIcon;
+			sourceTree = "<group>";
+		};
+		C2B74CA31C8F0A1E00DC3BFD /* other */ = {
+			isa = PBXGroup;
+			children = (
+				C2B74CA41C8F0A1E00DC3BFD /* group_creategroup@2x.png */,
+				C2B74CA51C8F0A1E00DC3BFD /* group_header@2x.png */,
+				C2B74CA61C8F0A1E00DC3BFD /* group_invitee_delete@2x.png */,
+				C2B74CA71C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png */,
+				C2B74CA81C8F0A1E00DC3BFD /* group_participant_add@2x.png */,
+				C2B74CA91C8F0A1E00DC3BFD /* group_participant_addHL@2x.png */,
+				C2B74CAA1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png */,
+				C2B74CAB1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png */,
+				C2B74CAC1C8F0A1E00DC3BFD /* my_friends.png */,
+				C2B74CAD1C8F0A1E00DC3BFD /* my_group.png */,
+				C2B74CAE1C8F0A1E00DC3BFD /* nav_createGroup@2x.png */,
+				C2B74CAF1C8F0A1E00DC3BFD /* new_group.png */,
+				C2B74CB01C8F0A1E00DC3BFD /* newFriends@2x.png */,
+				C2B74CB11C8F0A1E00DC3BFD /* other_group.png */,
+				C2B74CB21C8F0A1E00DC3BFD /* program_message.png */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
 		C2EA5B6F1C8703290072A24B /* RESideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1071,12 +1190,13 @@
 			children = (
 				C2EA5B7C1C8704FF0072A24B /* LeftViewController.h */,
 				C2EA5B7D1C8704FF0072A24B /* LeftViewController.m */,
-				C2EA5B8C1C87178D0072A24B /* AboutViewController.h */,
-				C2EA5B8D1C87178D0072A24B /* AboutViewController.m */,
 				C2EA5B8F1C87179B0072A24B /* ServiceViewController.h */,
 				C2EA5B901C87179B0072A24B /* ServiceViewController.m */,
 				C2EA5B921C8717A70072A24B /* SettingViewController.h */,
 				C2EA5B931C8717A70072A24B /* SettingViewController.m */,
+				C299426A1C8EB1A1002DE866 /* WeatherViewController.h */,
+				C299426B1C8EB1A1002DE866 /* WeatherViewController.m */,
+				C299426C1C8EB1A1002DE866 /* WeatherViewController.xib */,
 			);
 			name = LeftController;
 			sourceTree = "<group>";
@@ -1150,29 +1270,44 @@
 				C2DFEEC21C897E240024E167 /* timeline_new_status_background@2x.png in Resources */,
 				C2A9BED81C85368A005E19B2 /* tabbar_Conversation_HL@2x.png in Resources */,
 				C24778AF1C8D13CD00411370 /* SettingsController.xib in Resources */,
+				C2B74CC11C8F0A1E00DC3BFD /* nav_createGroup@2x.png in Resources */,
+				C2B74CC41C8F0A1E00DC3BFD /* other_group.png in Resources */,
 				C21A1AEC1C86911200CDAC7D /* group_header@2x.png in Resources */,
+				C2B74CBE1C8F0A1E00DC3BFD /* groupPublicHeader@2x.png in Resources */,
 				C2A9BF601C85CBC4005E19B2 /* account.png in Resources */,
 				C2FAE07C1C882498007A8FBF /* LaughTableViewCell.xib in Resources */,
 				C24778C11C8D9B0900411370 /* logout.png in Resources */,
+				C2B74CB51C8F0A1E00DC3BFD /* news_icon.png in Resources */,
 				C21A1AEB1C86911200CDAC7D /* group_creategroup@2x.png in Resources */,
+				C2B74CB41C8F0A1E00DC3BFD /* calendar_icon.png in Resources */,
+				C2B74CBD1C8F0A1E00DC3BFD /* groupPrivateHeader@2x.png in Resources */,
 				C21A1AEF1C86911200CDAC7D /* group_participant_add@2x.png in Resources */,
+				C2B74CB81C8F0A1E00DC3BFD /* group_header@2x.png in Resources */,
+				C29942771C8EC0BD002DE866 /* resizeApi.php.png in Resources */,
 				C29CCD641C852A4800AB68E6 /* LaunchScreen.storyboard in Resources */,
 				C28169441C8FB54100CD86A1 /* chack.png in Resources */,
 				C257317B1C85B5F000982579 /* NewTableViewCell.xib in Resources */,
+				C2B74CC31C8F0A1E00DC3BFD /* newFriends@2x.png in Resources */,
 				C24778BD1C8D71D200411370 /* setting_nodisturb.png in Resources */,
 				C21A1AF11C86911200CDAC7D /* groupPrivateHeader@2x.png in Resources */,
+				C2B74CB91C8F0A1E00DC3BFD /* group_invitee_delete@2x.png in Resources */,
 				C21A1AF31C86911200CDAC7D /* nav_createGroup@2x.png in Resources */,
+				C2B74CBB1C8F0A1E00DC3BFD /* group_participant_add@2x.png in Resources */,
+				C2B74CBC1C8F0A1E00DC3BFD /* group_participant_addHL@2x.png in Resources */,
 				C24D009B1C89BC9F00644B95 /* ChatTableViewCell.xib in Resources */,
 				C2A9BED71C85368A005E19B2 /* tabbar_Conversation@2x.png in Resources */,
 				C24778C21C8D9B0900411370 /* game.png in Resources */,
 				C21A1B031C86C61200CDAC7D /* add@2x.png in Resources */,
+				C2B74CBA1C8F0A1E00DC3BFD /* group_joinpublicgroup@2x.png in Resources */,
 				C21A1AF41C86911200CDAC7D /* newFriends@2x.png in Resources */,
 				C21A1B0D1C86D18300CDAC7D /* AddFriendController.xib in Resources */,
 				C24D00A31C89CD7400644B95 /* chatListCellHead@2x.png in Resources */,
 				C2A9BF611C85CBC4005E19B2 /* account@2x.png in Resources */,
+				C2B74CB31C8F0A1E00DC3BFD /* about_icon.png in Resources */,
 				C21A1AF21C86911200CDAC7D /* groupPublicHeader@2x.png in Resources */,
 				C21A1B071C86C61200CDAC7D /* titleBar.png in Resources */,
 				C21A1AF01C86911200CDAC7D /* group_participant_addHL@2x.png in Resources */,
+				C2B74CB71C8F0A1E00DC3BFD /* group_creategroup@2x.png in Resources */,
 				C23954E41C8D9A6D00A1FC69 /* up_bar.png in Resources */,
 				C2A9BF5A1C85CB4C005E19B2 /* LoginController.xib in Resources */,
 				C21A1AEE1C86911200CDAC7D /* group_joinpublicgroup@2x.png in Resources */,
@@ -1181,12 +1316,19 @@
 				C24778C31C8D9B0900411370 /* troublefree.png in Resources */,
 				C21A1AED1C86911200CDAC7D /* group_invitee_delete@2x.png in Resources */,
 				C2A9BF631C85CBC4005E19B2 /* password@2x.png in Resources */,
+				C2B74CBF1C8F0A1E00DC3BFD /* my_friends.png in Resources */,
+				C2B74CC51C8F0A1E00DC3BFD /* program_message.png in Resources */,
 				C2A9BED91C85368A005E19B2 /* tabbar_setting@2x.png in Resources */,
 				C2A9BEDA1C85368A005E19B2 /* tabbar_setting_HL@2x.png in Resources */,
+				C29942761C8EC0BD002DE866 /* resizeApi-1.php.png in Resources */,
 				C21A1B061C86C61200CDAC7D /* group_detail@2x.png in Resources */,
 				C2A9BED61C85368A005E19B2 /* tabbar_contact_HL@2x.png in Resources */,
+				C2B74CC21C8F0A1E00DC3BFD /* new_group.png in Resources */,
+				C2B74CC01C8F0A1E00DC3BFD /* my_group.png in Resources */,
 				C21A1B041C86C61200CDAC7D /* back@2x.png in Resources */,
+				C299426E1C8EB1A1002DE866 /* WeatherViewController.xib in Resources */,
 				C2A9BED51C85368A005E19B2 /* tabbar_contact@2x.png in Resources */,
+				C2B74CB61C8F0A1E00DC3BFD /* weather_icon.png in Resources */,
 				C21A1B051C86C61200CDAC7D /* delete@2x.png in Resources */,
 				C29CCD611C852A4800AB68E6 /* Assets.xcassets in Resources */,
 				C29CCD5C1C852A4800AB68E6 /* Main.storyboard in Resources */,
@@ -1251,6 +1393,7 @@
 			files = (
 				C281694A1C8FFAD200CD86A1 /* CalendarFlowLayout.m in Sources */,
 				C2DB9D861C883C8A00FA0EA9 /* ChatController.m in Sources */,
+				C25CFDA11C9014C000D8DB04 /* CloudManager.m in Sources */,
 				C2DB9D851C883B5500FA0EA9 /* WebViewViewController.m in Sources */,
 				C2DB9D841C883B2800FA0EA9 /* AddFriendController.m in Sources */,
 				C2DB9D821C8836CC00FA0EA9 /* NewsManager.m in Sources */,
@@ -1263,7 +1406,12 @@
 				C2A9BEEA1C85670A005E19B2 /* MyViewController.m in Sources */,
 				C2A9BEC71C85345D005E19B2 /* NewsView.m in Sources */,
 				C21A1AFB1C86955000CDAC7D /* ContactManager.m in Sources */,
+
 				C270368E1C8EB3B200F908B3 /* NSDate+YCKCalendarLogic.m in Sources */,
+
+				C299427A1C8ED38B002DE866 /* WeatherModel.m in Sources */,
+				C299426D1C8EB1A1002DE866 /* WeatherViewController.m in Sources */,
+
 				C24D009A1C89BC9F00644B95 /* ChatTableViewCell.m in Sources */,
 				C24778AE1C8D13CD00411370 /* SettingsController.m in Sources */,
 				C25C17561C8B1D6B00CFCA06 /* LoginAnimatino.m in Sources */,
@@ -1309,9 +1457,12 @@
 				C27036811C8EA2DC00F908B3 /* FirstViewController.m in Sources */,
 				C281694D1C8FFF2900CD86A1 /* CalendarViewController.m in Sources */,
 				C21A1B121C86E68F00CDAC7D /* DataBaseTools.m in Sources */,
+
 				C27036831C8EA2DC00F908B3 /* MASConstraint.m in Sources */,
 				C2EA5B8E1C87178D0072A24B /* AboutViewController.m in Sources */,
 				C2A9BF2E1C857ABB005E19B2 /* LaughManager.m in Sources */,
+
+
 				C2EA5B941C8717A70072A24B /* SettingViewController.m in Sources */,
 				C2A9BE971C852DB2005E19B2 /* MKAnnotationView+WebCache.m in Sources */,
 				C28169421C8FAE6500CD86A1 /* CalendarCollectionCell.m in Sources */,
@@ -1447,6 +1598,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HappyCommunity/Classes/Libs/HyphenateSDK/lib",
+					"$(PROJECT_DIR)/HappyCommunity/Classes/Libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Lanou.HappyCommunity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1466,6 +1618,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HappyCommunity/Classes/Libs/HyphenateSDK/lib",
+					"$(PROJECT_DIR)/HappyCommunity/Classes/Libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Lanou.HappyCommunity;
 				PRODUCT_NAME = "$(TARGET_NAME)";

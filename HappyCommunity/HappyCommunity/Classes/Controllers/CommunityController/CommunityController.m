@@ -26,6 +26,9 @@
 @property(nonatomic,strong)NSMutableArray *images;
 @property(nonatomic,strong)ContactController *comController;
 @property(nonatomic,strong)AddFriendController *friendController;
+
+//index0-3的跳转时传入的照片Icon
+@property(nonatomic,strong)NSMutableArray *leftImage;
 @end
 
 static NSString *communityCell = @"community_cell";
@@ -35,8 +38,13 @@ static NSString *communityCell = @"community_cell";
     [super viewDidLoad];
 	//初始化数据源
 	[self loadData];
-	
+	//设置view的颜色,没什么用.
+	self.view.backgroundColor = [UIColor whiteColor];
 	self.navigationItem.title = @"联系人";
+	//设置联系人字体颜色.
+	UIColor *color = [UIColor colorWithRed:0.18 green:0.45 blue:1 alpha:1];
+	NSDictionary *dic = [NSDictionary dictionaryWithObject:color forKey:UITextAttributeTextColor];
+	self.navigationController.navigationBar.titleTextAttributes = dic;
 	
 	//注册cell
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:communityCell];
@@ -83,7 +91,8 @@ static NSString *communityCell = @"community_cell";
 	self.images = [NSMutableArray array];
 	
 	self.data = @[@"好友",@"群组",@"其他群组",@"系统消息",@"创建群组"].mutableCopy;
-	self.images = @[@"groupPublicHeader@2x",@"group_header@2x",@"group_creategroup@2x",@"group_joinpublicgroup@2x",@"group_participant_addHL@2x"].mutableCopy;
+	self.images = @[@"my_friends",@"my_group",@"other_group",@"program_message",@"new_group"].mutableCopy;
+	self.leftImage = @[@"chatListCellHead@2x",@"group_header@2x",@"groupPublicHeader@2x",@"group_joinpublicgroup@2x"].mutableCopy;
 	
 	[self.tableView reloadData];
 	
@@ -124,7 +133,7 @@ static NSString *communityCell = @"community_cell";
 		
 	}else{
 		self.comController.flag = indexPath.row;
-		self.comController.leftImage = self.images[indexPath.row];
+		self.comController.leftImage = self.leftImage[indexPath.row];
 		[self.navigationController pushViewController:self.comController animated:YES];
 	}
 	
