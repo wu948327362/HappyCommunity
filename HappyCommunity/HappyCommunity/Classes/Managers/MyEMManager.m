@@ -54,12 +54,11 @@ static MyEMManager *manager = nil;
 }
 
 //发送消息
-- (void)sendMessageWithReceiveId:(NSString *)receiveId message:(NSString *)messge flag:(NSInteger)flag finish:(void(^)(EMMessage *mes))finish{
+- (void)sendMessageWithReceiveId:(NSString *)receiveId message:(NSString *)messge flag:(NSInteger)flag finish:(void(^)())finish{
 	//发送消息为空则返回.
 	if (messge.length==0) {
 		return;
 	}
-	
 	EMTextMessageBody *body = [[EMTextMessageBody alloc] initWithText:messge];
 	NSString *sendUser = [[EMClient sharedClient] currentUsername];
 	
@@ -75,7 +74,7 @@ static MyEMManager *manager = nil;
 				[[DataBaseTools SharedInstance] saveMessageModelWith:message];
 				
 				dispatch_async(dispatch_get_main_queue(), ^{
-					finish(message);
+					finish();
 				});
 			}
 		}];
@@ -95,7 +94,7 @@ static MyEMManager *manager = nil;
 				[[DataBaseTools SharedInstance] saveMessageModelWith:message];
 				
 				dispatch_async(dispatch_get_main_queue(), ^{
-					finish(message);
+					finish();
 				});
 			}
 		}];

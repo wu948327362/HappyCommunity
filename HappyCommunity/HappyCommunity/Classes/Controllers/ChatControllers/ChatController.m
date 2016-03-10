@@ -14,7 +14,6 @@
 #import "ChatTableViewCell.h"
 #import "ChatModel.h"
 #import "MyEMManager.h"
-#import "CloudManager.h"
 
 @interface ChatController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,EMChatManagerDelegate>
 
@@ -148,7 +147,7 @@ static NSString *chatCell = @"chat_cell";
 	cell = [self setCellAttrinbutes:cell];
 	
 	//等于0说明是本人发出的.
-	if ([message.from isEqualToString:[[EMClient sharedClient] currentUsername]]) {
+	if ((message.direction).integerValue==0) {
 		cell = [self setRightCell:cell model:model name:message.from];
 		
 	}else{
@@ -189,17 +188,6 @@ static NSString *chatCell = @"chat_cell";
 	cell.rightName.text = name;
 	cell.chatLabel.textAlignment = NSTextAlignmentRight;
 	cell.chatLabel.backgroundColor = [UIColor orangeColor];
-	cell.rightIcon.image = [[DataBaseTools SharedInstance] getCachePictureWithName:name];
-	if (cell.rightIcon.image==nil) {
-		[[CloudManager shareInstance] getUserIconByName:name finish:^(UIImage *findImage) {
-			cell.rightIcon.image = findImage;
-			if (cell.rightIcon.image==nil) {
-				cell.rightIcon.image = [UIImage imageNamed:@"chatListCellHead@2x"];
-			}
-		}];
-		
-	}
-	
 	return cell;
 }
 
@@ -213,20 +201,6 @@ static NSString *chatCell = @"chat_cell";
 	cell.leftName.text = name;
 	cell.chatLabel.textAlignment = NSTextAlignmentLeft;
 	cell.chatLabel.backgroundColor = [UIColor purpleColor];
-	cell.leftIcon.image = [[DataBaseTools SharedInstance] getCachePictureWithName:name];
-	if (cell.leftIcon.image==nil) {
-		[[CloudManager shareInstance] getUserIconByName:name finish:^(UIImage *findImage) {
-			cell.leftIcon.image = findImage;
-			
-			if (cell.leftIcon.image==nil) {
-				cell.leftIcon.image = [UIImage imageNamed:@"chatListCellHead@2x"];
-			}else{
-				[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:name];
-			}
-		}];
-		
-	}
-	
 	return cell;
 }
 
@@ -257,8 +231,9 @@ static NSString *chatCell = @"chat_cell";
 //点击按钮发送消息
 - (IBAction)sendMessage:(UIButton *)sender {
 	//发送消息为空则返回.
-	[[MyEMManager shareInstance] sendMessageWithReceiveId:self.receiverId message:self.messageField.text flag:self.flag finish:^(EMMessage *mes) {
-		[self saveMessageModelWith:mes];
+	
+	[[MyEMManager shareInstance] sendMessageWithReceiveId:self.receiverId message:self.messageField.text flag:self.flag finish:^{
+		[self updateMessages:self.flag];
 		self.messageField.text = @"";
 	}];
 	
@@ -286,42 +261,9 @@ static NSString *chatCell = @"chat_cell";
 - (void)didReceiveMessages:(NSArray *)aMessages{
 	for (EMMessage *message in aMessages) {
 		if ([message.from isEqualToString:self.receiverId]) {
-			[self saveMessageModelWith:message];
+			[self updateMessages:self.flag];
+			return;
 		}
-	}
-}
-
-//保存消息到数组
-- (void)saveMessageModelWith:(EMMessage *)message{
-	
-	
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"MessageModel" inManagedObjectContext:[DataBaseTools SharedInstance].context];
-	MessageModel *model = [[MessageModel alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
-	
-	
-	model.text = ((EMTextMessageBody *)message.body).text;
-	model.direction = [NSNumber numberWithInteger:message.direction];
-	model.messageId = message.messageId;
-	model.conversationId = message.conversationId;
-	model.from = message.from;
-	model.to = message.to;
-	model.timestamp = [NSNumber numberWithLongLong:message.timestamp];
-	model.chatType = [NSNumber numberWithInteger:message.chatType];
-	model.status = [NSNumber numberWithInteger:message.status];
-	model.isReadAcked = [NSNumber numberWithInteger:message.isReadAcked];
-	model.isRead = [NSNumber numberWithInteger:message.isRead];
-	model.isDeliverAcked = [NSNumber numberWithInteger:message.isDeliverAcked];
-	
-	[self.messages addObject:model];
-	
-	//刷新,滑到最后一行.
-	[self.tableView reloadData];
-	
-	if (self.messages.count>0) {
-		
-		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messages.count-1 inSection:0];
-		
-		[self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 	}
 }
 
