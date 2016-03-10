@@ -14,6 +14,7 @@
                 <outlet property="nightTemperatureLabel" destination="biA-dh-Fl5" id="4PA-MI-Jus"/>
                 <outlet property="nightWeatherLabel" destination="fwE-7K-C8o" id="4SC-15-2b7"/>
                 <outlet property="nightWindLabel" destination="6sl-Qi-jM3" id="ctf-dy-leJ"/>
+                <outlet property="searchButton" destination="hG2-Vl-K7T" id="YT1-xk-QmY"/>
                 <outlet property="searchTextField" destination="3g4-0A-EOv" id="uv2-0y-gsv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -72,12 +73,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sl-Qi-jM3">
-                    <rect key="frame" x="218" y="365" width="68" height="80"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RS2-mX-fuI">
                     <rect key="frame" x="316" y="255" width="68" height="80"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -100,8 +95,8 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="风向" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdC-wm-Zwi">
-                    <rect key="frame" x="198" y="205" width="108" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="风向" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdC-wm-Zwi">
+                    <rect key="frame" x="227" y="205" width="50" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -112,21 +107,14 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入城市名的拼音,不区分大小写" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-0A-EOv">
-                    <rect key="frame" x="90" y="95" width="300" height="40"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入城市名的拼音" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-0A-EOv">
+                    <rect key="frame" x="90" y="95" width="294" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Rah-KP-PLf"/>
-                        <constraint firstAttribute="width" constant="300" id="Rzg-jS-ODN"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wTP-Nr-Dlu">
-                    <rect key="frame" x="0.0" y="495" width="414" height="191"/>
-                    <color key="backgroundColor" red="0.56222087430000001" green="1" blue="0.42575095549999997" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日天气" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og0-it-Ks6">
                     <rect key="frame" x="10" y="205" width="80" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -139,6 +127,18 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sl-Qi-jM3">
+                    <rect key="frame" x="218" y="365" width="68" height="80"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wTP-Nr-Dlu">
+                    <rect key="frame" x="0.0" y="495" width="414" height="191"/>
+                    <color key="backgroundColor" red="0.56222087430000001" green="1" blue="0.42575095549999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="0.56222087430000001" green="1" blue="0.42575095549999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -189,6 +189,7 @@
                 <constraint firstItem="7Nd-p6-egT" firstAttribute="width" secondItem="TUz-5z-1di" secondAttribute="width" id="lrA-HU-ute"/>
                 <constraint firstItem="fwE-7K-C8o" firstAttribute="leading" secondItem="6sl-Qi-jM3" secondAttribute="trailing" constant="30" id="mUS-5s-DHJ"/>
                 <constraint firstItem="Og0-it-Ks6" firstAttribute="top" secondItem="TUz-5z-1di" secondAttribute="top" id="mcA-Xo-yBn"/>
+                <constraint firstAttribute="trailing" secondItem="3g4-0A-EOv" secondAttribute="trailing" constant="30" id="nQJ-bE-biV"/>
                 <constraint firstItem="5Rj-8x-NWg" firstAttribute="height" secondItem="XJI-po-RS1" secondAttribute="height" id="p97-Ct-wda"/>
                 <constraint firstItem="CdC-wm-Zwi" firstAttribute="top" secondItem="TUz-5z-1di" secondAttribute="top" id="pav-Xh-NXb"/>
                 <constraint firstAttribute="trailing" secondItem="fwE-7K-C8o" secondAttribute="trailing" constant="30" id="pmz-so-XfX"/>
@@ -199,6 +200,7 @@
                 <constraint firstItem="5Rj-8x-NWg" firstAttribute="width" secondItem="XJI-po-RS1" secondAttribute="width" id="sTx-li-Qmu"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+            <point key="canvasLocation" x="110" y="249"/>
         </view>
     </objects>
     <resources>
