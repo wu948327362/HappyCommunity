@@ -606,7 +606,6 @@
 				C2A9BEE71C85670A005E19B2 /* NewsAndLauth */,
 				C2A9BE691C852D00005E19B2 /* CommunityController */,
 				C2A9BE6A1C852D00005E19B2 /* LaughController */,
-				C2A9BE6B1C852D00005E19B2 /* NewsController */,
 				C2A9BE6C1C852D00005E19B2 /* SettingsController */,
 			);
 			path = Controllers;
@@ -625,6 +624,7 @@
 		C2A9BE6A1C852D00005E19B2 /* LaughController */ = {
 			isa = PBXGroup;
 			children = (
+				C2A9BE6B1C852D00005E19B2 /* NewsController */,
 				C2A9BEB01C8533EA005E19B2 /* LaughController.h */,
 				C2A9BEB11C8533EA005E19B2 /* LaughController.m */,
 				C2FAE0781C882498007A8FBF /* LaughTableViewCell.h */,
@@ -645,7 +645,8 @@
 				C28792A31C86E3D2009C9336 /* WebViewViewController.h */,
 				C28792A41C86E3D2009C9336 /* WebViewViewController.m */,
 			);
-			path = NewsController;
+			name = NewsController;
+			path = ../NewsController;
 			sourceTree = "<group>";
 		};
 		C2A9BE6C1C852D00005E19B2 /* SettingsController */ = {
