@@ -55,20 +55,24 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-	//获取缓存的图片
-	self.imageView.image = [[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]];
-	if (self.imageView.image==nil) {
-		
-		//读取leanCloud云端图片.
-		[[CloudManager shareInstance] getUserIconByName:[[EMClient sharedClient] currentUsername] finish:^(UIImage *findImage) {
-			self.imageView.image = findImage;
-			if (self.imageView.image==nil) {
-				self.imageView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
-			}else{
-				[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:[[EMClient sharedClient] currentUsername]];
-			}
-		}];
-	}
+	
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		//获取缓存的图片
+		self.imageView.image = [[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]];
+		if (self.imageView.image==nil) {
+			
+			//读取leanCloud云端图片.
+			[[CloudManager shareInstance] getUserIconByName:[[EMClient sharedClient] currentUsername] finish:^(UIImage *findImage) {
+				self.imageView.image = findImage;
+				if (self.imageView.image==nil) {
+					self.imageView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
+				}else{
+					[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:[[EMClient sharedClient] currentUsername]];
+				}
+			}];
+		}
+	});
+	
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -131,23 +135,25 @@
 
 //完成选取图片时执行
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-	self.imageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-	[self.picker dismissViewControllerAnimated:YES completion:nil];
 	
-	if ([[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]]==nil) {
-		//缓存图片,并保存或修改到云端.
-		[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image andName:[[EMClient sharedClient] currentUsername]];
-		//保存图片到leanCloud服务器
-		[[CloudManager shareInstance] saveUserIconWithPath:[[DataBaseTools SharedInstance] filePathWithName:[[EMClient sharedClient] currentUsername]]];
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		self.imageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+		[self.picker dismissViewControllerAnimated:YES completion:nil];
 		
-	}else{
-		//缓存图片,并保存或修改到云端.
-		[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image andName:[[EMClient sharedClient] currentUsername]];
-		//更新图片到leanCloud服务器
-		[[CloudManager shareInstance] updateWithPath:[[DataBaseTools SharedInstance] filePathWithName:[[EMClient sharedClient] currentUsername]]];
-	}
-	
-	
+		if ([[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]]==nil) {
+			//缓存图片,并保存或修改到云端.
+			[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image andName:[[EMClient sharedClient] currentUsername]];
+			//保存图片到leanCloud服务器
+			[[CloudManager shareInstance] saveUserIconWithPath:[[DataBaseTools SharedInstance] filePathWithName:[[EMClient sharedClient] currentUsername]]];
+			
+		}else{
+			//缓存图片,并保存或修改到云端.
+			[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image andName:[[EMClient sharedClient] currentUsername]];
+			//更新图片到leanCloud服务器
+			[[CloudManager shareInstance] updateWithPath:[[DataBaseTools SharedInstance] filePathWithName:[[EMClient sharedClient] currentUsername]]];
+		}
+	});
+
 }
 
 //点击取消是执行

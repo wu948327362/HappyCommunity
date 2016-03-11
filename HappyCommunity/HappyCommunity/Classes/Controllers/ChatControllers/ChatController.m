@@ -104,14 +104,14 @@ static NSString *chatCell = @"chat_cell";
 	rect.size.height = rect.size.height - height + tab;
 	self.view.frame = rect;
 	
-	[self updateMessages:self.flag];
+	[self scrollLast];
 	
 }
 
 //键盘退出时调用
 - (void)keyboardWillHide:(NSNotification *)aNotification{
 	self.view.frame = [UIScreen mainScreen].bounds;
-	[self updateMessages:self.flag];
+	[self scrollLast];
 }
 
 //添加好友的导航栏的方法
@@ -146,13 +146,31 @@ static NSString *chatCell = @"chat_cell";
 	
 	//设置cell圆角等属性.
 	cell = [self setCellAttrinbutes:cell];
+	cell = [self setRightCell:cell model:model name:message.from];
+	cell = [self setLeftCell:cell model:model name:message.from];
 	
 	//等于0说明是本人发出的.
 	if ([message.from isEqualToString:[[EMClient sharedClient] currentUsername]]) {
-		cell = [self setRightCell:cell model:model name:message.from];
+		
+		cell.chatModel = model;
+		cell.rightName.text = message.from;
+		cell.leftIcon.hidden = YES;
+		cell.rightIcon.hidden = NO;
+		cell.leftName.hidden = YES;
+		cell.rightName.hidden = NO;
+		cell.chatLabel.textAlignment = NSTextAlignmentRight;
+		cell.chatLabel.backgroundColor = [UIColor orangeColor];
 		
 	}else{
-		cell = [self setLeftCell:cell model:model name:message.from];
+		cell.chatModel = model;
+		cell.leftName.text = message.from;
+		
+		cell.leftIcon.hidden = NO;
+		cell.rightIcon.hidden = YES;
+		cell.leftName.hidden = NO;
+		cell.rightName.hidden = YES;
+		cell.chatLabel.textAlignment = NSTextAlignmentLeft;
+		cell.chatLabel.backgroundColor = [UIColor purpleColor];
 	}
 	
 	return cell;
@@ -181,71 +199,61 @@ static NSString *chatCell = @"chat_cell";
 
 //自己发送的信息显示在右边
 - (ChatTableViewCell *)setRightCell:(ChatTableViewCell *)cell model:(ChatModel *)model name:(NSString *)name{
-	cell.leftIcon.hidden = YES;
-	cell.rightIcon.hidden = NO;
-	cell.leftName.hidden = YES;
-	cell.rightName.hidden = NO;
-	cell.chatModel = model;
-	cell.rightName.text = name;
-	cell.chatLabel.textAlignment = NSTextAlignmentRight;
-	cell.chatLabel.backgroundColor = [UIColor orangeColor];
-	cell.rightIcon.image = [[DataBaseTools SharedInstance] getCachePictureWithName:name];
-	if (cell.rightIcon.image==nil) {
-		[[CloudManager shareInstance] getUserIconByName:name finish:^(UIImage *findImage) {
-			cell.rightIcon.image = findImage;
-			if (cell.rightIcon.image==nil) {
-				cell.rightIcon.image = [UIImage imageNamed:@"chatListCellHead@2x"];
-			}else{
-				[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:name];
-			}
-		}];
-		
-	}
+	
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		cell.rightIcon.image = [[DataBaseTools SharedInstance] getCachePictureWithName:name];
+		if (cell.rightIcon.image==nil) {
+			[[CloudManager shareInstance] getUserIconByName:name finish:^(UIImage *findImage) {
+				cell.rightIcon.image = findImage;
+				if (cell.rightIcon.image==nil) {
+					cell.rightIcon.image = [UIImage imageNamed:@"chatListCellHead@2x"];
+				}else{
+					[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:name];
+				}
+			}];
+			
+		}
+	});
 	
 	return cell;
 }
 
 //好友发送的信息显示在左边
 - (ChatTableViewCell *)setLeftCell:(ChatTableViewCell *)cell model:(ChatModel *)model name:(NSString *)name{
-	cell.leftIcon.hidden = NO;
-	cell.rightIcon.hidden = YES;
-	cell.leftName.hidden = NO;
-	cell.rightName.hidden = YES;
-	cell.chatModel = model;
-	cell.leftName.text = name;
-	cell.chatLabel.textAlignment = NSTextAlignmentLeft;
-	cell.chatLabel.backgroundColor = [UIColor purpleColor];
-	cell.leftIcon.image = [[DataBaseTools SharedInstance] getCachePictureWithName:name];
-	if (cell.leftIcon.image==nil) {
-		[[CloudManager shareInstance] getUserIconByName:name finish:^(UIImage *findImage) {
-			cell.leftIcon.image = findImage;
+	
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		cell.leftIcon.image = [[DataBaseTools SharedInstance] getCachePictureWithName:name];
+		if (cell.leftIcon.image==nil) {
+			[[CloudManager shareInstance] getUserIconByName:name finish:^(UIImage *findImage) {
+				cell.leftIcon.image = findImage;
+				
+				if (cell.leftIcon.image==nil) {
+					cell.leftIcon.image = [UIImage imageNamed:@"chatListCellHead@2x"];
+				}else{
+					[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:name];
+				}
+			}];
 			
-			if (cell.leftIcon.image==nil) {
-				cell.leftIcon.image = [UIImage imageNamed:@"chatListCellHead@2x"];
-			}else{
-				[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:name];
-			}
-		}];
-		
-	}
+		}
+	});
 	
 	return cell;
 }
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-	[textField resignFirstResponder];
-	return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-	[self updateMessages:self.flag];
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-	[self updateMessages:self.flag];
-}
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+//	[textField resignFirstResponder];
+//	return YES;
+//}
+//
+//- (void)textFieldDidEndEditing:(UITextField *)textField{
+//	[self updateMessages:self.flag];
+//}
+//
+//- (void)textFieldDidBeginEditing:(UITextField *)textField{
+//	[self updateMessages:self.flag];
+//}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 	[self.messageField resignFirstResponder];
@@ -262,6 +270,9 @@ static NSString *chatCell = @"chat_cell";
 	[[MyEMManager shareInstance] sendMessageWithReceiveId:self.receiverId message:self.messageField.text flag:self.flag finish:^(EMMessage *mes) {
 		[self saveMessageModelWith:mes];
 		self.messageField.text = @"";
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self scrollLast];
+		});
 	}];
 	
 }
@@ -273,14 +284,7 @@ static NSString *chatCell = @"chat_cell";
 	
 	self.messages = [[DataBaseTools SharedInstance] messagesWithReceiverId:self.receiverId from:[[EMClient sharedClient] currentUsername] flag:flag];
 	
-	[self.tableView reloadData];
-	
-	if (self.messages.count>0) {
-		
-		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messages.count-1 inSection:0];
-		
-		[self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-	}
+	[self scrollLast];
 	
 }
 
@@ -316,6 +320,10 @@ static NSString *chatCell = @"chat_cell";
 	
 	[self.messages addObject:model];
 	
+	[self scrollLast];
+}
+
+- (void)scrollLast{
 	//刷新,滑到最后一行.
 	[self.tableView reloadData];
 	

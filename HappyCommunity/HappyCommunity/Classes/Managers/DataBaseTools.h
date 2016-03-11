@@ -58,6 +58,9 @@
 //获取文件(Documents)路径,然后设置图片缓存路径.
 - (NSString *)filePathWithName:(NSString *)name;
 
+//找出自己的用户请求
+- (NSMutableArray *)getMyRequest;
+
 @end
 
 

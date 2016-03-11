@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "MessageModel.h"
 #import "CloudManager.h"
+#import "ContactManager.h"
 
 static DataBaseTools *handler;
 
@@ -222,6 +223,31 @@ static sqlite3 *dataBase;
 	return flag;
 }
 
+//找出自己的用户请求
+- (NSMutableArray *)getMyRequest{
+	NSMutableArray *arr = [NSMutableArray array];
+	
+	NSArray *array = [self showAllPerson];
+	
+	for (FriendsInvitation *friend in array) {
+		
+		if ([friend.userName isEqualToString:[[EMClient sharedClient] currentUsername]]) {
+			[arr addObject:[NSString stringWithFormat:@"%@:%@",friend.userName,friend.message]];
+		}
+		
+		for (NSString *group in [[ContactManager shareInstance] getGroupContainsMe]) {
+			NSArray *a = [group componentsSeparatedByString:@":"];
+			if ([friend.userName isEqualToString:[a firstObject]]) {
+				[arr addObject:[NSString stringWithFormat:@"%@:%@",friend.userName,friend.message]];
+			}
+		}
+		
+	}
+	
+	return arr;
+	
+}
+
 #pragma mark - 接收到消息函数回调
 - (void)didReceiveMessages:(NSArray *)aMessages{
 	
@@ -272,6 +298,7 @@ static sqlite3 *dataBase;
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"to==%@",[arr firstObject]];
 		[fetchRequest setPredicate:predicate];
 	}
+	fetchRequest.fetchLimit = 10;
 	
 	// Specify how the fetched objects should be sorted
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];

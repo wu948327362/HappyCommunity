@@ -14,4 +14,7 @@
 
 - (NSMutableArray *)dataForFlag:(NSInteger)flag;
 
+//获取所有自己所在的群组.
+- (NSMutableArray *)getGroupContainsMe;
+
 @end

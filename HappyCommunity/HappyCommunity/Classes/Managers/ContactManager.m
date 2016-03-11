@@ -49,7 +49,7 @@ static ContactManager *manager;
 			break;
 		case 3:
 			//按时没有用户请求需要自己去做.
-			array = [[DataBaseTools SharedInstance] showAllPerson];
+			array = [[DataBaseTools SharedInstance] getMyRequest];
 			[arr addObjectsFromArray:[self getNameArray:array flag:3]];
 			break;
 		default:
