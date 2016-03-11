@@ -48,7 +48,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     self.tableView.backgroundColor = [UIColor clearColor];
     //    self.tableView.backgroundColor = [UIColor purpleColor];
     [self.view addSubview:self.tableView];
-
+	
     
 	//设置tableView的tableHeaderView
 	[self setHeaderView];
@@ -136,20 +136,31 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
 //添加header视图
 - (void)setHeaderView{
 	
-	self.myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100)];
+	self.myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width/4)];
+	
+	UIImageView *backIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerLeft"]];
+	backIV.frame = self.myview.frame;
+	[self.myview addSubview:backIV];
 	
 	//设置头像icon
 	self.imView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 18, 55, 55)];
+	CGPoint p1 = self.myview.center;
+	CGPoint p2 = self.imView.center;
+	p1.x = p2.x;
+	self.imView.center = p1;
 	
 	//设置圆角
 	self.imView.layer.masksToBounds = YES;
 	self.imView.layer.cornerRadius = 55/2;
-	[self.myview addSubview:self.imView];
+	[backIV addSubview:self.imView];
 	
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 18, 80, 55)];
 	label.text = [[EMClient sharedClient] currentUsername];
+	CGPoint p3 = label.center;
+	p1.x = p3.x;
+	label.center = p1;
 	
-	[self.myview addSubview:label];
+	[backIV addSubview:label];
 	self.myview.backgroundColor = [UIColor whiteColor];
 	
 	self.tableView.tableHeaderView = self.myview;
