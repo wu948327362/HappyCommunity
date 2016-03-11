@@ -33,7 +33,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
     
     self.view.backgroundColor = [UIColor colorWithRed:0.22 green:0.71 blue:0.98 alpha:1];
     
-
+	
     _lefs = @[@"新闻和笑话", @"关于app", @"日历",@"天气"];
 	_images = @[@"news_icon", @"about_icon", @"calendar_icon",@"weather_icon"];
     _tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];

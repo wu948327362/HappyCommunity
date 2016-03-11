@@ -33,10 +33,13 @@ static CloudManager *manager = nil;
 	
 	[icon saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 		//avfile文件上传完成后
-		[userNameAndIcon setObject:icon forKey:@"userIcon"];
-		[userNameAndIcon saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-			NSLog(@"%@",error);
-		}];
+		if (icon!=nil) {
+			[userNameAndIcon setObject:icon forKey:@"userIcon"];
+			[userNameAndIcon saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+				NSLog(@"%@",error);
+			}];
+		}
+		
 	}];
 	
 }
