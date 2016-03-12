@@ -61,6 +61,12 @@
 //找出自己的用户请求
 - (NSMutableArray *)getMyRequest;
 
+//缓存图片
+- (void)cacheImageWithImage:(UIImage *)image andKey:(NSString *)key;
+
+//读取图片
+- (UIImage *)imageForKey:(NSString *)key;
+
 @end
 
 

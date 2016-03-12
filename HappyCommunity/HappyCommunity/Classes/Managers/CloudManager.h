@@ -29,4 +29,5 @@
 //根据用户名返回用户
 - (void)findUserByName:(NSString *)name finish:(void(^)(AVObject *obj))finish;
 
+
 @end

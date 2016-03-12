@@ -58,7 +58,7 @@
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		//获取缓存的图片
-		self.imageView.image = [[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]];
+		self.imageView.image = [[DataBaseTools SharedInstance] imageForKey:[[EMClient sharedClient] currentUsername]];
 		if (self.imageView.image==nil) {
 			
 			//读取leanCloud云端图片.
@@ -67,7 +67,7 @@
 				if (self.imageView.image==nil) {
 					self.imageView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
 				}else{
-					[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:[[EMClient sharedClient] currentUsername]];
+					[[DataBaseTools SharedInstance] cacheImageWithImage:findImage andKey:[[EMClient sharedClient] currentUsername]];
 				}
 			}];
 		}
@@ -140,15 +140,15 @@
 		self.imageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
 		[self.picker dismissViewControllerAnimated:YES completion:nil];
 		
-		if ([[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]]==nil) {
+		if ([[DataBaseTools SharedInstance] imageForKey:[[EMClient sharedClient] currentUsername]]==nil) {
 			//缓存图片,并保存或修改到云端.
-			[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image andName:[[EMClient sharedClient] currentUsername]];
+			[[DataBaseTools SharedInstance] cacheImageWithImage:self.imageView.image andKey:[[EMClient sharedClient] currentUsername]];
 			//保存图片到leanCloud服务器
 			[[CloudManager shareInstance] saveUserIconWithPath:[[DataBaseTools SharedInstance] filePathWithName:[[EMClient sharedClient] currentUsername]]];
 			
 		}else{
 			//缓存图片,并保存或修改到云端.
-			[[DataBaseTools SharedInstance] cachePictureWithImage:self.imageView.image andName:[[EMClient sharedClient] currentUsername]];
+			[[DataBaseTools SharedInstance] cacheImageWithImage:self.imageView.image andKey:[[EMClient sharedClient] currentUsername]];
 			//更新图片到leanCloud服务器
 			[[CloudManager shareInstance] updateWithPath:[[DataBaseTools SharedInstance] filePathWithName:[[EMClient sharedClient] currentUsername]]];
 		}

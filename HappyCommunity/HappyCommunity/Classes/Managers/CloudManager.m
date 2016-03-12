@@ -95,3 +95,18 @@ static CloudManager *manager = nil;
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

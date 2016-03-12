@@ -86,7 +86,6 @@ static NSString *chatCell = @"chat_cell";
 	//键盘退出时发出消息
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 	
-	
 }
 
 //键盘出现或者改变时调用
@@ -200,20 +199,20 @@ static NSString *chatCell = @"chat_cell";
 //自己发送的信息显示在右边
 - (ChatTableViewCell *)setRightCell:(ChatTableViewCell *)cell model:(ChatModel *)model name:(NSString *)name{
 	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		cell.rightIcon.image = [[DataBaseTools SharedInstance] getCachePictureWithName:name];
+//	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		cell.rightIcon.image = [[DataBaseTools SharedInstance] imageForKey:name];
 		if (cell.rightIcon.image==nil) {
 			[[CloudManager shareInstance] getUserIconByName:name finish:^(UIImage *findImage) {
 				cell.rightIcon.image = findImage;
 				if (cell.rightIcon.image==nil) {
 					cell.rightIcon.image = [UIImage imageNamed:@"chatListCellHead@2x"];
 				}else{
-					[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:name];
+					[[DataBaseTools SharedInstance] cacheImageWithImage:findImage andKey:name];
 				}
 			}];
 			
 		}
-	});
+//	});
 	
 	return cell;
 }
@@ -221,8 +220,8 @@ static NSString *chatCell = @"chat_cell";
 //好友发送的信息显示在左边
 - (ChatTableViewCell *)setLeftCell:(ChatTableViewCell *)cell model:(ChatModel *)model name:(NSString *)name{
 	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		cell.leftIcon.image = [[DataBaseTools SharedInstance] getCachePictureWithName:name];
+//	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		cell.leftIcon.image = [[DataBaseTools SharedInstance] imageForKey:name];
 		if (cell.leftIcon.image==nil) {
 			[[CloudManager shareInstance] getUserIconByName:name finish:^(UIImage *findImage) {
 				cell.leftIcon.image = findImage;
@@ -230,12 +229,12 @@ static NSString *chatCell = @"chat_cell";
 				if (cell.leftIcon.image==nil) {
 					cell.leftIcon.image = [UIImage imageNamed:@"chatListCellHead@2x"];
 				}else{
-					[[DataBaseTools SharedInstance] cachePictureWithImage:findImage andName:name];
+					[[DataBaseTools SharedInstance] cacheImageWithImage:findImage andKey:name];
 				}
 			}];
 			
 		}
-	});
+//	});
 	
 	return cell;
 }

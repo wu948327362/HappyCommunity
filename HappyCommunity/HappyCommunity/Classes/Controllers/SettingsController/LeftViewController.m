@@ -56,7 +56,7 @@ static NSString * const kYCLeftViewControllerCellReuseId = @"kYCLeftViewControll
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-	self.imView.image = [[DataBaseTools SharedInstance] getCachePictureWithName:[[EMClient sharedClient] currentUsername]];
+	self.imView.image = [[DataBaseTools SharedInstance] imageForKey:[[EMClient sharedClient] currentUsername]];
 	if (self.imView.image==nil) {
 		self.imView.image = [UIImage imageNamed:@"chatListCellHead@2x"];
 	}

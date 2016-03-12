@@ -17,7 +17,7 @@
 static DataBaseTools *handler;
 
 @interface DataBaseTools ()<EMChatManagerDelegate,EMGroupManagerDelegate>
-
+@property(nonatomic,strong)NSCache *cache;
 @end
 
 @implementation DataBaseTools
@@ -32,6 +32,7 @@ static DataBaseTools *handler;
 		[[EMClient sharedClient].groupManager addDelegate:handler delegateQueue:nil];
 		AppDelegate *app = [UIApplication sharedApplication].delegate;
 		handler.context = app.managedObjectContext;
+		handler.cache = [[NSCache alloc] init];
     }
     return handler;
 }
@@ -340,7 +341,7 @@ static sqlite3 *dataBase;
 	if (![name isEqualToString:@""]) {
 		//设置图片缓存路径
 		NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-		NSString *filePath = [docPath stringByAppendingString:[NSString stringWithFormat:@"/%@.png",name]];
+		NSString *filePath = [docPath stringByAppendingString:[NSString stringWithFormat:@"/%@",name]];
 		return filePath;
 	}else{
 		return nil;
@@ -353,8 +354,9 @@ static sqlite3 *dataBase;
 	
 	//获取图片缓存路径
 	NSString *filePath = [self filePathWithName:name];
+	NSData *data = [NSData dataWithContentsOfFile:filePath];
 	
-	return [UIImage imageWithContentsOfFile:filePath];
+	return [UIImage imageWithData:data];
 	
 	
 }
@@ -364,7 +366,48 @@ static sqlite3 *dataBase;
 	
 	//根据图片缓存路径,缓存图片
 	NSString *filePath = [self filePathWithName:name];
-	[UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
+//	[UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
+	NSData *data = UIImagePNGRepresentation(image);
+	
+	[data writeToFile:filePath atomically:NO];
+	
+}
+
+//缓存图片
+- (void)cacheImageWithImage:(UIImage *)image andKey:(NSString *)key{
+	NSData *data = UIImagePNGRepresentation(image);
+	
+	NSString *filePath = [self filePathWithName:key];
+	
+	[self.cache setObject:data forKey:key];
+	
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		
+		[[NSFileManager defaultManager] createFileAtPath:filePath contents:data attributes:nil];
+		
+	});
+	
+}
+
+//读取图片
+- (UIImage *)imageForKey:(NSString *)key{
+	
+	if (key==nil) {
+		return nil;
+	}
+	
+	NSData *data = [_cache objectForKey:key];
+	if (data) {
+		return [UIImage imageWithData:data];
+	}else{
+		NSString *filePath = [self filePathWithName:key];
+		data = [[NSFileManager defaultManager] contentsAtPath:filePath];
+		
+		if (data) {
+			[_cache setObject:data forKey:key];
+		}
+		return [UIImage imageWithData:data];
+	}
 	
 }
 
