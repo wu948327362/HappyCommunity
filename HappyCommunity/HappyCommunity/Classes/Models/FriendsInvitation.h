@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface FriendsInvitation : NSObject
-@property(nonatomic,strong)NSString *userName;
-@property(nonatomic,strong)NSString *message;
+@property(nonatomic,copy)NSString *userName;
+@property(nonatomic,copy)NSString *message;
 @property(nonatomic,assign)NSInteger friendOrGroup;
+@property(nonatomic,copy)NSString *addWhoName;
 @end

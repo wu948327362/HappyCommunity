@@ -67,7 +67,7 @@ static ContactManager *manager;
 		}
 	}else if (flag==3){
 		for (FriendsInvitation *friend in arr) {
-			[data addObject:[NSString stringWithFormat:@"%@:%@:%ld",friend.userName,friend.message,friend.friendOrGroup]];
+			[data addObject:[NSString stringWithFormat:@"%@ say %@:%ld",friend.userName,friend.message,friend.friendOrGroup]];
 		}
 	}
 	return data;

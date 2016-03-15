@@ -16,7 +16,7 @@
 
 static DataBaseTools *handler;
 
-@interface DataBaseTools ()<EMChatManagerDelegate,EMGroupManagerDelegate>
+@interface DataBaseTools ()<EMChatManagerDelegate,EMGroupManagerDelegate,EMContactManagerDelegate>
 @property(nonatomic,strong)NSCache *cache;
 @end
 
@@ -33,6 +33,7 @@ static DataBaseTools *handler;
 		AppDelegate *app = [UIApplication sharedApplication].delegate;
 		handler.context = app.managedObjectContext;
 		handler.cache = [[NSCache alloc] init];
+		[[EMClient sharedClient].contactManager addDelegate:handler delegateQueue:nil];
     }
     return handler;
 }
@@ -62,7 +63,7 @@ static sqlite3 *dataBase;
     //获取文件路径以及数据库路径
     NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     
-    NSString *path = [docPath stringByAppendingString:@"/FriendsInvitation.sqlite"];
+    NSString *path = [docPath stringByAppendingString:@"/NewFriendsInvitation.sqlite"];
     NSLog(@"%@",path);
     int result = sqlite3_open(path.UTF8String, &dataBase);
     if (result==SQLITE_OK) {
@@ -84,7 +85,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)createTable{
-    NSString *sql =@"CREATE  TABLE IF NOT EXISTS FreindsAndGroup (pid INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , userName TEXT NOT NULL , message TEXT NOT NULL , friendOrGroup INTEGER NOT NULL)";
+    NSString *sql =@"CREATE  TABLE IF NOT EXISTS NewFriendsInvitation (pid INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , userName TEXT NOT NULL , message TEXT NOT NULL , addWhoName TEXT NOT NULL, friendOrGroup INTEGER NOT NULL)";
     
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     if (result==SQLITE_OK) {
@@ -97,8 +98,8 @@ static sqlite3 *dataBase;
     
 }
 - (void)addPerson:(FriendsInvitation *)person{
-    NSString *sql = [NSString stringWithFormat:@"insert into FreindsAndGroup (userName,message,friendOrGroup) values('%@','%@',%d)",person.userName,person.message,0];
-    
+    NSString *sql = [NSString stringWithFormat:@"insert into NewFriendsInvitation (userName,message,friendOrGroup,addWhoName) values('%@','%@',%d,'%@')",person.userName,person.message,0,[[EMClient sharedClient] currentUsername]];
+	NSLog(@"%@",sql);
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     if (result==SQLITE_OK) {
         NSLog(@"add成功");
@@ -108,7 +109,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)addGroup:(FriendsInvitation *)person{
-	NSString *sql = [NSString stringWithFormat:@"insert into FreindsAndGroup (userName,message,friendOrGroup) values('%@','%@',%d)",person.userName,person.message,1];
+	NSString *sql = [NSString stringWithFormat:@"insert into NewFriendsInvitation (userName,message,friendOrGroup,addWhoName) values('%@','%@',%d,'%@')",person.userName,person.message,1,[[EMClient sharedClient] currentUsername]];
 	
 	int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
 	if (result==SQLITE_OK) {
@@ -119,7 +120,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)delPersonByPid:(NSInteger)pid{
-    NSString *sql = [NSString stringWithFormat:@"delete from FreindsAndGroup where pid = %ld ",(long)pid];
+    NSString *sql = [NSString stringWithFormat:@"delete from NewFriendsInvitation where pid = %ld ",(long)pid];
     
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     if (result==SQLITE_OK) {
@@ -131,7 +132,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)delPersonByName:(NSString *)name{
-	NSString *sql = [NSString stringWithFormat:@"delete from FreindsAndGroup where userName = '%@' ",name];
+	NSString *sql = [NSString stringWithFormat:@"delete from NewFriendsInvitation where userName = '%@' ",name];
 	
 	int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
 	if (result==SQLITE_OK) {
@@ -143,7 +144,7 @@ static sqlite3 *dataBase;
 }
 
 - (void)updatePerson:(NSString *)name byPid:(NSInteger)pid{
-    NSString *sql = [NSString stringWithFormat:@"update FreindsAndGroup set userName='%@' where pid=%ld",name,(long)pid];
+    NSString *sql = [NSString stringWithFormat:@"update NewFriendsInvitation set userName='%@' where pid=%ld",name,(long)pid];
     int result = sqlite3_exec(dataBase, sql.UTF8String, NULL, NULL, NULL);
     
     if (result==SQLITE_OK) {
@@ -155,7 +156,7 @@ static sqlite3 *dataBase;
 }
 - (NSArray<FriendsInvitation *>*)showAllPerson{
     NSMutableArray *arr = [NSMutableArray array];
-    NSString *sql = @"select * from FreindsAndGroup";
+    NSString *sql = @"select * from NewFriendsInvitation";
     sqlite3_stmt *stmt = NULL;
     
     int result = sqlite3_prepare(dataBase, sql.UTF8String, -1, &stmt, NULL);
@@ -166,7 +167,8 @@ static sqlite3 *dataBase;
 //            p.pid = sqlite3_column_int(stmt, 0);
             p.userName = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(stmt, 1)];
             p.message = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt,2)];
-			p.friendOrGroup = sqlite3_column_int(stmt, 3);
+			p.addWhoName = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt,3)];
+			p.friendOrGroup = sqlite3_column_int(stmt, 4);
             [arr addObject:p];
         }
     }
@@ -189,7 +191,7 @@ static sqlite3 *dataBase;
 //}
 
 - (void)bindPerson:(FriendsInvitation *)person{
-    NSString *sql = @"INSERT INTO FreindsAndGroup (userName,message) VALUES (?,?)";
+    NSString *sql = @"INSERT INTO NewFriendsInvitation (userName,message) VALUES (?,?)";
     
     sqlite3_stmt *stmt = NULL;
     
@@ -231,15 +233,14 @@ static sqlite3 *dataBase;
 	NSArray *array = [self showAllPerson];
 	
 	for (FriendsInvitation *friend in array) {
-		
-		if ([friend.userName isEqualToString:[[EMClient sharedClient] currentUsername]]) {
-			[arr addObject:[NSString stringWithFormat:@"%@:%@",friend.userName,friend.message]];
+		if ([friend.addWhoName isEqualToString:[[EMClient sharedClient] currentUsername]]) {
+			[arr addObject:friend];
 		}
 		
 		for (NSString *group in [[ContactManager shareInstance] getGroupContainsMe]) {
 			NSArray *a = [group componentsSeparatedByString:@":"];
 			if ([friend.userName isEqualToString:[a firstObject]]) {
-				[arr addObject:[NSString stringWithFormat:@"%@:%@",friend.userName,friend.message]];
+				[arr addObject:friend];
 			}
 		}
 		
@@ -318,21 +319,48 @@ static sqlite3 *dataBase;
 	
 }
 
+//收到添加好友请求代理方法.
+- (void)didReceiveFriendInvitationFromUsername:(NSString *)aUsername message:(NSString *)aMessage{
+	
+	//如果数据库已经存在某个好友的请求则不加入数据库.是好友也不能添加好友.
+	if (!([self isExitsUserWithName:aUsername]||[self isFriend:aUsername])) {
+		FriendsInvitation *friend = [[FriendsInvitation alloc] init];
+		friend.userName = aUsername;
+		friend.message = aMessage;
+		[[DataBaseTools SharedInstance] addPerson:friend];
+	}
+	//数据库在注销的时候关闭.
+}
+//判断是否是好友.
+- (BOOL)isFriend:(NSString *)name{
+	BOOL flag = NO;
+	
+	NSArray *userList = [[EMClient sharedClient].contactManager getContactsFromServerWithError:nil];
+	
+	for (NSString *user in userList) {
+		if ([user isEqualToString:name]) {
+			flag = YES;
+		}
+	}
+	
+	return YES;
+}
+
 //收到某人的加群申请.如果是好友则默认可以进入该群在否则等待群主的验证.
 - (void)didReceiveJoinGroupApplication:(EMGroup *)aGroup applicant:(NSString *)aApplicant reason:(NSString *)aReason{
 	
 	//判断是否是好友.
-	BOOL isFriend = [handler isExitsUserWithName:aApplicant];
-	
-	if (isFriend) {
-		[[EMClient sharedClient].groupManager addOccupants:@[aApplicant] toGroup:aGroup.groupId welcomeMessage:nil error:nil];
-	}else{
+//	BOOL isFriend = [handler isExitsUserWithName:aApplicant];
+//	
+//	if (isFriend) {
+//		[[EMClient sharedClient].groupManager addOccupants:@[aApplicant] toGroup:aGroup.groupId welcomeMessage:nil error:nil];
+//	}else{
 		FriendsInvitation *frienInvitation = [[FriendsInvitation alloc] init];
 		frienInvitation.userName = aApplicant;
 		frienInvitation.message = [NSString stringWithFormat:@"%@:%@",aReason,aGroup.groupId];
 		frienInvitation.friendOrGroup = 1;
 		[handler addGroup:frienInvitation];
-	}
+//	}
 	
 }
 
