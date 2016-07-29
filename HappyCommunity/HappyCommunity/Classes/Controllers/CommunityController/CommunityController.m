@@ -90,7 +90,7 @@ static NSString *communityCell = @"community_cell";
 	self.data = [NSMutableArray array];
 	self.images = [NSMutableArray array];
 	
-	self.data = @[@"好友",@"群组",@"其他群组",@"系统消息",@"创建群组"].mutableCopy;
+	self.data = @[@"我的好友",@"群组",@"其他群组",@"系统消息",@"创建群组"].mutableCopy;
 	self.images = @[@"my_friends",@"my_group",@"other_group",@"program_message",@"new_group"].mutableCopy;
 	self.leftImage = @[@"chatListCellHead@2x",@"group_header@2x",@"groupPublicHeader@2x",@"group_joinpublicgroup@2x"].mutableCopy;
 	
