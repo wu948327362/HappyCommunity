@@ -73,7 +73,9 @@ static LoginController *loginController;
 	[LoginAnimatino btnAnimationWithBtn:self.loginBtn view:self.view];
 	
 }
-
+- (void)justTestSomething{
+    //这仅仅是一个测试。
+}
 //注册按钮点击事件
 - (IBAction)registerAction:(UIButton *)sender {
 	if (![self isEmpty]) {
